@@ -2,6 +2,7 @@ package com.chaseolson.pets.home.presenter
 
 import android.view.View
 import androidx.appcompat.app.AlertDialog
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.chaseolson.pets.R
@@ -11,7 +12,8 @@ class HomeScreenPresenter(val root: View) {
     private val petRecycler: RecyclerView = root.findViewById(R.id.pet_recyclerView)
 
     init {
-        petRecycler.layoutManager = LinearLayoutManager(root.context)
+        petRecycler.layoutManager = GridLayoutManager(root.context, 2)
+//        petRecycler.layoutManager = LinearLayoutManager(root.context)
     }
 
     fun present(vm: PetListItemViewModel){

@@ -1,124 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/pet_layout"
-        android:padding="4dp"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="150dp">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/pet_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="4dp">
 
     <ImageView
-            android:id="@+id/pet_image"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            tools:srcCompat="@tools:sample/avatars" android:layout_marginStart="8dp" android:layout_marginBottom="8dp"
-            android:layout_marginTop="8dp"/>
+        android:id="@+id/pet_image"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:contentDescription="@string/pet_image"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pet_name"
+        tools:srcCompat="@tools:sample/avatars" />
+
     <TextView
-            android:id="@+id/pet_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:text="Rover"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/pet_image"
-            app:layout_constraintBottom_toTopOf="@+id/age_title"
-    />
+        android:id="@+id/pet_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintEnd_toEndOf="@+id/pet_image"
+        app:layout_constraintStart_toStartOf="@+id/pet_image"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Rover" />
+
     <TextView
-            android:id="@+id/pet_age"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            app:layout_constraintStart_toEndOf="@+id/age_title"
-            app:layout_constraintTop_toTopOf="@+id/age_title"
-            app:layout_constraintBottom_toBottomOf="@+id/age_title"
-            tools:text="8"/>
+        android:id="@+id/pet_age"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/pet_gender"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pet_image"
+        tools:text="Adult" />
+
     <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/age_title"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="4dp"
-            android:text="Age:"
-            app:layout_constraintStart_toEndOf="@+id/pet_image"
-            app:layout_constraintTop_toBottomOf="@+id/pet_name"
-            app:layout_constraintBottom_toTopOf="@+id/breed_title"/>
+        android:id="@+id/pet_gender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/pet_age"
+        app:layout_constraintTop_toTopOf="@+id/pet_age"
+        tools:text="M" />
+
     <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/gender_title"
-            android:layout_marginStart="24dp"
-            android:text="Gender:"
-            app:layout_constraintStart_toEndOf="@+id/pet_age"
-            app:layout_constraintTop_toTopOf="@+id/age_title"/>
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/pet_gender"
-            android:layout_marginStart="8dp"
-            app:layout_constraintStart_toEndOf="@+id/gender_title"
-            app:layout_constraintTop_toTopOf="@+id/gender_title"
-            tools:text="M" app:layout_constraintBottom_toBottomOf="@+id/gender_title"/>
-    <TextView
-            android:text="Breed:"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/breed_title"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="4dp"
-            app:layout_constraintStart_toEndOf="@+id/pet_image"
-            app:layout_constraintTop_toBottomOf="@+id/age_title"
-            app:layout_constraintBottom_toBottomOf="parent"/>
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/pet_breed"
-            android:layout_marginStart="8dp"
-            app:layout_constraintStart_toEndOf="@+id/breed_title"
-            app:layout_constraintTop_toTopOf="@+id/breed_title"
-            tools:text="Golden Retriever"
-            app:layout_constraintBottom_toBottomOf="@+id/breed_title"/>
-    <!--<TextView-->
-            <!--android:text="Distance:"-->
-            <!--android:id="@+id/distance_title"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--app:layout_constraintStart_toEndOf="@+id/pet_image"-->
-            <!--android:layout_marginStart="8dp"-->
-            <!--android:layout_marginTop="4dp"-->
-            <!--app:layout_constraintTop_toBottomOf="@+id/breed_title"-->
-            <!--app:layout_constraintBottom_toTopOf="@+id/shelter_title"/>-->
-    <!--<TextView-->
-            <!--android:id="@+id/pet_distance"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--app:layout_constraintStart_toEndOf="@+id/distance_title"-->
-            <!--android:layout_marginStart="8dp"-->
-            <!--app:layout_constraintTop_toTopOf="@+id/distance_title"-->
-            <!--tools:text="25mi"-->
-            <!--app:layout_constraintBottom_toBottomOf="@+id/distance_title"/>-->
-    <!--<TextView-->
-            <!--android:id="@+id/shelter_title"-->
-            <!--android:text="Shelter:"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--app:layout_constraintStart_toEndOf="@+id/pet_image"-->
-            <!--android:layout_marginStart="8dp"-->
-            <!--app:layout_constraintTop_toBottomOf="@+id/distance_title"-->
-            <!--android:layout_marginTop="4dp" app:layout_constraintBottom_toBottomOf="parent"-->
-            <!--android:layout_marginBottom="8dp"/>-->
-    <!--<TextView-->
-            <!--android:id="@+id/pet_shelter"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--app:layout_constraintStart_toEndOf="@+id/shelter_title"-->
-            <!--android:layout_marginStart="8dp"-->
-            <!--app:layout_constraintTop_toTopOf="@+id/shelter_title"-->
-            <!--tools:text="Project Happiness"-->
-            <!--app:layout_constraintBottom_toBottomOf="@+id/shelter_title"/>-->
+        android:id="@+id/pet_breed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@+id/pet_image"
+        app:layout_constraintStart_toStartOf="@+id/pet_image"
+        app:layout_constraintTop_toBottomOf="@+id/pet_age"
+        tools:text="Golden Retriever" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

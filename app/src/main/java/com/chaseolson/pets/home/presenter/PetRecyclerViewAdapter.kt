@@ -37,8 +37,6 @@ class PetRecyclerViewAdapter(val petsList: List<PetListItemViewModel.Pet>?) :
             val age: TextView = holder.itemView.findViewById(R.id.pet_age)
             val gender: TextView = holder.itemView.findViewById(R.id.pet_gender)
             val breed: TextView = holder.itemView.findViewById(R.id.pet_breed)
-//            val distance: TextView = holder.itemView.findViewById(R.id.pet_distance)
-//            val shelter: TextView = holder.itemView.findViewById(R.id.pet_shelter)
             val image: ImageView = holder.itemView.findViewById(R.id.pet_image)
 
             name.text = petList?.name
