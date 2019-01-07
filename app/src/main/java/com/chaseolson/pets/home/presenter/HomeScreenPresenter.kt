@@ -5,7 +5,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.chaseolson.pets.R
-import com.chaseolson.pets.home.model.PetItemViewModel
+import com.chaseolson.pets.home.model.PetListItemViewModel
 
 class HomeScreenPresenter(val root: View) {
     private val petRecycler: RecyclerView = root.findViewById(R.id.pet_recyclerView)
@@ -14,7 +14,7 @@ class HomeScreenPresenter(val root: View) {
         petRecycler.layoutManager = LinearLayoutManager(root.context)
     }
 
-    fun present(vm: PetItemViewModel){
+    fun present(vm: PetListItemViewModel){
         petRecycler.adapter = PetRecyclerViewAdapter(vm.pets)
     }
 

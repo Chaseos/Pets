@@ -7,10 +7,10 @@ import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.chaseolson.pets.R
-import com.chaseolson.pets.home.model.PetItemViewModel
+import com.chaseolson.pets.home.model.PetListItemViewModel
 import com.squareup.picasso.Picasso
 
-class PetRecyclerViewAdapter(val petsList: List<PetItemViewModel.Pet>?) :
+class PetRecyclerViewAdapter(val petsList: List<PetListItemViewModel.Pet>?) :
     RecyclerView.Adapter<PetRecyclerViewAdapter.ViewHolder>() {
 
     class ViewHolder(layout: ConstraintLayout) : RecyclerView.ViewHolder(layout)
@@ -32,7 +32,7 @@ class PetRecyclerViewAdapter(val petsList: List<PetItemViewModel.Pet>?) :
     }
 
     companion object {
-        fun present(holder: ViewHolder, pet: PetItemViewModel.Pet?) {
+        fun present(holder: ViewHolder, petList: PetListItemViewModel.Pet?) {
             val name: TextView = holder.itemView.findViewById(R.id.pet_name)
             val age: TextView = holder.itemView.findViewById(R.id.pet_age)
             val gender: TextView = holder.itemView.findViewById(R.id.pet_gender)
@@ -41,11 +41,11 @@ class PetRecyclerViewAdapter(val petsList: List<PetItemViewModel.Pet>?) :
 //            val shelter: TextView = holder.itemView.findViewById(R.id.pet_shelter)
             val image: ImageView = holder.itemView.findViewById(R.id.pet_image)
 
-            name.text = pet?.name
-            age.text = pet?.age
-            gender.text = pet?.gender
-            breed.text = pet?.breed
-            Picasso.get().load(pet?.images?.get(0)).into(image)
+            name.text = petList?.name
+            age.text = petList?.age
+            gender.text = petList?.gender
+            breed.text = petList?.breed
+            Picasso.get().load(petList?.images?.get(0)).into(image)
         }
     }
 }

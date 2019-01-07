@@ -4,15 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.chaseolson.pets.R
-import com.chaseolson.pets.home.model.PetFinder
-import com.chaseolson.pets.home.model.PetItemViewModel
 import com.chaseolson.pets.home.presenter.HomeScreenPresenter
-import com.chaseolson.pets.home.retrofit.PetListingApiImpl
 
 class HomeScreen : Fragment() {
 

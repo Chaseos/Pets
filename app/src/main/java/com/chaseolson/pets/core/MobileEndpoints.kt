@@ -1,6 +1,6 @@
 package com.chaseolson.pets.core
 
-import com.chaseolson.pets.home.model.PetFinder
+import com.chaseolson.pets.home.model.PetFinderResponse
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -20,5 +20,5 @@ interface MobileEndpoints {
         @Query("count") count: Int?,
         @Query("output") output: String?,
         @Query("format") format: String?
-    ): Call<PetFinder>
+    ): Call<PetFinderResponse>
 }

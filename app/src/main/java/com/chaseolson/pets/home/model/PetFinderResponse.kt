@@ -4,7 +4,7 @@ import com.tickaroo.tikxml.annotation.*
 
 
 @Xml(name = "petfinder")
-data class PetFinder(
+data class PetFinderResponse(
     @Path("pets")
     @Element
     val pet: List<Pet>? = null
@@ -28,8 +28,6 @@ data class PetFinder(
 
         @Xml
         data class Photo(
-            @Attribute
-            val id: String? = null,
             @Attribute
             val size: String? = null,
             @TextContent

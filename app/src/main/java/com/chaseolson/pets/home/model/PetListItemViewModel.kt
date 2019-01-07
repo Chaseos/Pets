@@ -1,6 +1,6 @@
 package com.chaseolson.pets.home.model
 
-data class PetItemViewModel(val pets: List<Pet>? = null){
+data class PetListItemViewModel(val pets: List<Pet>? = null){
 
     data class Pet(val name: String? = null,
                    val age: String? = null,

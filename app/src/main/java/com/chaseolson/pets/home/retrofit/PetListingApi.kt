@@ -1,6 +1,7 @@
 package com.chaseolson.pets.home.retrofit
 
-import com.chaseolson.pets.home.model.PetFinder
+import com.chaseolson.pets.core.RetrofitApi
+import com.chaseolson.pets.home.model.PetFinderResponse
 import retrofit2.Call
 
 interface PetListingApi {
@@ -15,5 +16,23 @@ interface PetListingApi {
         count: Int? = null,
         output: String? = null,
         format: String? = null
-    ): Call<PetFinder>
+    ): Call<PetFinderResponse>
+}
+
+class PetListingApiImpl: PetListingApi {
+
+    override fun getPetsList(
+        animal: String?,
+        breed: String?,
+        size: String?,
+        sex: Char?,
+        location: String,
+        age: String?,
+        offset: String?,
+        count: Int?,
+        output: String?,
+        format: String?
+    ): Call<PetFinderResponse> {
+        return RetrofitApi().getPetListing(animal, breed, size, sex, location, age, offset, count, output, format)
+    }
 }

@@ -3,17 +3,18 @@ package com.chaseolson.pets.home
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.chaseolson.pets.home.model.PetItemViewModel
+import com.chaseolson.pets.home.model.PetListItemViewModel
+import com.chaseolson.pets.home.retrofit.PetListingApiImpl
 
 class HomeScreenAVM : ViewModel() {
     private val logic: HomeScreenLogic
-    private val present = MutableLiveData<PetItemViewModel>()
+    private val present = MutableLiveData<PetListItemViewModel>()
     private val presentError = MutableLiveData<String>()
 
     init {
         val listener = object : HomeScreenLogic.Listener {
 
-            override fun present(vm: PetItemViewModel?) {
+            override fun present(vm: PetListItemViewModel?) {
                 present.postValue(vm)
             }
 
@@ -22,10 +23,10 @@ class HomeScreenAVM : ViewModel() {
             }
         }
 
-        logic = HomeScreenLogic(listener)
+        logic = HomeScreenLogic(listener, PetListingApiImpl())
     }
 
-    fun present(): LiveData<PetItemViewModel> = present
+    fun present(): LiveData<PetListItemViewModel> = present
     fun presentError(): LiveData<String> = presentError
 
     /**

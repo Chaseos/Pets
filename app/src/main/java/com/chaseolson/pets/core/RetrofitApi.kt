@@ -1,7 +1,7 @@
 package com.chaseolson.pets.core
 
 import com.chaseolson.pets.BuildConfig
-import com.chaseolson.pets.home.model.PetFinder
+import com.chaseolson.pets.home.model.PetFinderResponse
 import com.tickaroo.tikxml.TikXml
 import com.tickaroo.tikxml.retrofit.TikXmlConverterFactory
 import okhttp3.OkHttpClient
@@ -41,7 +41,7 @@ class RetrofitApi {
                       offset: String? = null,
                       count: Int? = null,
                       output: String? = null,
-                      format: String? = null): Call<PetFinder> {
+                      format: String? = null): Call<PetFinderResponse> {
         val key = BuildConfig.petFinderKey
         return mobileEndpoints.getPetListing(key, animal, breed, size, sex, location, age, offset, count, output, format)
     }
