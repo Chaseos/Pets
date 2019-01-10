@@ -35,6 +35,7 @@ dependencies {
     val appCompatVersion = "1.0.2"
     val recyclerViewVersion = "1.0.0"
     val constraintLayoutVersion = "2.0.0-alpha3"
+    val coroutinesVersion = "1.1.0"
     val archLifecycleVersion = "1.1.1"
     val navigationVersion = "1.0.0-alpha09"
     val retrofitVersion = "2.5.0"
@@ -48,6 +49,9 @@ dependencies {
     implementation("androidx.appcompat", "appcompat", appCompatVersion)
     implementation("androidx.recyclerview", "recyclerview", recyclerViewVersion)
     implementation("androidx.constraintlayout", "constraintlayout", constraintLayoutVersion)
+
+    //Coroutines
+    implementation("org.jetbrains.kotlinx", "kotlinx-coroutines-core", coroutinesVersion)
 
     //ViewModel & LiveData
     implementation("android.arch.lifecycle", "extensions", archLifecycleVersion)

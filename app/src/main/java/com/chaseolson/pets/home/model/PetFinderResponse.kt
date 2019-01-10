@@ -15,6 +15,8 @@ data class PetFinderResponse(
         @PropertyElement
         val name: String? = null,
         @PropertyElement
+        val animal: String? = null,
+        @PropertyElement
         val age: String? = null,
         @PropertyElement
         val sex: String? = null,

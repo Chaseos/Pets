@@ -5,6 +5,7 @@ import com.chaseolson.pets.home.model.PetFinderResponse
 import com.chaseolson.pets.home.model.PetListItemViewModel
 import com.chaseolson.pets.home.retrofit.PetListingApi
 import okhttp3.Request
+import okhttp3.ResponseBody
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
@@ -23,18 +24,16 @@ class HomeScreenLogicTest {
     var presentErrorString: String? = null
 
     private val petResponse = PetFinderResponse.Pet(
-        "Snowball", "Adult", "M", "Maltese",
+        "Snowball", "Dog", "Adult", "M", "Maltese",
         listOf(PetFinderResponse.Pet.Photo("x", "http://www.photoL.com/"),
             PetFinderResponse.Pet.Photo("pnt", "http://www.photoNotL.com/")))
     private val petResponseTwo = PetFinderResponse.Pet(
-        "Scooby-Doo", "Adult", "M", "Great Dane",
-        listOf(PetFinderResponse.Pet.Photo("x", "http://www.photoL2.com/"),
-            PetFinderResponse.Pet.Photo("pnt", "http://www.photoNotL2.com/")))
+        "Scooby-Doo", "Dog", "Adult", "M", "Great Dane")
 
     private val petExpected = PetListItemViewModel.Pet("Snowball", "Adult",
-        "M", "Maltese", null, null, listOf("http://www.photoL.com/"))
+        "M", "Maltese", listOf("http://www.photoL.com/"))
     private val petExpected2 = PetListItemViewModel.Pet("Scooby-Doo", "Adult",
-        "M", "Great Dane", null, null, listOf("http://www.photoL2.com/"))
+        "M", "Great Dane", listOf("file://res/drawable/dog_silhouette.jpg"))
 
     @Before
     fun `Test Setup`() {
@@ -66,15 +65,14 @@ class HomeScreenLogicTest {
                 age: String?, offset: String?, count: Int?, output: String?, format: String?
             ): Call<PetFinderResponse> {
                 return object: Call<PetFinderResponse> {
-                    override fun enqueue(callback: Callback<PetFinderResponse>) {
-                        return callback.onResponse(this, Response.success(petFinderResponse))
+                    override fun execute(): Response<PetFinderResponse> {
+                        return Response.success(petFinderResponse)
                     }
-
+                    override fun enqueue(callback: Callback<PetFinderResponse>) { TODO("Not Used") }
                     override fun isExecuted(): Boolean { TODO("Not Used") }
                     override fun clone(): Call<PetFinderResponse> { TODO("Not Used") }
                     override fun isCanceled(): Boolean { TODO("Not Used") }
                     override fun cancel() { TODO("Not Used") }
-                    override fun execute(): Response<PetFinderResponse> { TODO("Not Used") }
                     override fun request(): Request { TODO("Not Used") }
                 }
             }
@@ -97,16 +95,16 @@ class HomeScreenLogicTest {
                 age: String?, offset: String?, count: Int?, output: String?, format: String?
             ): Call<PetFinderResponse> {
                 return object: Call<PetFinderResponse> {
-                    override fun enqueue(callback: Callback<PetFinderResponse>) {
-                        return callback.onFailure(this, Throwable("Test Error"))
+                    override fun execute(): Response<PetFinderResponse> {
+                        return Response.error(404, ResponseBody.create(null, "Test Error"))
                     }
 
-                    override fun isExecuted(): Boolean { TODO("Not Used") }
-                    override fun clone(): Call<PetFinderResponse> { TODO("Not Used") }
-                    override fun isCanceled(): Boolean { TODO("Not Used") }
-                    override fun cancel() { TODO("Not Used") }
-                    override fun execute(): Response<PetFinderResponse> { TODO("Not Used") }
-                    override fun request(): Request { TODO("Not Used") }
+                    override fun enqueue(callback: Callback<PetFinderResponse>) = TODO("Not Used")
+                    override fun isExecuted(): Boolean = TODO("Not Used")
+                    override fun clone(): Call<PetFinderResponse> = TODO("Not Used")
+                    override fun isCanceled(): Boolean = TODO("Not Used")
+                    override fun cancel() = TODO("Not Used")
+                    override fun request(): Request = TODO("Not Used")
                 }
             }
         }
@@ -115,7 +113,7 @@ class HomeScreenLogicTest {
 
         homeScreenLogic?.setup()
         assertTrue(presentErrorHit)
-        assertEquals(presentErrorString, "Test Error")
+        assertEquals("Test Error", presentErrorString)
     }
 
     @Test

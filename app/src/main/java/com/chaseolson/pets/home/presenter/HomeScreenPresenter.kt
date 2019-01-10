@@ -8,12 +8,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.chaseolson.pets.R
 import com.chaseolson.pets.home.model.PetListItemViewModel
 
-class HomeScreenPresenter(val root: View) {
+class HomeScreenPresenter(private val root: View) {
     private val petRecycler: RecyclerView = root.findViewById(R.id.pet_recyclerView)
 
     init {
         petRecycler.layoutManager = GridLayoutManager(root.context, 2)
-//        petRecycler.layoutManager = LinearLayoutManager(root.context)
     }
 
     fun present(vm: PetListItemViewModel){

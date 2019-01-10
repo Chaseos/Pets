@@ -6,7 +6,5 @@ data class PetListItemViewModel(val pets: List<Pet>? = null){
                    val age: String? = null,
                    val gender: String? = null,
                    val breed: String? = null,
-                   val distance: String? = null,
-                   val shelter: String? = null,
                    val images: List<String?>? = null)
 }
