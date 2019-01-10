@@ -9,6 +9,7 @@
 	* Navigation
 	* LiveData
 	* ViewModel
+* Coroutines
 * XML Response Parsing (Usually it's JSON)
 * Popular 3rd Party Libraries Including:
 	* Retrofit
