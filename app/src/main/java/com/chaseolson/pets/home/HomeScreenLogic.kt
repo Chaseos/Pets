@@ -6,6 +6,7 @@ import com.chaseolson.pets.home.retrofit.PetListingApi
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.io.EOFException
 
 class HomeScreenLogic(private val listener: Listener, private val api: PetListingApi) {
 
@@ -15,12 +16,25 @@ class HomeScreenLogic(private val listener: Listener, private val api: PetListin
     }
 
     fun setup() {
-        val callback = api.getPetsList(location = "75001", count = 40, format = "xml").execute()
-        if (callback.isSuccessful) {
-            val vm = responseToViewModel(callback.body()?.pet)
-            listener.present(vm)
-        } else {
-            listener.presentError(callback.errorBody()?.string() ?: callback.code().toString())
+        //Why does this work? TODO(Investigate)
+        try {
+            val callback = api.getPetsList(location = "75001", count = 50, format = "xml")
+            val response = callback.execute()
+            if (response.isSuccessful) {
+                val vm = responseToViewModel(response.body()?.pet)
+                listener.present(vm)
+            } else {
+                listener.presentError(response.errorBody()?.string() ?: response.code().toString())
+            }
+        } catch (e: EOFException) {
+            val callback = api.getPetsList(location = "75001", count = 40, format = "xml")
+            val response = callback.execute()
+            if (response.isSuccessful) {
+                val vm = responseToViewModel(response.body()?.pet)
+                listener.present(vm)
+            } else {
+                listener.presentError(response.errorBody()?.string() ?: response.code().toString())
+            }
         }
     }
 
