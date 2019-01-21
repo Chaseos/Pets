@@ -10,40 +10,17 @@ import com.chaseolson.pets.R
 import com.chaseolson.pets.home.model.PetListItemViewModel
 import com.squareup.picasso.Picasso
 
-class PetRecyclerViewAdapter(val petsList: List<PetListItemViewModel.Pet>?) :
-    RecyclerView.Adapter<PetRecyclerViewAdapter.ViewHolder>() {
+class PetRecyclerViewAdapter(private val petsList: List<PetListItemViewModel.Pet>?, private val listener: PetRecyclerItemPresenter.Listener) :
+    RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        PetRecyclerItemPresenter.present(holder as PetRecyclerItemPresenter.Container, petsList?.get(position))
+    }
 
-    class ViewHolder(layout: ConstraintLayout) : RecyclerView.ViewHolder(layout)
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PetRecyclerViewAdapter.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val root = LayoutInflater.from(parent.context).inflate(R.layout.pet_list_item, parent, false)
         val constraintLayout: ConstraintLayout = root.findViewById(R.id.pet_layout)
-        return ViewHolder(constraintLayout)
+        return PetRecyclerItemPresenter.Container(constraintLayout, listener)
     }
 
-    override fun getItemCount(): Int {
-        return petsList?.size ?: 0
-    }
-
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val pet = petsList?.get(position)
-
-        PetRecyclerViewAdapter.present(holder, pet)
-    }
-
-    companion object {
-        fun present(holder: ViewHolder, petList: PetListItemViewModel.Pet?) {
-            val name: TextView = holder.itemView.findViewById(R.id.pet_name)
-            val age: TextView = holder.itemView.findViewById(R.id.pet_age)
-            val gender: TextView = holder.itemView.findViewById(R.id.pet_gender)
-            val breed: TextView = holder.itemView.findViewById(R.id.pet_breed)
-            val image: ImageView = holder.itemView.findViewById(R.id.pet_image)
-
-            name.text = petList?.name
-            age.text = petList?.age
-            gender.text = petList?.gender
-            breed.text = petList?.breed
-            Picasso.get().load(petList?.images?.get(0)).into(image)
-        }
-    }
+    override fun getItemCount(): Int = petsList?.size ?: 0
 }

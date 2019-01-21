@@ -55,8 +55,8 @@ class HomeScreenLogic(private val listener: Listener, private val api: PetListin
             return PetListItemViewModel(petList)
         }
 
-        private fun responseImagesToImagesList(photos: List<PetFinderResponse.Pet.Photo>?, animal: String?): List<String?>? {
-            val photosList = photos?.filter { it.size == "x" }?.map { it.photo }
+        private fun responseImagesToImagesList(photos: List<PetFinderResponse.Pet.Photo>, animal: String): List<String> {
+            val photosList = photos.filter { it.size == "x" }.map { it.photo }
 
             if (photosList.isNullOrEmpty()) {
                 if (animal == "Dog") {

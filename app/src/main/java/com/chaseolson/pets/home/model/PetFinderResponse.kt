@@ -13,27 +13,27 @@ data class PetFinderResponse(
     @Xml
     data class Pet(
         @PropertyElement
-        val name: String? = null,
+        val name: String = "Unknown Name",
         @PropertyElement
-        val animal: String? = null,
+        val animal: String = "Unknown Animal Type",
         @PropertyElement
-        val age: String? = null,
+        val age: String = "Unknown Age",
         @PropertyElement
-        val sex: String? = null,
+        val sex: String = "Unknown Gender",
         @Path("breeds")
         @PropertyElement
-        val breed: String? = null,
+        val breed: String = "Unknown Breed",
         @Path("media/photos")
         @Element
-        val photos: List<Photo>? = null
+        val photos: List<Photo> = emptyList()
     ) {
 
         @Xml
         data class Photo(
             @Attribute
-            val size: String? = null,
+            val size: String = "",
             @TextContent
-            val photo: String? = null
+            val photo: String = ""
         )
     }
 }

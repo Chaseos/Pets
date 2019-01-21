@@ -2,30 +2,40 @@ package com.chaseolson.pets.home.presenter
 
 import android.view.View
 import androidx.appcompat.app.AlertDialog
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.chaseolson.pets.R
 import com.chaseolson.pets.home.model.PetListItemViewModel
 
-class HomeScreenPresenter(private val root: View) {
-    private val petRecycler: RecyclerView = root.findViewById(R.id.pet_recyclerView)
+class HomeScreenPresenter() {
 
-    init {
-        petRecycler.layoutManager = GridLayoutManager(root.context, 2)
+    class Container(val root: View, val listener: PetRecyclerItemPresenter.Listener) {
+
+        val petRecycler: RecyclerView = root.findViewById(R.id.pet_recyclerView)
+
+        init {
+            petRecycler.layoutManager = GridLayoutManager(root.context, 2)
+        }
+
     }
 
-    fun present(vm: PetListItemViewModel){
-        petRecycler.adapter = PetRecyclerViewAdapter(vm.pets)
-    }
+    companion object {
 
-    fun presentError(error: String) {
-        val dialog = AlertDialog.Builder(root.context)
-            .setTitle(error)
-            .setPositiveButton("Ok") { dialog, which ->
-                //TODO
-            }
-            .create()
-        dialog.show()
+        fun present(container: Container, vm: PetListItemViewModel){
+            container.petRecycler.adapter = PetRecyclerViewAdapter(vm.pets, container.listener)
+        }
+
+        fun presentError(container: Container, error: String) {
+            val dialog = AlertDialog.Builder(container.root.context)
+                .setTitle(error)
+                .setPositiveButton("Ok") { dialog, which ->
+                    //TODO
+                }
+                .create()
+            dialog.show()
+        }
+
     }
 }

@@ -9,11 +9,11 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.chaseolson.pets.R
 import com.chaseolson.pets.home.presenter.HomeScreenPresenter
+import com.chaseolson.pets.home.presenter.PetRecyclerItemPresenter
 
 class HomeScreen : Fragment() {
 
     private lateinit var avm: HomeScreenAVM
-    private lateinit var presenter: HomeScreenPresenter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_home_screen, container, false)
@@ -21,14 +21,19 @@ class HomeScreen : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         avm = ViewModelProviders.of(this).get(HomeScreenAVM::class.java)
-        presenter = HomeScreenPresenter(view)
 
         avm.setup()
 
-        avm.present().observe(this, Observer { presenter.present(it) })
+        avm.present().observe(this, Observer { HomeScreenPresenter.present(HomeScreenPresenter.Container(view, listener), it) })
 
-        avm.presentError().observe(this, Observer { presenter.presentError(it) })
+        avm.presentError().observe(this, Observer { HomeScreenPresenter.presentError(HomeScreenPresenter.Container(view, listener), it) })
 
         super.onViewCreated(view, savedInstanceState)
+    }
+
+    private val listener = object: PetRecyclerItemPresenter.Listener {
+        override fun onPetClicked() {
+//            startActivity()
+        }
     }
 }
