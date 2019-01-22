@@ -9,9 +9,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.chaseolson.pets.R
 import com.chaseolson.pets.home.model.PetListItemViewModel
 
-class HomeScreenPresenter() {
+class HomeScreenPresenter {
 
-    class Container(val root: View, val listener: PetRecyclerItemPresenter.Listener) {
+    class Container(val root: View) {
 
         val petRecycler: RecyclerView = root.findViewById(R.id.pet_recyclerView)
 
@@ -24,13 +24,13 @@ class HomeScreenPresenter() {
     companion object {
 
         fun present(container: Container, vm: PetListItemViewModel){
-            container.petRecycler.adapter = PetRecyclerViewAdapter(vm.pets, container.listener)
+            container.petRecycler.adapter = PetRecyclerViewAdapter(vm.pets)
         }
 
         fun presentError(container: Container, error: String) {
             val dialog = AlertDialog.Builder(container.root.context)
                 .setTitle(error)
-                .setPositiveButton("Ok") { dialog, which ->
+                .setPositiveButton("Ok") { _, _ ->
                     //TODO
                 }
                 .create()

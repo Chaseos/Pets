@@ -13,29 +13,41 @@ class HomeScreenLogic(private val listener: Listener, private val api: PetListin
         fun presentError(error: String)
     }
 
-    var calls = 0
-
-    private val callback = object : retrofit2.Callback<PetFinderResponse> {
-        override fun onFailure(call: Call<PetFinderResponse>, t: Throwable) {
-            if (calls < 2) {
-                calls++
-                call.clone().enqueue(this)
-            } else {
-                listener.presentError(t.localizedMessage ?: t.message ?: "Error")
-            }
-        }
-
-        override fun onResponse(call: Call<PetFinderResponse>, response: Response<PetFinderResponse>) {
-            response.isSuccessful.let {
-                val pet = response.body()?.pet
-                val vm = responseToViewModel(pet)
-                listener.present(vm)
-            }
-        }
-    }
-
     fun makeCall() {
-        api.getPetsList(location = "75001", count = 50, format = "xml").enqueue(callback)
+        // I get EOFException randomly and sometimes multiple times in a row.
+        // This is a Band-Aid solution until a better one pops up.
+        try {
+            val callback = api.getPetsList(location = "75001", count = 40, format = "xml")
+            val response = callback.execute()
+            if (response.isSuccessful) {
+                val vm = responseToViewModel(response.body()?.pet)
+                listener.present(vm)
+            } else {
+                listener.presentError(response.errorBody()?.string() ?: response.code().toString())
+            }
+        } catch (e: EOFException) {
+            try {
+                val callback = api.getPetsList(location = "75001", count = 40, format = "xml")
+                val response = callback.execute()
+                if (response.isSuccessful) {
+                    val vm = responseToViewModel(response.body()?.pet)
+                    listener.present(vm)
+                } else {
+                    listener.presentError(response.errorBody()?.string()
+                            ?: response.code().toString())
+                }
+            } catch (e: EOFException) {
+                val callback = api.getPetsList(location = "75001", count = 40, format = "xml")
+                val response = callback.execute()
+                if (response.isSuccessful) {
+                    val vm = responseToViewModel(response.body()?.pet)
+                    listener.present(vm)
+                } else {
+                    listener.presentError(response.errorBody()?.string()
+                            ?: response.code().toString())
+                }
+            }
+        }
     }
 
     companion object {
@@ -43,13 +55,13 @@ class HomeScreenLogic(private val listener: Listener, private val api: PetListin
             val petList = mutableListOf<PetListItemViewModel.Pet>()
             for (pet in pets ?: return null) {
                 petList.add(
-                    PetListItemViewModel.Pet(
-                        name = pet.name,
-                        age = pet.age,
-                        gender = pet.sex,
-                        breed = pet.breed,
-                        images = responseImagesToImagesList(pet.photos, pet.animal)
-                    )
+                        PetListItemViewModel.Pet(
+                                name = pet.name,
+                                age = pet.age,
+                                gender = pet.sex,
+                                breed = pet.breed,
+                                images = responseImagesToImagesList(pet.photos, pet.animal)
+                        )
                 )
             }
             return PetListItemViewModel(petList)

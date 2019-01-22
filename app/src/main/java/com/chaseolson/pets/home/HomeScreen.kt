@@ -7,9 +7,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.Navigation.findNavController
 import com.chaseolson.pets.R
 import com.chaseolson.pets.home.presenter.HomeScreenPresenter
 import com.chaseolson.pets.home.presenter.PetRecyclerItemPresenter
+import kotlinx.android.synthetic.main.fragment_home_screen.*
 
 class HomeScreen : Fragment() {
 
@@ -24,16 +26,16 @@ class HomeScreen : Fragment() {
 
         avm.setup()
 
-        avm.present().observe(this, Observer { HomeScreenPresenter.present(HomeScreenPresenter.Container(view, listener), it) })
+        avm.present().observe(this, Observer {
+            home_progressBar.visibility = View.GONE
+            HomeScreenPresenter.present(HomeScreenPresenter.Container(view), it)
+        })
 
-        avm.presentError().observe(this, Observer { HomeScreenPresenter.presentError(HomeScreenPresenter.Container(view, listener), it) })
+        avm.presentError().observe(this, Observer {
+            home_progressBar.visibility = View.GONE
+            HomeScreenPresenter.presentError(HomeScreenPresenter.Container(view), it)
+        })
 
         super.onViewCreated(view, savedInstanceState)
-    }
-
-    private val listener = object: PetRecyclerItemPresenter.Listener {
-        override fun onPetClicked() {
-//            startActivity()
-        }
     }
 }

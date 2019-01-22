@@ -2,9 +2,9 @@ package com.chaseolson.pets.home.model
 
 data class PetListItemViewModel(val pets: List<Pet>? = null){
 
-    data class Pet(val name: String,
-                   val age: String,
-                   val gender: String,
-                   val breed: String,
-                   val images: List<String>)
+    data class Pet(val name: String = "Unknown Name",
+                   val age: String = "Unknown Age",
+                   val gender: String = "Unknown Gender",
+                   val breed: String = "Unknown Breed",
+                   val images: List<String> = emptyList())
 }

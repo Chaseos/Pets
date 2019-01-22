@@ -4,6 +4,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.chaseolson.pets.home.model.PetListItemViewModel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
 
 class HomeScreenAVM : ViewModel() {
     private val logic: HomeScreenLogic
@@ -30,12 +34,15 @@ class HomeScreenAVM : ViewModel() {
      */
 
     fun present(): LiveData<PetListItemViewModel> = present
+
     fun presentError(): LiveData<String> = presentError
 
     /**
      * Actionables
      */
     fun setup() {
-        logic.makeCall()
+        CoroutineScope(Job() + Dispatchers.Default).launch {
+            logic.makeCall()
+        }
     }
 }

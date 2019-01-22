@@ -3,13 +3,14 @@ package com.chaseolson.pets.home.presenter
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.chaseolson.pets.R
 import com.chaseolson.pets.home.model.PetListItemViewModel
 import com.squareup.picasso.Picasso
 
-class PetRecyclerItemPresenter() {
-    class Container(root: ViewGroup, listener: Listener): RecyclerView.ViewHolder(root) {
+class PetRecyclerItemPresenter {
+    class Container(root: ViewGroup) : RecyclerView.ViewHolder(root) {
         val name: TextView = root.findViewById(R.id.pet_name)
         val age: TextView = root.findViewById(R.id.pet_age)
         val gender: TextView = root.findViewById(R.id.pet_gender)
@@ -17,12 +18,8 @@ class PetRecyclerItemPresenter() {
         val image: ImageView = root.findViewById(R.id.pet_image)
 
         init {
-            root.setOnClickListener {listener.onPetClicked()}
+            root.setOnClickListener { root.findNavController().navigate(R.id.petDetails) }
         }
-    }
-
-    interface Listener {
-        fun onPetClicked()
     }
 
     companion object {
