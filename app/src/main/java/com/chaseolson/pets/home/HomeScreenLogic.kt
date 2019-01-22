@@ -2,9 +2,7 @@ package com.chaseolson.pets.home
 
 import com.chaseolson.pets.home.model.PetFinderResponse
 import com.chaseolson.pets.home.model.PetListItemViewModel
-import com.chaseolson.pets.home.retrofit.PetListingApi
 import retrofit2.Call
-import retrofit2.Callback
 import retrofit2.Response
 import java.io.EOFException
 
@@ -15,27 +13,29 @@ class HomeScreenLogic(private val listener: Listener, private val api: PetListin
         fun presentError(error: String)
     }
 
-    fun setup() {
-        //Why does this work? TODO(Investigate)
-        try {
-            val callback = api.getPetsList(location = "75001", count = 50, format = "xml")
-            val response = callback.execute()
-            if (response.isSuccessful) {
-                val vm = responseToViewModel(response.body()?.pet)
-                listener.present(vm)
+    var calls = 0
+
+    private val callback = object : retrofit2.Callback<PetFinderResponse> {
+        override fun onFailure(call: Call<PetFinderResponse>, t: Throwable) {
+            if (calls < 2) {
+                calls++
+                call.clone().enqueue(this)
             } else {
-                listener.presentError(response.errorBody()?.string() ?: response.code().toString())
-            }
-        } catch (e: EOFException) {
-            val callback = api.getPetsList(location = "75001", count = 40, format = "xml")
-            val response = callback.execute()
-            if (response.isSuccessful) {
-                val vm = responseToViewModel(response.body()?.pet)
-                listener.present(vm)
-            } else {
-                listener.presentError(response.errorBody()?.string() ?: response.code().toString())
+                listener.presentError(t.localizedMessage ?: t.message ?: "Error")
             }
         }
+
+        override fun onResponse(call: Call<PetFinderResponse>, response: Response<PetFinderResponse>) {
+            response.isSuccessful.let {
+                val pet = response.body()?.pet
+                val vm = responseToViewModel(pet)
+                listener.present(vm)
+            }
+        }
+    }
+
+    fun makeCall() {
+        api.getPetsList(location = "75001", count = 50, format = "xml").enqueue(callback)
     }
 
     companion object {

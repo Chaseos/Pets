@@ -3,7 +3,7 @@ package com.chaseolson.pets
 import com.chaseolson.pets.home.HomeScreenLogic
 import com.chaseolson.pets.home.model.PetFinderResponse
 import com.chaseolson.pets.home.model.PetListItemViewModel
-import com.chaseolson.pets.home.retrofit.PetListingApi
+import com.chaseolson.pets.home.PetListingApi
 import okhttp3.Request
 import okhttp3.ResponseBody
 import org.junit.Assert.*
@@ -82,7 +82,7 @@ class HomeScreenLogicTest {
 
         val petExpectedVM = PetListItemViewModel(listOf(petExpected, petExpected2))
 
-        homeScreenLogic?.setup()
+        homeScreenLogic?.makeCall()
         assertTrue(presentHit)
         assertEquals(petExpectedVM, presentViewModelList)
     }
@@ -111,7 +111,7 @@ class HomeScreenLogicTest {
 
         homeScreenLogic = HomeScreenLogic(listener!!, api)
 
-        homeScreenLogic?.setup()
+        homeScreenLogic?.makeCall()
         assertTrue(presentErrorHit)
         assertEquals("Test Error", presentErrorString)
     }

@@ -5,5 +5,9 @@
             app:startDestination="@id/homeScreen">
 
     <fragment android:id="@+id/homeScreen" android:name="com.chaseolson.pets.home.HomeScreen"
-              android:label="Pets" tools:layout="@layout/fragment_home_screen"/>
+              android:label="Pets" tools:layout="@layout/fragment_home_screen">
+        <action android:id="@+id/action_homeScreen_to_petDetails" app:destination="@id/petDetails"/>
+    </fragment>
+    <fragment android:id="@+id/petDetails" android:name="com.chaseolson.pets.petDetails.PetDetails"
+              android:label="fragment_pet_details" tools:layout="@layout/fragment_pet_details"/>
 </navigation>

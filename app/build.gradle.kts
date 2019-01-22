@@ -1,6 +1,6 @@
 import org.jetbrains.kotlin.config.KotlinCompilerVersion
 
-plugins{
+plugins {
     id("com.android.application")
     kotlin("android")
     kotlin("android.extensions")
@@ -62,7 +62,7 @@ dependencies {
 
     //Retrofit
     implementation("com.squareup.retrofit2", "retrofit", retrofitVersion)
-    
+
     //Picasso
     implementation("com.squareup.picasso", "picasso", picassoVersion)
 
