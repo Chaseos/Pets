@@ -52,6 +52,7 @@ dependencies {
 
     //Coroutines
     implementation("org.jetbrains.kotlinx", "kotlinx-coroutines-core", coroutinesVersion)
+    implementation("org.jetbrains.kotlinx", "kotlinx-coroutines-android", coroutinesVersion)
 
     //ViewModel & LiveData
     implementation("android.arch.lifecycle", "extensions", archLifecycleVersion)

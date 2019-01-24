@@ -42,7 +42,7 @@ class HomeScreenAVM : ViewModel() {
      */
     fun setup() {
         CoroutineScope(Job() + Dispatchers.Default).launch {
-            logic.makeCall()
+            logic.start()
         }
     }
 }

@@ -82,7 +82,7 @@ class HomeScreenLogicTest {
 
         val petExpectedVM = PetListItemViewModel(listOf(petExpected, petExpected2))
 
-        homeScreenLogic?.makeCall()
+        homeScreenLogic?.start()
         assertTrue(presentHit)
         assertEquals(petExpectedVM, presentViewModelList)
     }
@@ -111,7 +111,7 @@ class HomeScreenLogicTest {
 
         homeScreenLogic = HomeScreenLogic(listener!!, api)
 
-        homeScreenLogic?.makeCall()
+        homeScreenLogic?.start()
         assertTrue(presentErrorHit)
         assertEquals("Test Error", presentErrorString)
     }
