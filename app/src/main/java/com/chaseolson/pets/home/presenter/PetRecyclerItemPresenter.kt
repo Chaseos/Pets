@@ -18,7 +18,9 @@ class PetRecyclerItemPresenter {
         val image: ImageView = root.findViewById(R.id.pet_image)
 
         init {
-            root.setOnClickListener { root.findNavController().navigate(R.id.petDetails) }
+            root.setOnClickListener {
+//                root.findNavController().navigate(R.id.petDetails)
+            }
         }
     }
 

@@ -10,18 +10,5 @@
         android:name="com.chaseolson.pets.home.HomeScreen"
         android:label="Pets"
         tools:layout="@layout/fragment_home_screen">
-        <action
-            android:id="@+id/action_homeScreen_to_petDetails"
-            app:destination="@id/petDetails" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/petDetails"
-        android:name="com.chaseolson.pets.petdetails.PetDetails"
-        android:label="Pet"
-        tools:layout="@layout/fragment_pet_details">
-        <action
-            android:id="@+id/action_petDetails_to_homeScreen"
-            app:popUpTo="@id/homeScreen" />
     </fragment>
 </navigation>
