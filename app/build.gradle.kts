@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.config.KotlinCompilerVersion
-
 plugins {
     id("com.android.application")
     kotlin("android")
@@ -22,7 +20,7 @@ android {
         getByName("release") {
             isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
-            buildConfigField("String", "petFinderKey", "2922d4a277ba3eca9ed8342c8aee7070")
+            buildConfigField("String", "petFinderKey", "\"2922d4a277ba3eca9ed8342c8aee7070\"")
         }
         getByName("debug") {
             buildConfigField("String", "petFinderKey", "\"2922d4a277ba3eca9ed8342c8aee7070\"")
@@ -31,54 +29,39 @@ android {
 }
 
 dependencies {
-    val kotlinVersion = "1.3.20"
-    val appCompatVersion = "1.0.2"
-    val recyclerViewVersion = "1.0.0"
-    val constraintLayoutVersion = "2.0.0-alpha3"
-    val coroutinesVersion = "1.1.0"
-    val archLifecycleVersion = "1.1.1"
-    val navigationVersion = "1.0.0-alpha11"
-    val pagingVersion = "2.1.0"
-    val retrofitVersion = "2.5.0"
-    val picassoVersion = "2.71828"
-    val tickarooVersion = "0.8.13"
-    val androidxVersion = "1.0.0"
-    val junitVersion = "4.12"
-    val mockitoVersion = "1.10.19"
-
-    implementation(kotlin("stdlib-jdk7", kotlinVersion))
-    implementation("androidx.appcompat", "appcompat", appCompatVersion)
-    implementation("androidx.recyclerview", "recyclerview", recyclerViewVersion)
-    implementation("androidx.constraintlayout", "constraintlayout", constraintLayoutVersion)
+    implementation(Libs.kotlin_stdlib_jdk7)
+    implementation(Libs.appcompat)
+    implementation(Libs.recyclerview)
+    implementation(Libs.constraintlayout)
 
     //Coroutines
-    implementation("org.jetbrains.kotlinx", "kotlinx-coroutines-core", coroutinesVersion)
-    implementation("org.jetbrains.kotlinx", "kotlinx-coroutines-android", coroutinesVersion)
+    implementation(Libs.kotlinx_coroutines_core)
+    implementation(Libs.kotlinx_coroutines_android)
 
     //ViewModel & LiveData
-    implementation("android.arch.lifecycle", "extensions", archLifecycleVersion)
+    implementation(Libs.android_arch_lifecycle_extensions)
 
     //Navigation
-    implementation("android.arch.navigation", "navigation-fragment-ktx", navigationVersion)
-    implementation("android.arch.navigation", "navigation-ui-ktx", navigationVersion)
+    implementation(Libs.navigation_fragment_ktx)
+    implementation(Libs.navigation_ui_ktx)
 
     //Paging
-    implementation("androidx.paging", "paging-runtime", pagingVersion)
+    implementation(Libs.paging_runtime)
 
     //Retrofit
-    implementation("com.squareup.retrofit2", "retrofit", retrofitVersion)
+    implementation(Libs.retrofit)
 
     //Picasso
-    implementation("com.squareup.picasso", "picasso", picassoVersion)
+    implementation(Libs.picasso)
 
     //Tickaroo Xml Parser
-    implementation("com.tickaroo.tikxml", "core", tickarooVersion)
-    implementation("com.tickaroo.tikxml", "annotation", tickarooVersion)
-    implementation("com.tickaroo.tikxml", "retrofit-converter", tickarooVersion)
-    kapt("com.tickaroo.tikxml", "processor", tickarooVersion)
+    implementation(Libs.tickaroo_tikxml_core)
+    implementation(Libs.tickaroo_annotation)
+    implementation(Libs.tickaroo_retrofit_converter)
+    kapt(Libs.tickaroo_processor)
 
     //Testing
-    testImplementation("junit", "junit", junitVersion)
-    testImplementation("androidx.test", "core", androidxVersion)
-    testImplementation("org.mockito", "mockito-core", mockitoVersion)
+    testImplementation(Libs.junit)
+    testImplementation(Libs.androidx_test_core)
+    testImplementation(Libs.mockito_core)
 }

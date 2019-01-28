@@ -1,18 +1,19 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
-    val gradleVersion = "3.4.0-beta02"
-    val kotlinVersion = "1.3.20"
-
     repositories {
         google()
         jcenter()
     }
 
     dependencies {
-        classpath ("com.android.tools.build", "gradle", gradleVersion)
-        classpath (kotlin("gradle-plugin", kotlinVersion))
+        classpath(Libs.com_android_tools_build_gradle)
+        classpath(Libs.kotlin_gradle_plugin)
     }
+}
+
+plugins {
+    id("de.fayard.buildSrcVersions") version "0.3.2"
 }
 
 allprojects {
@@ -23,5 +24,5 @@ allprojects {
 }
 
 tasks.register("clean", Delete::class.java) {
-    delete (rootProject.buildDir)
+    delete(rootProject.buildDir)
 }
