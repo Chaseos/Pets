@@ -7,7 +7,7 @@ import com.tickaroo.tikxml.annotation.*
 data class PetFinderResponse(
     @Path("pets")
     @Element
-    val pet: List<Pet>? = null
+    val pet: List<Pet> = emptyList()
 ) {
 
     @Xml

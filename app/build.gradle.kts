@@ -31,13 +31,14 @@ android {
 }
 
 dependencies {
-    val kotlinVersion = "1.3.11"
+    val kotlinVersion = "1.3.20"
     val appCompatVersion = "1.0.2"
     val recyclerViewVersion = "1.0.0"
     val constraintLayoutVersion = "2.0.0-alpha3"
     val coroutinesVersion = "1.1.0"
     val archLifecycleVersion = "1.1.1"
-    val navigationVersion = "1.0.0-alpha09"
+    val navigationVersion = "1.0.0-alpha11"
+    val pagingVersion = "2.1.0"
     val retrofitVersion = "2.5.0"
     val picassoVersion = "2.71828"
     val tickarooVersion = "0.8.13"
@@ -60,6 +61,9 @@ dependencies {
     //Navigation
     implementation("android.arch.navigation", "navigation-fragment-ktx", navigationVersion)
     implementation("android.arch.navigation", "navigation-ui-ktx", navigationVersion)
+
+    //Paging
+    implementation("androidx.paging", "paging-runtime", pagingVersion)
 
     //Retrofit
     implementation("com.squareup.retrofit2", "retrofit", retrofitVersion)
