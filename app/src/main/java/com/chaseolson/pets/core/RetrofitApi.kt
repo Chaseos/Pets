@@ -32,16 +32,18 @@ class RetrofitApi {
         mobileEndpoints = retrofit.create(MobileEndpoints::class.java)
     }
 
-    fun getPetListing(animal: String? = null,
-                      breed: String? = null,
-                      size: String? = null,
-                      sex: Char? = null,
-                      location: String,
-                      age: String? = null,
-                      offset: String? = null,
-                      count: Int? = null,
-                      output: String? = null,
-                      format: String? = null): Call<PetFinderResponse> {
+    fun getPetListing(
+        animal: String? = null,
+        breed: String? = null,
+        size: String? = null,
+        sex: Char? = null,
+        location: String,
+        age: String? = null,
+        offset: Int? = null,
+        count: Int? = null,
+        output: String? = null,
+        format: String? = null
+    ): Call<PetFinderResponse> {
         val key = BuildConfig.petFinderKey
         return mobileEndpoints.getPetListing(key, animal, breed, size, sex, location, age, offset, count, output, format)
     }

@@ -3,7 +3,6 @@ package com.chaseolson.pets.home.presenter
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.chaseolson.pets.R
 import com.chaseolson.pets.home.model.PetListItemViewModel
@@ -19,7 +18,7 @@ class PetRecyclerItemPresenter {
 
         init {
             root.setOnClickListener {
-//                root.findNavController().navigate(R.id.petDetails)
+                TODO("PetDetails")
             }
         }
     }

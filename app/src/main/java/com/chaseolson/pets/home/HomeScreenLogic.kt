@@ -2,55 +2,20 @@ package com.chaseolson.pets.home
 
 import com.chaseolson.pets.home.model.PetFinderResponse
 import com.chaseolson.pets.home.model.PetListItemViewModel
-import java.io.EOFException
 
-class HomeScreenLogic(private val listener: Listener, private val api: PetListingApi) {
-
-    val CALL_TRIES = 5
-    var currentTries = 0
-
-    interface Listener {
-        fun present(vm: PetListItemViewModel?)
-        fun presentError(error: String)
-    }
-
-    fun start() {
-        makeCall()
-    }
-
-    private fun makeCall() {
-        // I get EOFException randomly and sometimes multiple times in a row.
-        // This is a Band-Aid solution until a better one pops up.
-        try {
-            val callback = api.getPetsList(location = "75001", count = 40, format = "xml")
-            val response = callback.execute()
-            if (response.isSuccessful) {
-                val vm = responseToViewModel(response.body()?.pet)
-                listener.present(vm)
-            } else {
-                listener.presentError(response.errorBody()?.string() ?: response.code().toString())
-            }
-        } catch (e: EOFException) {
-            if (currentTries < CALL_TRIES) {
-                makeCall()
-                currentTries++
-            } else {
-                listener.presentError("All call attempts failed")
-            }
-        }
-    }
-
+class HomeScreenLogic {
     companion object {
-        fun responseToViewModel(pets: List<PetFinderResponse.Pet>?): PetListItemViewModel? {
+        fun responseToViewModel(pets: PetFinderResponse?): PetListItemViewModel? {
             val petList = mutableListOf<PetListItemViewModel.Pet>()
-            pets?.forEach { pet ->
+            pets?.pet?.forEach { pet ->
                 petList.add(
                     PetListItemViewModel.Pet(
                         name = pet.name,
                         age = pet.age,
                         gender = pet.sex,
                         breed = pet.breed,
-                        images = responseImagesToImagesList(pet.photos, pet.animal)
+                        images = responseImagesToImagesList(pet.photos ?: emptyList(), pet.animal),
+                        offset = pets.lastOffset
                     )
                 )
             }

@@ -3,46 +3,30 @@ package com.chaseolson.pets.home
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.paging.LivePagedListBuilder
+import androidx.paging.PagedList
 import com.chaseolson.pets.home.model.PetListItemViewModel
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.launch
 
 class HomeScreenAVM : ViewModel() {
-    private val logic: HomeScreenLogic
-    private val present = MutableLiveData<PetListItemViewModel>()
     private val presentError = MutableLiveData<String>()
+    private val config = PagedList.Config.Builder().setPageSize(20).build()
+    private val petFeedFactory: PetDataSourceFactory
+    private val pets: LiveData<PagedList<PetListItemViewModel.Pet>>
 
     init {
-        val listener = object : HomeScreenLogic.Listener {
-
-            override fun present(vm: PetListItemViewModel?) {
-                present.postValue(vm)
-            }
-
+        val listener = object : PetFeed.Listener {
             override fun presentError(error: String) {
                 presentError.postValue(error)
             }
         }
 
-        logic = HomeScreenLogic(listener, PetListingApiImpl())
+        petFeedFactory = PetDataSourceFactory(listener)
+        pets = LivePagedListBuilder(petFeedFactory, config).build()
     }
 
     /**
      * Observables
      */
-
-    fun present(): LiveData<PetListItemViewModel> = present
-
     fun presentError(): LiveData<String> = presentError
-
-    /**
-     * Actionables
-     */
-    fun setup() {
-        CoroutineScope(Job() + Dispatchers.Default).launch {
-            logic.start()
-        }
-    }
+    fun pets(): LiveData<PagedList<PetListItemViewModel.Pet>> = pets
 }

@@ -8,7 +8,7 @@ import retrofit2.http.Query
 interface MobileEndpoints {
 
     @GET("pet.find")
-    fun getPetListing (
+    fun getPetListing(
         @Query("key") key: String,
         @Query("animal") animal: String?,
         @Query("breed") breed: String?,
@@ -16,7 +16,7 @@ interface MobileEndpoints {
         @Query("sex") sex: Char?,
         @Query("location") location: String,
         @Query("age") age: String?,
-        @Query("offset") offset: String?,
+        @Query("offset") offset: Int?,
         @Query("count") count: Int?,
         @Query("output") output: String?,
         @Query("format") format: String?

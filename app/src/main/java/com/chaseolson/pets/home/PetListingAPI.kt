@@ -12,14 +12,14 @@ interface PetListingApi {
         sex: Char? = null,
         location: String,
         age: String? = null,
-        offset: String? = null,
+        offset: Int? = null,
         count: Int? = null,
         output: String? = null,
         format: String? = null
     ): Call<PetFinderResponse>
 }
 
-class PetListingApiImpl: PetListingApi {
+class PetListingApiImpl : PetListingApi {
 
     override fun getPetsList(
         animal: String?,
@@ -28,7 +28,7 @@ class PetListingApiImpl: PetListingApi {
         sex: Char?,
         location: String,
         age: String?,
-        offset: String?,
+        offset: Int?,
         count: Int?,
         output: String?,
         format: String?
