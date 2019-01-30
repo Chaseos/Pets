@@ -1,5 +1,6 @@
 package com.chaseolson.pets.home.presenter
 
+import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
@@ -13,13 +14,12 @@ class PetRecyclerItemPresenter {
         val name: TextView = root.findViewById(R.id.pet_name)
         val age: TextView = root.findViewById(R.id.pet_age)
         val gender: TextView = root.findViewById(R.id.pet_gender)
-        val breed: TextView = root.findViewById(R.id.pet_breed)
+        val breedOne: TextView = root.findViewById(R.id.pet_breed_one)
+        val breedTwo: TextView = root.findViewById(R.id.pet_breed_two)
         val image: ImageView = root.findViewById(R.id.pet_image)
 
         init {
-            root.setOnClickListener {
-                TODO("PetDetails")
-            }
+            root.setOnClickListener {}
         }
     }
 
@@ -29,9 +29,11 @@ class PetRecyclerItemPresenter {
                 name.text = vm?.name
                 age.text = vm?.age
                 gender.text = vm?.gender
-                breed.text = vm?.breed
+                breedOne.text = vm?.breed?.get(0)
+                breedTwo.text = vm?.breed?.getOrNull(1)
                 Picasso.get().load(vm?.images?.get(0)).into(image)
             }
+
         }
     }
 }

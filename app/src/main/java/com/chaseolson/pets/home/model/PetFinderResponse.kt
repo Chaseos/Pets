@@ -23,12 +23,18 @@ data class PetFinderResponse(
         @PropertyElement
         val sex: String = "Unknown Gender",
         @Path("breeds")
-        @PropertyElement
-        val breed: String = "Unknown Breed",
+        @Element
+        val breeds: List<Breed> = listOf(Breed()),
         @Path("media/photos")
         @Element
         val photos: List<Photo>? = emptyList()
     ) {
+
+        @Xml
+        data class Breed(
+            @TextContent
+            val breed: String = "Unknown Breed"
+        )
 
         @Xml
         data class Photo(

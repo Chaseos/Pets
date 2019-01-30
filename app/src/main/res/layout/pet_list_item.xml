@@ -51,12 +51,21 @@
         tools:text="M" />
 
     <TextView
-        android:id="@+id/pet_breed"
+        android:id="@+id/pet_breed_one"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="@+id/pet_image"
         app:layout_constraintStart_toStartOf="@+id/pet_image"
         app:layout_constraintTop_toBottomOf="@+id/pet_age"
+        tools:text="Golden Retriever" />
+
+    <TextView
+        android:id="@+id/pet_breed_two"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@+id/pet_image"
+        app:layout_constraintStart_toStartOf="@+id/pet_image"
+        app:layout_constraintTop_toBottomOf="@+id/pet_breed_one"
         tools:text="Golden Retriever" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

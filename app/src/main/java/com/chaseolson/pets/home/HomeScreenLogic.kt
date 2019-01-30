@@ -13,7 +13,7 @@ class HomeScreenLogic {
                         name = pet.name,
                         age = pet.age,
                         gender = pet.sex,
-                        breed = pet.breed,
+                        breed = pet.breeds.map{ it.breed },
                         images = responseImagesToImagesList(pet.photos ?: emptyList(), pet.animal),
                         offset = pets.lastOffset
                     )

@@ -3,6 +3,8 @@ package com.chaseolson.pets
 import com.chaseolson.pets.home.HomeScreenLogic
 import com.chaseolson.pets.home.PetFeed
 import com.chaseolson.pets.home.model.PetFinderResponse
+import com.chaseolson.pets.home.model.PetFinderResponse.Pet
+import com.chaseolson.pets.home.model.PetFinderResponse.Pet.Breed
 import com.chaseolson.pets.home.model.PetListItemViewModel
 import org.junit.Assert.assertEquals
 import org.junit.Before
@@ -17,17 +19,18 @@ class HomeScreenLogicTest {
     var presentErrorHit = false
     var presentErrorString: String? = null
 
-    private val petResponse = PetFinderResponse.Pet(
-        "Snowball", "Dog", "Adult", "M", "Maltese",
-        listOf(PetFinderResponse.Pet.Photo("x", "http://www.photoL.com/"),
-            PetFinderResponse.Pet.Photo("pnt", "http://www.photoNotL.com/")))
-    private val petResponseTwo = PetFinderResponse.Pet(
-        "Scooby-Doo", "Dog", "Adult", "M", "Great Dane")
+    private val petResponse = Pet(
+        "Snowball", "Dog", "Adult", "M", listOf(Breed("Maltese"), Breed("Hound")),
+        listOf(
+            Pet.Photo("x", "http://www.photoL.com/"),
+            Pet.Photo("pnt", "http://www.photoNotL.com/")))
+    private val petResponseTwo = Pet(
+        "Scooby-Doo", "Dog", "Adult", "M", listOf(Breed("Great Dane")))
 
     private val petExpected = PetListItemViewModel.Pet("Snowball", "Adult",
-        "M", "Maltese", listOf("http://www.photoL.com/"), 20)
+        "M", listOf("Maltese", "Hound"), listOf("http://www.photoL.com/"), 20)
     private val petExpected2 = PetListItemViewModel.Pet("Scooby-Doo", "Adult",
-        "M", "Great Dane", listOf("file://res/drawable/dog_silhouette.jpg"), 20)
+        "M", listOf("Great Dane"), listOf("file://res/drawable/dog_silhouette.jpg"), 20)
 
     @Before
     fun `Test Setup`() {
