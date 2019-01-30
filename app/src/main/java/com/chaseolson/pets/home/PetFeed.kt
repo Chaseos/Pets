@@ -8,7 +8,7 @@ import java.io.EOFException
 class PetFeed(val listener: PetFeed.Listener, val api: PetListingApi) :
     ItemKeyedDataSource<Int, PetListItemViewModel.Pet>() {
 
-    val CALL_TRIES = 5
+    val CALL_TRIES = 10
     var currentTries = 0
 
     interface Listener {
