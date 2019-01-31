@@ -1,6 +1,5 @@
 package com.chaseolson.pets.home.presenter
 
-import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
@@ -24,16 +23,17 @@ class PetRecyclerItemPresenter {
     }
 
     companion object {
-        fun present(container: Container, vm: PetListItemViewModel.Pet?) {
+        fun present(container: Container, vm: PetListItemViewModel.Pet) {
             container.run {
-                name.text = vm?.name
-                age.text = vm?.age
-                gender.text = vm?.gender
-                breedOne.text = vm?.breed?.get(0)
-                breedTwo.text = vm?.breed?.getOrNull(1)
-                Picasso.get().load(vm?.images?.get(0)).into(image)
+                name.text = vm.name
+                age.text = vm.age
+                gender.text = vm.gender
+                breedOne.text = vm.breed[0]
+                breedTwo.text = vm.breed.getOrNull(1)
+                vm.images.getOrNull(0)?.run {
+                    Picasso.get().load(this).error(vm.backupImage).into(image)
+                } ?: run { Picasso.get().load(vm.backupImage).into(image) }
             }
-
         }
     }
 }

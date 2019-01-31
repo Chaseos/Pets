@@ -18,8 +18,8 @@ class PetFeed(val listener: PetFeed.Listener, val api: PetListingApi) :
     override fun loadInitial(params: LoadInitialParams<Int>, callback: LoadInitialCallback<PetListItemViewModel.Pet>) {
         try {
             val request = api.getPetsList(location = "75001", count = params.requestedLoadSize, format = "xml").execute()
-            val pets = HomeScreenLogic.responseToViewModel(request.body())
             currentTries = 0
+            val pets = HomeScreenLogic.responseToViewModel(request.body())
             callback.onResult(pets?.pets?.toMutableList() ?: emptyList())
         } catch (e: EOFException) {
             if (currentTries < CALL_TRIES) {
@@ -34,8 +34,8 @@ class PetFeed(val listener: PetFeed.Listener, val api: PetListingApi) :
     override fun loadAfter(params: LoadParams<Int>, callback: LoadCallback<PetListItemViewModel.Pet>) {
         try {
             val request = api.getPetsList(location = "75001", offset = params.key, count = params.requestedLoadSize, format = "xml").execute()
-            val pets = HomeScreenLogic.responseToViewModel(request.body())
             currentTries = 0
+            val pets = HomeScreenLogic.responseToViewModel(request.body())
             callback.onResult(pets?.pets?.toMutableList() ?: emptyList())
         } catch (e: EOFException) {
             if (currentTries < CALL_TRIES) {
