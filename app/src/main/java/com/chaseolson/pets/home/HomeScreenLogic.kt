@@ -10,24 +10,45 @@ class HomeScreenLogic {
             val petList = mutableListOf<PetListItemViewModel.Pet>()
             pets?.pet?.forEach { pet ->
                 petList.add(
-                    PetListItemViewModel.Pet(
-                        name = pet.name,
-                        age = pet.age,
-                        gender = pet.sex,
-                        breed = pet.breeds.map { it.breed },
-                        images = responseImagesToImagesList(pet.photos ?: emptyList()),
-                        backupImage = when {
-                            pet.animal == "Cat" -> R.drawable.cat_silhouette
-                            else -> R.drawable.dog_silhouette
-                        },
-                        offset = pets.lastOffset
-                    )
+                        PetListItemViewModel.Pet(
+                                name = filterName(pet.name),
+                                age = pet.age,
+                                gender = charGenderToStringGender(pet.sex),
+                                size = charSizeToStringSize(pet.size),
+                                breed = pet.breeds.map { it.breed },
+                                images = filterImagesList(pet.photos ?: emptyList()),
+                                backupImage = animalToBackupImage(pet.animal),
+                                offset = pets.lastOffset
+                        )
                 )
             }
-            return PetListItemViewModel(petList)
+            return PetListItemViewModel(petList.distinct())
         }
 
-        private fun responseImagesToImagesList(photos: List<PetFinderResponse.Pet.Photo>): List<String> =
-            photos.filter { it.size == "pn" }.map { it.photo }
+        private fun filterName(name: String): String {
+            val nonNumberOrDollarSignRegex = Regex("[^A-Za-z &()*-]")
+            return name.replace(nonNumberOrDollarSignRegex, "")
+        }
+
+        private fun filterImagesList(photos: List<PetFinderResponse.Pet.Photo>): List<String> =
+                photos.filter { it.size == "pn" }.map { it.photo }
+
+        private fun animalToBackupImage(animal: String): Int = when (animal) {
+            "Cat" -> R.drawable.cat_silhouette
+            else -> R.drawable.dog_silhouette
+        }
+
+        private fun charSizeToStringSize(size: String): String = when (size) {
+            "S" -> "Small"
+            "M" -> "Medium"
+            "L" -> "Large"
+            else -> "Size N/A"
+        }
+
+        private fun charGenderToStringGender(gender: String): String = when (gender) {
+            "F" -> "Female"
+            "M" -> "Male"
+            else -> "Gender N/A"
+        }
     }
 }

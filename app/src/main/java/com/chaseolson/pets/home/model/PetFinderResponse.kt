@@ -15,13 +15,15 @@ data class PetFinderResponse(
     @Xml
     data class Pet(
         @PropertyElement
-        val name: String = "Unknown Name",
+        val name: String = "N/A",
         @PropertyElement
-        val animal: String = "Unknown Animal Type",
+        val animal: String = "N/A",
         @PropertyElement
-        val age: String = "Unknown Age",
+        val age: String = "N/A",
         @PropertyElement
-        val sex: String = "Unknown Gender",
+        val sex: String = "N/A",
+        @PropertyElement
+        val size: String = "N/A",
         @Path("breeds")
         @Element
         val breeds: List<Breed> = listOf(Breed()),
@@ -33,7 +35,7 @@ data class PetFinderResponse(
         @Xml
         data class Breed(
             @TextContent
-            val breed: String = "Unknown Breed"
+            val breed: String = "N/A"
         )
 
         @Xml
