@@ -45,6 +45,9 @@ dependencies {
     implementation(Libs.navigation_fragment_ktx)
     implementation(Libs.navigation_ui_ktx)
 
+    //Material
+    implementation (Libs.material)
+
     //Paging
     implementation(Libs.paging_runtime)
 

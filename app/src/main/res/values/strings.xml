@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Pets</string>
     <string name="pet_image">Pet Image</string>
+    <string name="scroll_to_top">Scroll to Top</string>
 </resources>

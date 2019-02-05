@@ -1,32 +1,57 @@
 package com.chaseolson.pets.home.presenter
 
 import android.view.View
-import android.widget.ProgressBar
+import android.view.animation.AnimationUtils
 import androidx.appcompat.app.AlertDialog
 import androidx.paging.PagedList
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.chaseolson.pets.R
 import com.chaseolson.pets.home.model.PetListItemViewModel
+import kotlinx.android.synthetic.main.fragment_home_screen.view.*
+
 
 class HomeScreenPresenter {
 
-    interface Listener {
-        fun swipeRefresh()
-    }
-
     class Container(val root: View, private val listener: Listener) {
-        val swipeLayout: SwipeRefreshLayout = root.findViewById(R.id.home_swipelayout)
-        val progressBar: ProgressBar = root.findViewById(R.id.home_progressBar)
+        val swipeLayout = root.home_swipelayout
+        val progressBar = root.home_progressBar
+        val scrollToTopButton = root.scroll_to_top_button
         val petAdapter = PetRecyclerViewAdapter()
-        private val petRecycler: RecyclerView = root.findViewById(R.id.pet_recyclerView)
+        private val petRecycler = root.pet_recyclerView
 
         init {
             swipeLayout.setOnRefreshListener { listener.swipeRefresh() }
+            scrollToTopButton.setOnClickListener {
+                petRecycler.smoothScrollToPosition(0)
+            }
             petRecycler.layoutManager = GridLayoutManager(root.context, 2)
             petRecycler.adapter = petAdapter
+            petRecycler.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+                override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                    super.onScrolled(recyclerView, dx, dy)
+                    val aniFadeOut = AnimationUtils.loadAnimation(scrollToTopButton.context, R.anim.fade_out)
+                    val aniFadeIn = AnimationUtils.loadAnimation(scrollToTopButton.context, R.anim.fade_in)
+                    val layoutManager = petRecycler.layoutManager as GridLayoutManager
+                    when {
+                        (dy > 0 || layoutManager.findFirstCompletelyVisibleItemPosition() == 0) && scrollToTopButton.visibility == View.VISIBLE -> {
+                            scrollToTopButton.startAnimation(aniFadeOut)
+                            scrollToTopButton.visibility = View.GONE
+                            scrollToTopButton.isClickable = false
+                        }
+                        dy < 0 && scrollToTopButton.visibility == View.GONE -> {
+                            scrollToTopButton.startAnimation(aniFadeIn)
+                            scrollToTopButton.visibility = View.VISIBLE
+                            scrollToTopButton.isClickable = true
+                        }
+                    }
+                }
+            })
         }
+    }
+
+    interface Listener {
+        fun swipeRefresh()
     }
 
     companion object {

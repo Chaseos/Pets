@@ -48,6 +48,10 @@ object Libs {
     const val lint_gradle: String = "com.android.tools.lint:lint-gradle:" + Versions.lint_gradle
 
     /**
+     * http://developer.android.com/tools/extras/support-library.html */
+    const val material: String = "com.google.android.material:material:" + Versions.material
+
+    /**
      * https://github.com/square/picasso/ */
     const val picasso: String = "com.squareup.picasso:picasso:" + Versions.picasso
 

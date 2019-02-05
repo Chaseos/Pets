@@ -20,17 +20,45 @@ class HomeScreenLogicTest {
     var presentErrorString: String? = null
 
     private val petResponse = Pet(
-        "Snowball", "Dog", "Adult", "M", listOf(Breed("Maltese"), Breed("Hound")),
-        listOf(
-            Pet.Photo("x", "http://www.photoL.com/"),
-            Pet.Photo("pnt", "http://www.photoNotL.com/")))
+            name = "Snowball",
+            animal = "Dog",
+            age = "Adult",
+            sex = "M",
+            breeds = listOf(Breed("Maltese"), Breed("Hound")),
+            photos = listOf(
+                    Pet.Photo("pn", "http://www.photoL.com/"),
+                    Pet.Photo("pnt", "http://www.photoNotL.com/")),
+            size = "S"
+    )
     private val petResponseTwo = Pet(
-        "Scooby-Doo", "Dog", "Adult", "M", listOf(Breed("Great Dane")))
+            name = "Scooby-Doo",
+            animal = "Dog",
+            age = "Adult",
+            sex = "M",
+            breeds = listOf(Breed("Great Dane")),
+            size = "L"
+    )
 
-    private val petExpected = PetListItemViewModel.Pet("Snowball", "Adult",
-        "M", listOf("Maltese", "Hound"), listOf("http://www.photoL.com/"), 20)
-    private val petExpected2 = PetListItemViewModel.Pet("Scooby-Doo", "Adult",
-        "M", listOf("Great Dane"), listOf("file://res/drawable/dog_silhouette.jpg"), 20)
+    private val petExpected = PetListItemViewModel.Pet(
+            name = "Snowball",
+            age = "Adult",
+            gender = "Male",
+            size = "Small",
+            breed = listOf("Maltese", "Hound"),
+            images = listOf("http://www.photoL.com/"),
+            backupImage = R.drawable.dog_silhouette,
+            offset = 20
+    )
+    private val petExpected2 = PetListItemViewModel.Pet(
+            name = "Scooby-Doo",
+            age = "Adult",
+            gender = "Male",
+            size = "Large",
+            breed = listOf("Great Dane"),
+            images = emptyList(),
+            backupImage = R.drawable.dog_silhouette,
+            offset = 20
+    )
 
     @Before
     fun `Test Setup`() {
@@ -67,7 +95,12 @@ class HomeScreenLogicTest {
 
     @Test
     fun `responseToViewModel Real Two Pet Two Images`() {
-        val vm = HomeScreenLogic.responseToViewModel(PetFinderResponse(pet = listOf(petResponse, petResponseTwo), lastOffset = 20))
+        val vm = HomeScreenLogic.responseToViewModel(
+                PetFinderResponse(
+                        pet = listOf(petResponse, petResponseTwo),
+                        lastOffset = 20
+                )
+        )
         assertEquals(PetListItemViewModel(listOf(petExpected, petExpected2)), vm)
     }
 }
