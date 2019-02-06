@@ -25,29 +25,15 @@ class HomeScreenPresenter {
         private val petRecycler = root.pet_recyclerView
 
         init {
-            val topMarginDecoration = object: RecyclerView.ItemDecoration() {
-                override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State) {
-                    super.getItemOffsets(outRect, view, parent, state)
-                    val position = parent.getChildAdapterPosition(view)
-                    if (position == 0 || position == 1) {
-                        outRect.set(0, 180, 0, 0)
-                    } else {
-                        outRect.set(0, 0, 0, 0)
-                    }
+            swipeLayout.viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
+                override fun onGlobalLayout() {
+                    swipeLayout.viewTreeObserver.removeOnGlobalLayoutListener(this)
+
+                    val appBarHeight = appBarLayout.height
+                    swipeLayout.translationY = swipeLayout.translationY - appBarHeight
+                    swipeLayout.layoutParams.height = swipeLayout.height + appBarHeight
                 }
-            }
-
-            petRecycler.viewTreeObserver
-                .addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
-                    override fun onGlobalLayout() {
-                        petRecycler.viewTreeObserver.removeOnGlobalLayoutListener(this)
-
-                        val appBarHeight = appBarLayout.height
-                        petRecycler.translationY = petRecycler.translationY -appBarHeight
-                        petRecycler.layoutParams.height = petRecycler.height + appBarHeight
-                    }
-                })
-            petRecycler.addItemDecoration(topMarginDecoration)
+            })
 
             swipeLayout.setOnRefreshListener { listener.swipeRefresh() }
             scrollToTopButton.setOnClickListener {
@@ -68,6 +54,19 @@ class HomeScreenPresenter {
                     }
                 }
             })
+
+            val topMarginDecoration = object : RecyclerView.ItemDecoration() {
+                override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State) {
+                    super.getItemOffsets(outRect, view, parent, state)
+                    val position = parent.getChildAdapterPosition(view)
+                    if (position == 0 || position == 1) {
+                        outRect.set(0, 180, 0, 0)
+                    } else {
+                        outRect.set(0, 0, 0, 0)
+                    }
+                }
+            }
+            petRecycler.addItemDecoration(topMarginDecoration)
         }
     }
 
