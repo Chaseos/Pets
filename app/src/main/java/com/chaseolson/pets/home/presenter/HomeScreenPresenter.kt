@@ -1,13 +1,14 @@
 package com.chaseolson.pets.home.presenter
 
 import android.view.View
-import android.view.animation.AnimationUtils
 import androidx.appcompat.app.AlertDialog
+import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.paging.PagedList
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.chaseolson.pets.R
 import com.chaseolson.pets.home.model.PetListItemViewModel
+import com.google.android.material.behavior.HideBottomViewOnScrollBehavior
+import com.google.android.material.button.MaterialButton
 import kotlinx.android.synthetic.main.fragment_home_screen.view.*
 
 
@@ -17,6 +18,7 @@ class HomeScreenPresenter {
         val swipeLayout = root.home_swipelayout
         val progressBar = root.home_progressBar
         val scrollToTopButton = root.scroll_to_top_button
+        val appBarLayout = root.pet_appbar_layout
         val petAdapter = PetRecyclerViewAdapter()
         private val petRecycler = root.pet_recyclerView
 
@@ -30,20 +32,13 @@ class HomeScreenPresenter {
             petRecycler.addOnScrollListener(object : RecyclerView.OnScrollListener() {
                 override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                     super.onScrolled(recyclerView, dx, dy)
-                    val aniFadeOut = AnimationUtils.loadAnimation(scrollToTopButton.context, R.anim.fade_out)
-                    val aniFadeIn = AnimationUtils.loadAnimation(scrollToTopButton.context, R.anim.fade_in)
                     val layoutManager = petRecycler.layoutManager as GridLayoutManager
-                    when {
-                        (dy > 0 || layoutManager.findFirstCompletelyVisibleItemPosition() == 0) && scrollToTopButton.visibility == View.VISIBLE -> {
-                            scrollToTopButton.startAnimation(aniFadeOut)
-                            scrollToTopButton.visibility = View.GONE
-                            scrollToTopButton.isClickable = false
-                        }
-                        dy < 0 && scrollToTopButton.visibility == View.GONE -> {
-                            scrollToTopButton.startAnimation(aniFadeIn)
-                            scrollToTopButton.visibility = View.VISIBLE
-                            scrollToTopButton.isClickable = true
-                        }
+                    if (layoutManager.findFirstCompletelyVisibleItemPosition() == 0) {
+                        val params = scrollToTopButton.layoutParams as CoordinatorLayout.LayoutParams
+                        val behavior = params.behavior as HideBottomViewOnScrollBehavior<MaterialButton>
+                        behavior.slideDown(scrollToTopButton)
+
+                        appBarLayout.setExpanded(true)
                     }
                 }
             })

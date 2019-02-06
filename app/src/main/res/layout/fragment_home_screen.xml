@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -10,13 +11,15 @@
         android:id="@+id/home_swipelayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
         tools:context=".home.HomeScreen">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/pet_recyclerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
+            android:scrollbarSize="4dp"
+            android:scrollbars="vertical"
             tools:listitem="@layout/pet_list_item" />
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
@@ -26,16 +29,44 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="top|center_horizontal"
-        android:layout_marginTop="32dp" />
+        android:layout_marginTop="76dp" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/scroll_to_top_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|center_horizontal"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="4dp"
         android:text="@string/scroll_to_top"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        android:visibility="gone" />
+        app:layout_behavior="@string/hide_bottom_view_on_scroll_behavior" />
+
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/pet_appbar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        app:elevation="0dp">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            app:cardBackgroundColor="@android:color/white"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp"
+            app:layout_scrollFlags="scroll|enterAlways|snap">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                app:title="Pets" />
+
+        </androidx.cardview.widget.CardView>
+
+    </com.google.android.material.appbar.AppBarLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

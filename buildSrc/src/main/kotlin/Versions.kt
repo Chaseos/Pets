@@ -25,7 +25,7 @@ object Versions {
 
     const val lint_gradle: String = "26.4.0-beta02" 
 
-    const val material: String = "1.0.0" 
+    const val material: String = "1.1.0-alpha03"
 
     const val picasso: String = "2.71828" 
 
