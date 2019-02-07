@@ -18,6 +18,7 @@ class HomeScreenLogic {
                                 breed = pet.breeds.map { it.breed },
                                 images = filterImagesList(pet.photos ?: emptyList()),
                                 backupImage = animalToBackupImage(pet.animal),
+                                city = pet.contact.city,
                                 offset = pets.lastOffset
                         )
                 )

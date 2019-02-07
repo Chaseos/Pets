@@ -3,12 +3,15 @@ package com.chaseolson.pets.home.presenter
 import android.graphics.Rect
 import android.view.View
 import android.view.ViewTreeObserver
+import android.widget.ProgressBar
 import androidx.appcompat.app.AlertDialog
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.paging.PagedList
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.chaseolson.pets.home.model.PetListItemViewModel
+import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.behavior.HideBottomViewOnScrollBehavior
 import com.google.android.material.button.MaterialButton
 import kotlinx.android.synthetic.main.fragment_home_screen.view.*
@@ -17,12 +20,12 @@ import kotlinx.android.synthetic.main.fragment_home_screen.view.*
 class HomeScreenPresenter {
 
     class Container(val root: View, private val listener: Listener) {
-        val swipeLayout = root.home_swipelayout
-        val progressBar = root.home_progressBar
-        val scrollToTopButton = root.scroll_to_top_button
-        val appBarLayout = root.pet_appbar_layout
+        val swipeLayout: SwipeRefreshLayout = root.home_swipelayout
+        val progressBar: ProgressBar = root.home_progressBar
+        val scrollToTopButton: MaterialButton = root.scroll_to_top_button
+        val appBarLayout: AppBarLayout = root.pet_appbar_layout
         val petAdapter = PetRecyclerViewAdapter()
-        private val petRecycler = root.pet_recyclerView
+        val petRecycler: RecyclerView = root.pet_recyclerView
 
         init {
             swipeLayout.viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {

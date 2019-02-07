@@ -10,6 +10,7 @@ data class PetListItemViewModel(val pets: List<Pet>? = null) {
         val breed: List<String> = listOf("N/A"),
         val images: List<String> = emptyList(),
         val backupImage: Int = 0,
+        val city: String? = null,
         val offset: Int? = 0
     )
 }
