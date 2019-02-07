@@ -28,6 +28,7 @@ class HomeScreenLogicTest {
             photos = listOf(
                     Pet.Photo("pn", "http://www.photoL.com/"),
                     Pet.Photo("pnt", "http://www.photoNotL.com/")),
+            contact = Pet.Contact("Addison"),
             size = "S"
     )
     private val petResponseTwo = Pet(
@@ -36,6 +37,7 @@ class HomeScreenLogicTest {
             age = "Adult",
             sex = "M",
             breeds = listOf(Breed("Great Dane")),
+            contact = Pet.Contact("Dallas"),
             size = "L"
     )
 
@@ -46,6 +48,7 @@ class HomeScreenLogicTest {
             size = "Small",
             breed = listOf("Maltese", "Hound"),
             images = listOf("http://www.photoL.com/"),
+            city = "Addison",
             backupImage = R.drawable.dog_silhouette,
             offset = 20
     )
@@ -56,6 +59,7 @@ class HomeScreenLogicTest {
             size = "Large",
             breed = listOf("Great Dane"),
             images = emptyList(),
+            city = "Dallas",
             backupImage = R.drawable.dog_silhouette,
             offset = 20
     )
