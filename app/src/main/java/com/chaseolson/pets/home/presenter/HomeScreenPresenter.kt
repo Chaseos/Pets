@@ -60,7 +60,7 @@ class HomeScreenPresenter {
                     super.getItemOffsets(outRect, view, parent, state)
                     val position = parent.getChildAdapterPosition(view)
                     if (position == 0 || position == 1) {
-                        outRect.set(0, 180, 0, 0)
+                        outRect.set(0, appBarLayout.height, 0, 0)
                     } else {
                         outRect.set(0, 0, 0, 0)
                     }
