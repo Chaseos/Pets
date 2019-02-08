@@ -79,19 +79,19 @@ class PetExtensionsTest {
     }
 
     @Test
-    fun `String charGenderToStrinGender Female`() {
+    fun `String charGenderToStringGender Female`() {
         val petGender = "F"
         assertEquals("Female", petGender.charGenderToStringGender())
     }
 
     @Test
-    fun `String charGenderToStrinGender Male`() {
+    fun `String charGenderToStringGender Male`() {
         val petGender = "M"
         assertEquals("Male", petGender.charGenderToStringGender())
     }
 
     @Test
-    fun `String charGenderToStrinGender Other`() {
+    fun `String charGenderToStringGender Other`() {
         val petGender = "O"
         assertEquals("Gender N/A", petGender.charGenderToStringGender())
     }

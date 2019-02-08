@@ -11,7 +11,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        setupNavigation()
+//        setupNavigation()
     }
 
     private fun setupNavigation() {
@@ -19,6 +19,4 @@ class MainActivity : AppCompatActivity() {
 
         //TODO(Nav Stuff)
     }
-
-    override fun onSupportNavigateUp() = findNavController(R.id.nav_host_fragment).navigateUp()
 }

@@ -1,8 +1,6 @@
 package com.chaseolson.pets.home.presenter
 
-import android.graphics.Rect
 import android.view.View
-import android.view.ViewTreeObserver
 import android.widget.ProgressBar
 import androidx.appcompat.app.AlertDialog
 import androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -28,20 +26,10 @@ class HomeScreenPresenter {
         val petRecycler: RecyclerView = root.pet_recyclerView
 
         init {
-            swipeLayout.viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
-                override fun onGlobalLayout() {
-                    swipeLayout.viewTreeObserver.removeOnGlobalLayoutListener(this)
-
-                    val appBarHeight = appBarLayout.height
-                    swipeLayout.translationY = swipeLayout.translationY - appBarHeight
-                    swipeLayout.layoutParams.height = swipeLayout.height + appBarHeight
-                }
-            })
-
             swipeLayout.setOnRefreshListener { listener.swipeRefresh() }
-            scrollToTopButton.setOnClickListener {
-                petRecycler.smoothScrollToPosition(0)
-            }
+
+            scrollToTopButton.setOnClickListener { petRecycler.smoothScrollToPosition(0) }
+
             petRecycler.layoutManager = GridLayoutManager(root.context, 2)
             petRecycler.adapter = petAdapter
             petRecycler.addOnScrollListener(object : RecyclerView.OnScrollListener() {
@@ -57,19 +45,6 @@ class HomeScreenPresenter {
                     }
                 }
             })
-
-            val topMarginDecoration = object : RecyclerView.ItemDecoration() {
-                override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State) {
-                    super.getItemOffsets(outRect, view, parent, state)
-                    val position = parent.getChildAdapterPosition(view)
-                    if (position == 0 || position == 1) {
-                        outRect.set(0, appBarLayout.height, 0, 0)
-                    } else {
-                        outRect.set(0, 0, 0, 0)
-                    }
-                }
-            }
-            petRecycler.addItemDecoration(topMarginDecoration)
         }
     }
 
