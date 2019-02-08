@@ -36,7 +36,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|center_horizontal"
-        android:layout_marginBottom="4dp"
+        android:layout_marginBottom="46dp"
         android:elevation="4dp"
         android:text="@string/scroll_to_top"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
@@ -49,12 +49,11 @@
         android:id="@+id/pet_appbar_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        app:elevation="0dp">
+        android:background="@android:color/transparent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:background="@color/colorPrimaryDark"
             app:layout_scrollFlags="scroll|enterAlways|snap">
 
@@ -95,5 +94,15 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.google.android.material.appbar.AppBarLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:layout_gravity="bottom"
+        app:itemTextColor="@drawable/selector_bottomnav"
+        app:itemIconTint="@drawable/selector_bottomnav"
+        app:labelVisibilityMode="labeled"
+        android:background="@color/colorPrimaryDark"
+        app:menu="@menu/menu_bottom_nav" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
