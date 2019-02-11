@@ -47,7 +47,7 @@ class HomeScreenPresenter {
 
                     GlobalScope.launch(Dispatchers.Main) {
                         if (petRecycler.scrollState == RecyclerView.SCROLL_STATE_IDLE) {
-                            for (i in 1..4) {
+                            repeat(4) {
                                 delay(500)
                                 if (petRecycler.scrollState != RecyclerView.SCROLL_STATE_IDLE) cancel()
                             }
