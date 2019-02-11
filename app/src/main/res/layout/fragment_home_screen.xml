@@ -45,8 +45,8 @@
         <ImageView
             android:layout_width="42dp"
             android:layout_height="42dp"
-            android:padding="8dp"
             android:background="@color/colorPrimary"
+            android:padding="8dp"
             android:src="@drawable/ic_round_arrow_upward_24px" />
 
     </com.google.android.material.card.MaterialCardView>
@@ -55,12 +55,12 @@
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/pet_appbar_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:color/transparent">
+        android:layout_height="46dp"
+        android:elevation="4dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="match_parent"
             android:background="@color/colorPrimaryDark"
             app:layout_scrollFlags="scroll|enterAlways|snap">
 
@@ -79,13 +79,35 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/permanent_marker"
+                android:includeFontPadding="false"
                 android:text="@string/app_name"
                 android:textColor="@android:color/white"
                 android:textSize="24sp"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/location"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimaryDark"
+                android:fontFamily="@font/permanent_marker"
+                android:includeFontPadding="false"
+                android:text="NEAR 75001"
+                android:textColor="@android:color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_round_arrow_drop_down_24px"
+                app:layout_constraintBottom_toBottomOf="@id/location"
+                app:layout_constraintStart_toEndOf="@id/location"
+                app:layout_constraintTop_toTopOf="@id/location" />
 
             <ImageView
                 android:layout_width="32dp"
