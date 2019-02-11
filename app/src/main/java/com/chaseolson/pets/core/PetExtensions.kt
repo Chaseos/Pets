@@ -26,6 +26,12 @@ fun String.charGenderToStringGender() = when (this.toUpperCase()) {
     else -> "Gender N/A"
 }
 
-fun List<PetFinderResponse.Pet.Breed>.mapBreedsToList() = this.map { it.breed }
+fun String.genderAndLocationToString(city: String) = when (this.toUpperCase()) {
+    "F" -> "She's in $city!"
+    "M" -> "He's in $city!"
+    else -> "They're in $city!"
+}
+
+//fun List<PetFinderResponse.Pet.Breed>.mapBreedsToList() = this.map { it.breed }
 
 fun List<PetFinderResponse.Pet.Photo>.filterImagesList() = this.filter { it.size == "pn" }.map { it.photo }

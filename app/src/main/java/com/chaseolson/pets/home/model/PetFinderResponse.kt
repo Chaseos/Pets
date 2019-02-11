@@ -19,26 +19,13 @@ data class PetFinderResponse(
             @PropertyElement
             val animal: String = "N/A",
             @PropertyElement
-            val age: String = "N/A",
-            @PropertyElement
             val sex: String = "N/A",
-            @PropertyElement
-            val size: String = "N/A",
-            @Path("breeds")
-            @Element
-            val breeds: List<Breed> = listOf(Breed()),
             @Path("media/photos")
             @Element
             val photos: List<Photo>? = emptyList(),
             @Element
             val contact: Contact
     ) {
-
-        @Xml
-        data class Breed(
-                @TextContent
-                val breed: String = "N/A"
-        )
 
         @Xml
         data class Photo(
@@ -51,8 +38,7 @@ data class PetFinderResponse(
         @Xml
         data class Contact(
                 @PropertyElement
-                val city: String? = null
-
+                val city: String = "an area near you"
         )
     }
 }

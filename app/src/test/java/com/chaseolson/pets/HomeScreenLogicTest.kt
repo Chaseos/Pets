@@ -4,7 +4,6 @@ import com.chaseolson.pets.home.HomeScreenLogic
 import com.chaseolson.pets.home.PetFeed
 import com.chaseolson.pets.home.model.PetFinderResponse
 import com.chaseolson.pets.home.model.PetFinderResponse.Pet
-import com.chaseolson.pets.home.model.PetFinderResponse.Pet.Breed
 import com.chaseolson.pets.home.model.PetListItemViewModel
 import org.junit.Assert.assertEquals
 import org.junit.Before
@@ -22,44 +21,30 @@ class HomeScreenLogicTest {
     private val petResponse = Pet(
             name = "Snowball",
             animal = "Dog",
-            age = "Adult",
             sex = "M",
-            breeds = listOf(Breed("Maltese"), Breed("Hound")),
             photos = listOf(
                     Pet.Photo("pn", "http://www.photoL.com/"),
                     Pet.Photo("pnt", "http://www.photoNotL.com/")),
-            contact = Pet.Contact("Addison"),
-            size = "S"
+            contact = Pet.Contact("Addison")
     )
     private val petResponseTwo = Pet(
             name = "Scooby-Doo",
             animal = "Dog",
-            age = "Adult",
             sex = "M",
-            breeds = listOf(Breed("Great Dane")),
-            contact = Pet.Contact("Dallas"),
-            size = "L"
+            contact = Pet.Contact("Dallas")
     )
 
     private val petExpected = PetListItemViewModel.Pet(
             name = "Snowball",
-            age = "Adult",
-            gender = "Male",
-            size = "Small",
-            breed = listOf("Maltese", "Hound"),
+            city = "He's in Addison!",
             images = listOf("http://www.photoL.com/"),
-            city = "Addison",
             backupImage = R.drawable.dog_silhouette,
             offset = 20
     )
     private val petExpected2 = PetListItemViewModel.Pet(
             name = "Scooby-Doo",
-            age = "Adult",
-            gender = "Male",
-            size = "Large",
-            breed = listOf("Great Dane"),
+            city = "He's in Dallas!",
             images = emptyList(),
-            city = "Dallas",
             backupImage = R.drawable.dog_silhouette,
             offset = 20
     )

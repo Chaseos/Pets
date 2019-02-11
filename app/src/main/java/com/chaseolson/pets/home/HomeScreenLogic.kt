@@ -8,17 +8,13 @@ class HomeScreenLogic {
     companion object {
         fun responseToViewModel(pets: PetFinderResponse?): PetListItemViewModel? {
             val petList = mutableListOf<PetListItemViewModel.Pet>()
-            pets?.pet?.forEach { pet ->
+            pets?.pet?.distinct()?.forEach { pet ->
                 petList.add(
                         PetListItemViewModel.Pet(
                                 name = pet.name.filterName(),
-                                age = pet.age,
-                                gender = pet.sex.charGenderToStringGender(),
-                                size = pet.size.charSizeToStringSize(),
-                                breed = pet.breeds.mapBreedsToList(),
+                                city = pet.sex.genderAndLocationToString(pet.contact.city),
                                 images = pet.photos?.run { this.filterImagesList() } ?: emptyList(),
                                 backupImage = pet.animal.animalToBackupImage(),
-                                city = pet.contact.city,
                                 offset = pets.lastOffset
                         )
                 )

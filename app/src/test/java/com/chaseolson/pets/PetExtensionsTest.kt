@@ -96,19 +96,19 @@ class PetExtensionsTest {
         assertEquals("Gender N/A", petGender.charGenderToStringGender())
     }
 
-    @Test
-    fun `List PetFinderResponsePetBreed mapBreedsToList empty`() {
-        val emptyList = emptyList<PetFinderResponse.Pet.Breed>()
-        assertEquals(emptyList<String>(), emptyList.mapBreedsToList())
-    }
-
-    @Test
-    fun `List PetFinderResponsePetBreed mapBreedsToList 2 breeds`() {
-        val breedList = listOf(
-                PetFinderResponse.Pet.Breed("Chihuahua"),
-                PetFinderResponse.Pet.Breed("Terrier"))
-        assertEquals(listOf("Chihuahua", "Terrier"), breedList.mapBreedsToList())
-    }
+//    @Test
+//    fun `List PetFinderResponsePetBreed mapBreedsToList empty`() {
+//        val emptyList = emptyList<PetFinderResponse.Pet.Breed>()
+//        assertEquals(emptyList<String>(), emptyList.mapBreedsToList())
+//    }
+//
+//    @Test
+//    fun `List PetFinderResponsePetBreed mapBreedsToList 2 breeds`() {
+//        val breedList = listOf(
+//                PetFinderResponse.Pet.Breed("Chihuahua"),
+//                PetFinderResponse.Pet.Breed("Terrier"))
+//        assertEquals(listOf("Chihuahua", "Terrier"), breedList.mapBreedsToList())
+//    }
 
     @Test
     fun `List PetFinderResponsePetPhoto filterImagesList empty`() {

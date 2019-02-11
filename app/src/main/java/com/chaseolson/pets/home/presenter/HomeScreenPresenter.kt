@@ -11,8 +11,9 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.chaseolson.pets.home.model.PetListItemViewModel
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.behavior.HideBottomViewOnScrollBehavior
-import com.google.android.material.button.MaterialButton
+import com.google.android.material.card.MaterialCardView
 import kotlinx.android.synthetic.main.fragment_home_screen.view.*
+import kotlinx.coroutines.*
 
 
 class HomeScreenPresenter {
@@ -20,7 +21,7 @@ class HomeScreenPresenter {
     class Container(val root: View, private val listener: Listener) {
         val swipeLayout: SwipeRefreshLayout = root.home_swipelayout
         val progressBar: ProgressBar = root.home_progressBar
-        val scrollToTopButton: MaterialButton = root.scroll_to_top_button
+        val scrollToTopButton: MaterialCardView = root.scroll_to_top_button
         val appBarLayout: AppBarLayout = root.pet_appbar_layout
         val petAdapter = PetRecyclerViewAdapter()
         val petRecycler: RecyclerView = root.pet_recyclerView
@@ -38,10 +39,20 @@ class HomeScreenPresenter {
                     val layoutManager = petRecycler.layoutManager as GridLayoutManager
                     if (layoutManager.findFirstCompletelyVisibleItemPosition() == 0) {
                         val params = scrollToTopButton.layoutParams as CoordinatorLayout.LayoutParams
-                        val behavior = params.behavior as HideBottomViewOnScrollBehavior<MaterialButton>
+                        val behavior = params.behavior as HideBottomViewOnScrollBehavior<MaterialCardView>
                         behavior.slideDown(scrollToTopButton)
 
                         appBarLayout.setExpanded(true)
+                    }
+
+                    GlobalScope.launch(Dispatchers.Main) {
+                        if (petRecycler.scrollState == RecyclerView.SCROLL_STATE_IDLE) {
+                            for (i in 1..4) {
+                                delay(500)
+                                if (petRecycler.scrollState != RecyclerView.SCROLL_STATE_IDLE) cancel()
+                            }
+                            if (petRecycler.scrollState == RecyclerView.SCROLL_STATE_IDLE) appBarLayout.setExpanded(true)
+                        }
                     }
                 }
             })
