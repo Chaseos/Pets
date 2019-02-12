@@ -1,7 +1,13 @@
 package com.chaseolson.pets.home.presenter
 
+import android.app.Dialog
+import android.view.Gravity
 import android.view.View
+import android.view.WindowManager
+import android.view.inputmethod.EditorInfo
 import android.widget.ProgressBar
+import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.paging.PagedList
@@ -13,6 +19,7 @@ import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.behavior.HideBottomViewOnScrollBehavior
 import com.google.android.material.card.MaterialCardView
 import kotlinx.android.synthetic.main.fragment_home_screen.view.*
+import kotlinx.android.synthetic.main.location_dialog.*
 import kotlinx.coroutines.*
 
 
@@ -23,6 +30,7 @@ class HomeScreenPresenter {
         val progressBar: ProgressBar = root.home_progressBar
         val scrollToTopButton: MaterialCardView = root.scroll_to_top_button
         val appBarLayout: AppBarLayout = root.pet_appbar_layout
+        val location: TextView = root.location
         val petAdapter = PetRecyclerViewAdapter()
         val petRecycler: RecyclerView = root.pet_recyclerView
 
@@ -56,6 +64,45 @@ class HomeScreenPresenter {
                     }
                 }
             })
+
+            location.setOnClickListener {
+                val dialog = Dialog(it.context)
+                dialog.setContentView(com.chaseolson.pets.R.layout.location_dialog)
+                val layoutParams = dialog.window.attributes
+                layoutParams.gravity = Gravity.TOP
+                layoutParams.y = 79
+                layoutParams.flags += WindowManager.LayoutParams.FLAG_DIM_BEHIND
+                layoutParams.softInputMode = WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE
+                dialog.window.attributes = layoutParams
+                val search = dialog.search_icon
+                val zipCode = dialog.zip_code
+                zipCode.isFocusableInTouchMode = true
+                zipCode.requestFocus()
+                search.setOnClickListener {
+                    when {
+                        zipCode.text.toString().isBlank() -> dialog.dismiss()
+                        zipCode.text.toString().length != 5 -> dialog.zip_code_layout.error = "Must be 5 numbers"
+                        else -> {
+                            Toast.makeText(root.context, zipCode.text.toString(), Toast.LENGTH_SHORT).show()
+                            dialog.dismiss()
+                        }
+                    }
+                }
+                zipCode.setOnEditorActionListener { v, actionId, event ->
+                    if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                        when {
+                            zipCode.text.toString().isBlank() -> dialog.dismiss()
+                            zipCode.text.toString().length != 5 -> dialog.zip_code_layout.error = "Must be 5 numbers"
+                            else -> {
+                                Toast.makeText(root.context, zipCode.text.toString(), Toast.LENGTH_SHORT).show()
+                                dialog.dismiss()
+                            }
+                        }
+                    }
+                    false
+                }
+                dialog.show()
+            }
         }
     }
 
