@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="250dp"
     android:background="@android:color/black"
-    android:layout_height="100dp">
+    android:layout_height="60dp">
 
     <ImageView
         android:id="@+id/imageView"
@@ -23,7 +23,10 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:hint="Zip Code"
+        app:hintTextColor="@android:color/white"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:boxStrokeColor="@android:color/white"
         app:layout_constraintEnd_toStartOf="@+id/search_icon"
         app:layout_constraintStart_toEndOf="@+id/imageView"
         app:layout_constraintTop_toTopOf="parent">
@@ -32,6 +35,9 @@
             android:id="@+id/zip_code"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:padding="6dp"
+            android:textCursorDrawable="@null"
+            android:textColor="@android:color/white"
             android:imeOptions="actionSearch"
             android:inputType="number"
             android:maxLength="5"/>
