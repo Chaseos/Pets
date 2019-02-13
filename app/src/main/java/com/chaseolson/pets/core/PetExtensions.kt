@@ -17,6 +17,7 @@ fun String.charSizeToStringSize() = when (this.toUpperCase()) {
     "S" -> "Small"
     "M" -> "Medium"
     "L" -> "Large"
+    "XL" -> "Extra Large"
     else -> "Size N/A"
 }
 

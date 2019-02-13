@@ -1,26 +1,37 @@
 package com.chaseolson.pets.home.presenter
 
-import android.app.Dialog
-import android.view.Gravity
+import android.Manifest
+import android.content.Context
+import android.content.pm.PackageManager
+import android.location.Geocoder
+import android.location.Location
+import android.location.LocationListener
+import android.location.LocationManager
+import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
 import android.view.WindowManager
 import android.view.inputmethod.EditorInfo
+import android.widget.PopupWindow
 import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.coordinatorlayout.widget.CoordinatorLayout
+import androidx.core.content.ContextCompat
 import androidx.paging.PagedList
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.chaseolson.pets.R
 import com.chaseolson.pets.home.model.PetListItemViewModel
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.behavior.HideBottomViewOnScrollBehavior
 import com.google.android.material.card.MaterialCardView
 import kotlinx.android.synthetic.main.fragment_home_screen.view.*
-import kotlinx.android.synthetic.main.location_dialog.*
+import kotlinx.android.synthetic.main.location_dialog.view.*
 import kotlinx.coroutines.*
+import java.util.*
 
 
 class HomeScreenPresenter {
@@ -65,49 +76,87 @@ class HomeScreenPresenter {
                 }
             })
 
+            val locationLayout = LayoutInflater.from(root.context).inflate(R.layout.location_dialog, null)
             location.setOnClickListener {
-                val dialog = Dialog(it.context)
-                dialog.setContentView(com.chaseolson.pets.R.layout.location_dialog)
-                val layoutParams = dialog.window.attributes
-                layoutParams.gravity = Gravity.TOP
-                layoutParams.y = 79
-                layoutParams.flags += WindowManager.LayoutParams.FLAG_DIM_BEHIND
-                layoutParams.softInputMode = WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE
-                dialog.window.attributes = layoutParams
-                val search = dialog.search_icon
-                val zipCode = dialog.zip_code
+                val popupWindow = PopupWindow(locationLayout, 700, 175, true)
+                popupWindow.softInputMode = WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE
+
+                val search = popupWindow.contentView.search_icon
+                val zipCode = popupWindow.contentView.zip_code
                 zipCode.isFocusableInTouchMode = true
                 zipCode.requestFocus()
                 search.setOnClickListener {
                     when {
-                        zipCode.text.toString().isBlank() -> dialog.dismiss()
-                        zipCode.text.toString().length != 5 -> dialog.zip_code_layout.error = "Must be 5 numbers"
+                        zipCode.text.toString().isBlank() -> popupWindow.dismiss()
+                        zipCode.text.toString().length != 5 -> popupWindow.contentView.zip_code_layout.error =
+                                "Must be 5 numbers"
                         else -> {
-                            Toast.makeText(root.context, zipCode.text.toString(), Toast.LENGTH_SHORT).show()
-                            dialog.dismiss()
+                            petRecycler.scrollToPosition(0)
+                            location.text = "NEAR ${zipCode.text.toString()}"
+                            listener.zipCodeSearch(zipCode.text.toString())
+                            zipCode.text?.clear()
+                            popupWindow.dismiss()
                         }
                     }
                 }
                 zipCode.setOnEditorActionListener { v, actionId, event ->
                     if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                         when {
-                            zipCode.text.toString().isBlank() -> dialog.dismiss()
-                            zipCode.text.toString().length != 5 -> dialog.zip_code_layout.error = "Must be 5 numbers"
+                            zipCode.text.toString().isBlank() -> popupWindow.dismiss()
+                            zipCode.text.toString().length != 5 -> popupWindow.contentView.zip_code_layout.error =
+                                    "Must be 5 numbers"
                             else -> {
-                                Toast.makeText(root.context, zipCode.text.toString(), Toast.LENGTH_SHORT).show()
-                                dialog.dismiss()
+                                petRecycler.scrollToPosition(0)
+                                location.text = "NEAR ${zipCode.text.toString()}"
+                                listener.zipCodeSearch(zipCode.text.toString())
+                                zipCode.text?.clear()
+                                popupWindow.dismiss()
                             }
                         }
                     }
                     false
                 }
-                dialog.show()
+                popupWindow.showAsDropDown(location, -225, 0)
+            }
+
+            val myLocatonIcon = locationLayout.my_location_icon
+            myLocatonIcon.setOnClickListener {
+                val locationCallback = object : LocationListener {
+                    override fun onLocationChanged(location: Location?) {
+                        location?.run {
+                            val geoCoder = Geocoder(root.context, Locale.getDefault())
+                            val address = geoCoder.getFromLocation(latitude, longitude, 1)[0]
+                            locationLayout.zip_code.setText(address.postalCode)
+                        }
+                    }
+
+                    override fun onStatusChanged(provider: String?, status: Int, extras: Bundle?) {
+                        Toast.makeText(root.context, "onStatusChanged", Toast.LENGTH_SHORT).show()
+                    }
+
+                    override fun onProviderEnabled(provider: String?) {
+                        Toast.makeText(root.context, "onProviderEnabled", Toast.LENGTH_SHORT).show()
+                    }
+
+                    override fun onProviderDisabled(provider: String?) {
+                        Toast.makeText(root.context, "onProviderDisabled", Toast.LENGTH_SHORT).show()
+                    }
+
+                }
+
+                if (ContextCompat.checkSelfPermission(root.context, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+                    (root.context.getSystemService(Context.LOCATION_SERVICE) as LocationManager).requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0F, locationCallback)
+                } else {
+                    listener.requestLocationPermission()
+                }
             }
         }
     }
 
     interface Listener {
         fun swipeRefresh()
+        fun zipCodeSearch(zipCode: String)
+        fun requestLocationPermission()
     }
 
     companion object {

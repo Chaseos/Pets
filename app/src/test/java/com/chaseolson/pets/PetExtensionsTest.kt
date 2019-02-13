@@ -72,6 +72,13 @@ class PetExtensionsTest {
         assertEquals("Large", petSize.charSizeToStringSize())
     }
 
+
+    @Test
+    fun `String charSizeToStringSize Extra Large`() {
+        val petSize = "XL"
+        assertEquals("Extra Large", petSize.charSizeToStringSize())
+    }
+
     @Test
     fun `String charSizeToStringSize Other`() {
         val petSize = "O"

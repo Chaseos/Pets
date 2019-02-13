@@ -5,7 +5,7 @@ import androidx.paging.ItemKeyedDataSource
 import com.chaseolson.pets.home.model.PetListItemViewModel
 import java.io.EOFException
 
-class PetFeed(val listener: PetFeed.Listener, val api: PetListingApi) :
+class PetFeed(val listener: PetFeed.Listener, val api: PetListingApi, val searchModel: SearchModel) :
     ItemKeyedDataSource<Int, PetListItemViewModel.Pet>() {
 
     val CALL_TRIES = 10
@@ -17,7 +17,7 @@ class PetFeed(val listener: PetFeed.Listener, val api: PetListingApi) :
 
     override fun loadInitial(params: LoadInitialParams<Int>, callback: LoadInitialCallback<PetListItemViewModel.Pet>) {
         try {
-            val request = api.getPetsList(location = "75001", count = params.requestedLoadSize, format = "xml").execute()
+            val request = api.getPetsList(location = searchModel.location ?: "75001", count = params.requestedLoadSize, format = "xml").execute()
             currentTries = 0
             val pets = HomeScreenLogic.responseToViewModel(request.body())
             callback.onResult(pets?.pets?.toMutableList() ?: emptyList())
@@ -33,7 +33,7 @@ class PetFeed(val listener: PetFeed.Listener, val api: PetListingApi) :
 
     override fun loadAfter(params: LoadParams<Int>, callback: LoadCallback<PetListItemViewModel.Pet>) {
         try {
-            val request = api.getPetsList(location = "75001", offset = params.key, count = params.requestedLoadSize, format = "xml").execute()
+            val request = api.getPetsList(location = searchModel.location ?: "75001", offset = params.key, count = params.requestedLoadSize, format = "xml").execute()
             currentTries = 0
             val pets = HomeScreenLogic.responseToViewModel(request.body())
             callback.onResult(pets?.pets?.toMutableList() ?: emptyList())
@@ -53,8 +53,8 @@ class PetFeed(val listener: PetFeed.Listener, val api: PetListingApi) :
 
 }
 
-class PetDataSourceFactory(val listener: PetFeed.Listener) : DataSource.Factory<Int, PetListItemViewModel.Pet>() {
+class PetDataSourceFactory(val listener: PetFeed.Listener, var searchModel: SearchModel) : DataSource.Factory<Int, PetListItemViewModel.Pet>() {
     override fun create(): DataSource<Int, PetListItemViewModel.Pet> {
-        return PetFeed(listener, PetListingApiImpl())
+        return PetFeed(listener, PetListingApiImpl(), searchModel)
     }
 }

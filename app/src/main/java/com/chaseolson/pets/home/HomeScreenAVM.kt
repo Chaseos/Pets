@@ -20,7 +20,7 @@ class HomeScreenAVM : ViewModel() {
             }
         }
 
-        petFeedFactory = PetDataSourceFactory(listener)
+        petFeedFactory = PetDataSourceFactory(listener, SearchModel())
         pets = LivePagedListBuilder(petFeedFactory, config).build()
     }
 
@@ -28,5 +28,19 @@ class HomeScreenAVM : ViewModel() {
      * Observables
      */
     fun presentError(): LiveData<String> = presentError
+
     fun pets(): LiveData<PagedList<PetListItemViewModel.Pet>> = pets
+
+    /**
+     * Actionables
+     */
+    fun swipeRefresh() {
+        pets().value?.dataSource?.invalidate()
+    }
+
+    fun searchByZipCode(zipCode: String) {
+        petFeedFactory.searchModel = petFeedFactory.searchModel.copy(location = zipCode)
+        petFeedFactory.create()
+        pets.value?.dataSource?.invalidate()
+    }
 }
