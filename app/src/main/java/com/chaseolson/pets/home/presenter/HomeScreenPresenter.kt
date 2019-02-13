@@ -80,20 +80,23 @@ class HomeScreenPresenter {
             location.setOnClickListener {
                 val popupWindow = PopupWindow(locationLayout, 700, 175, true)
                 popupWindow.softInputMode = WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE
+                popupWindow.animationStyle = R.style.Animation_MaterialComponents_BottomSheetDialog
 
                 val search = popupWindow.contentView.search_icon
                 val zipCode = popupWindow.contentView.zip_code
+                val zipCodeLayout = popupWindow.contentView.zip_code_layout
                 zipCode.isFocusableInTouchMode = true
                 zipCode.requestFocus()
                 search.setOnClickListener {
                     when {
                         zipCode.text.toString().isBlank() -> popupWindow.dismiss()
-                        zipCode.text.toString().length != 5 -> popupWindow.contentView.zip_code_layout.error =
-                                "Must be 5 numbers"
+                        zipCode.text.toString().length != 5 -> zipCodeLayout.error = "Must be 5 numbers"
                         else -> {
                             petRecycler.scrollToPosition(0)
                             location.text = "NEAR ${zipCode.text.toString()}"
                             listener.zipCodeSearch(zipCode.text.toString())
+                            zipCodeLayout.error = null
+                            zipCodeLayout.isErrorEnabled = false
                             zipCode.text?.clear()
                             popupWindow.dismiss()
                         }
@@ -103,12 +106,13 @@ class HomeScreenPresenter {
                     if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                         when {
                             zipCode.text.toString().isBlank() -> popupWindow.dismiss()
-                            zipCode.text.toString().length != 5 -> popupWindow.contentView.zip_code_layout.error =
-                                    "Must be 5 numbers"
+                            zipCode.text.toString().length != 5 -> zipCodeLayout.error = "Must be 5 numbers"
                             else -> {
                                 petRecycler.scrollToPosition(0)
                                 location.text = "NEAR ${zipCode.text.toString()}"
                                 listener.zipCodeSearch(zipCode.text.toString())
+                                zipCodeLayout.error = null
+                                zipCodeLayout.isErrorEnabled = false
                                 zipCode.text?.clear()
                                 popupWindow.dismiss()
                             }
@@ -116,7 +120,7 @@ class HomeScreenPresenter {
                     }
                     false
                 }
-                popupWindow.showAsDropDown(location, -225, 0)
+                popupWindow.showAsDropDown(location, -230, 0)
             }
 
             val myLocatonIcon = locationLayout.my_location_icon
