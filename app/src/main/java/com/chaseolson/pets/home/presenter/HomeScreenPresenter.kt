@@ -27,6 +27,7 @@ import com.chaseolson.pets.R
 import com.chaseolson.pets.home.model.PetListItemViewModel
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.behavior.HideBottomViewOnScrollBehavior
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.card.MaterialCardView
 import kotlinx.android.synthetic.main.fragment_home_screen.view.*
 import kotlinx.android.synthetic.main.location_dialog.view.*
@@ -42,6 +43,7 @@ class HomeScreenPresenter {
         val scrollToTopButton: MaterialCardView = root.scroll_to_top_button
         val appBarLayout: AppBarLayout = root.pet_appbar_layout
         val location: TextView = root.location
+        val bottomBar: BottomNavigationView = root.home_bottom_nav
         val petAdapter = PetRecyclerViewAdapter()
         val petRecycler: RecyclerView = root.pet_recyclerView
 
@@ -124,34 +126,50 @@ class HomeScreenPresenter {
             }
 
             val myLocatonIcon = locationLayout.my_location_icon
-            myLocatonIcon.setOnClickListener {
-                val locationCallback = object : LocationListener {
-                    override fun onLocationChanged(location: Location?) {
-                        location?.run {
-                            val geoCoder = Geocoder(root.context, Locale.getDefault())
-                            val address = geoCoder.getFromLocation(latitude, longitude, 1)[0]
-                            locationLayout.zip_code.setText(address.postalCode)
-                        }
+            val locationManager = root.context.getSystemService(Context.LOCATION_SERVICE) as LocationManager
+            val locationCallback = object : LocationListener {
+                override fun onLocationChanged(location: Location?) {
+                    location?.run {
+                        val geoCoder = Geocoder(root.context, Locale.getDefault())
+                        val address = geoCoder.getFromLocation(latitude, longitude, 1)[0]
+                        locationLayout.zip_code.setText(address.postalCode)
                     }
-
-                    override fun onStatusChanged(provider: String?, status: Int, extras: Bundle?) {
-                        Toast.makeText(root.context, "onStatusChanged", Toast.LENGTH_SHORT).show()
-                    }
-
-                    override fun onProviderEnabled(provider: String?) {
-                        Toast.makeText(root.context, "onProviderEnabled", Toast.LENGTH_SHORT).show()
-                    }
-
-                    override fun onProviderDisabled(provider: String?) {
-                        Toast.makeText(root.context, "onProviderDisabled", Toast.LENGTH_SHORT).show()
-                    }
-
                 }
 
+                override fun onStatusChanged(provider: String?, status: Int, extras: Bundle?) {
+                    Toast.makeText(root.context, "onStatusChanged", Toast.LENGTH_SHORT).show()
+                }
+
+                override fun onProviderEnabled(provider: String?) {
+                    Toast.makeText(root.context, "onProviderEnabled", Toast.LENGTH_SHORT).show()
+                }
+
+                override fun onProviderDisabled(provider: String?) {
+                    Toast.makeText(root.context, "onProviderDisabled", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            myLocatonIcon.setOnClickListener {
                 if (ContextCompat.checkSelfPermission(root.context, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-                    (root.context.getSystemService(Context.LOCATION_SERVICE) as LocationManager).requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0F, locationCallback)
+                    locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0F, locationCallback)
                 } else {
                     listener.requestLocationPermission()
+                }
+            }
+
+            bottomBar.setOnNavigationItemSelectedListener {
+                when (it.itemId) {
+                    R.id.action_home -> {
+                        if (it.isChecked) {
+                            petRecycler.smoothScrollToPosition(0)
+                            appBarLayout.setExpanded(true)
+                        }
+                        true
+                    }
+                    else -> {
+                        it.isChecked = true
+                        true
+                    }
                 }
             }
         }
