@@ -46,7 +46,7 @@ dependencies {
     implementation(Libs.navigation_ui_ktx)
 
     //Material
-    implementation (Libs.material)
+    implementation(Libs.material)
 
     //Paging
     implementation(Libs.paging_runtime)
@@ -67,4 +67,6 @@ dependencies {
     testImplementation(Libs.junit)
     testImplementation(Libs.androidx_test_core)
     testImplementation(Libs.mockito_core)
+
+    implementation("com.google.android.gms:play-services-location:16.0.0")
 }

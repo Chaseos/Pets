@@ -1,13 +1,9 @@
 package com.chaseolson.pets.home.presenter
 
 import android.Manifest
-import android.content.Context
+import android.app.Activity
 import android.content.pm.PackageManager
 import android.location.Geocoder
-import android.location.Location
-import android.location.LocationListener
-import android.location.LocationManager
-import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.WindowManager
@@ -15,7 +11,6 @@ import android.view.inputmethod.EditorInfo
 import android.widget.PopupWindow
 import android.widget.ProgressBar
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.content.ContextCompat
@@ -25,6 +20,10 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.chaseolson.pets.R
 import com.chaseolson.pets.home.model.PetListItemViewModel
+import com.google.android.gms.location.LocationCallback
+import com.google.android.gms.location.LocationRequest
+import com.google.android.gms.location.LocationResult
+import com.google.android.gms.location.LocationServices
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.behavior.HideBottomViewOnScrollBehavior
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -46,6 +45,8 @@ class HomeScreenPresenter {
         val bottomBar: BottomNavigationView = root.home_bottom_nav
         val petAdapter = PetRecyclerViewAdapter()
         val petRecycler: RecyclerView = root.pet_recyclerView
+        var locationLayout = LayoutInflater.from(root.context).inflate(R.layout.location_dialog, null)
+        val myLocatonIcon = locationLayout.my_location_icon
 
         init {
             swipeLayout.setOnRefreshListener { listener.swipeRefresh() }
@@ -78,7 +79,6 @@ class HomeScreenPresenter {
                 }
             })
 
-            val locationLayout = LayoutInflater.from(root.context).inflate(R.layout.location_dialog, null)
             location.setOnClickListener {
                 val popupWindow = PopupWindow(locationLayout, 700, 175, true)
                 popupWindow.softInputMode = WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE
@@ -94,12 +94,12 @@ class HomeScreenPresenter {
                         zipCode.text.toString().isBlank() -> popupWindow.dismiss()
                         zipCode.text.toString().length != 5 -> zipCodeLayout.error = "Must be 5 numbers"
                         else -> {
-                            petRecycler.scrollToPosition(0)
                             location.text = "NEAR ${zipCode.text.toString()}"
                             listener.zipCodeSearch(zipCode.text.toString())
                             zipCodeLayout.error = null
                             zipCodeLayout.isErrorEnabled = false
                             zipCode.text?.clear()
+                            petRecycler.scrollToPosition(0)
                             popupWindow.dismiss()
                         }
                     }
@@ -110,12 +110,12 @@ class HomeScreenPresenter {
                             zipCode.text.toString().isBlank() -> popupWindow.dismiss()
                             zipCode.text.toString().length != 5 -> zipCodeLayout.error = "Must be 5 numbers"
                             else -> {
-                                petRecycler.scrollToPosition(0)
                                 location.text = "NEAR ${zipCode.text.toString()}"
                                 listener.zipCodeSearch(zipCode.text.toString())
                                 zipCodeLayout.error = null
                                 zipCodeLayout.isErrorEnabled = false
                                 zipCode.text?.clear()
+                                petRecycler.scrollToPosition(0)
                                 popupWindow.dismiss()
                             }
                         }
@@ -123,37 +123,32 @@ class HomeScreenPresenter {
                     false
                 }
                 popupWindow.showAsDropDown(location, -230, 0)
-            }
+                popupWindow.setOnDismissListener {
+                    zipCodeLayout.error = null
+                    zipCodeLayout.isErrorEnabled = false
+                    zipCode.text?.clear()
+                }
 
-            val myLocatonIcon = locationLayout.my_location_icon
-            val locationManager = root.context.getSystemService(Context.LOCATION_SERVICE) as LocationManager
-            val locationCallback = object : LocationListener {
-                override fun onLocationChanged(location: Location?) {
-                    location?.run {
-                        val geoCoder = Geocoder(root.context, Locale.getDefault())
-                        val address = geoCoder.getFromLocation(latitude, longitude, 1)[0]
-                        locationLayout.zip_code.setText(address.postalCode)
+                val locationCallback = object : LocationCallback() {
+                    override fun onLocationResult(p0: LocationResult?) {
+                        p0?.lastLocation?.run {
+                            val geoCoder = Geocoder(root.context, Locale.getDefault())
+                            val address = geoCoder.getFromLocation(latitude, longitude, 1)[0]
+                            zipCode.setText(address.postalCode)
+                        }
+                        super.onLocationResult(p0)
                     }
                 }
 
-                override fun onStatusChanged(provider: String?, status: Int, extras: Bundle?) {
-                    Toast.makeText(root.context, "onStatusChanged", Toast.LENGTH_SHORT).show()
-                }
+                val locationRequest = LocationRequest()
+                val fusedLocationClient = LocationServices.getFusedLocationProviderClient(root.context as Activity)
 
-                override fun onProviderEnabled(provider: String?) {
-                    Toast.makeText(root.context, "onProviderEnabled", Toast.LENGTH_SHORT).show()
-                }
-
-                override fun onProviderDisabled(provider: String?) {
-                    Toast.makeText(root.context, "onProviderDisabled", Toast.LENGTH_SHORT).show()
-                }
-            }
-
-            myLocatonIcon.setOnClickListener {
-                if (ContextCompat.checkSelfPermission(root.context, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-                    locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0F, locationCallback)
-                } else {
-                    listener.requestLocationPermission()
+                myLocatonIcon.setOnClickListener {
+                    if (ContextCompat.checkSelfPermission(root.context, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+                        fusedLocationClient.requestLocationUpdates(locationRequest, locationCallback, null)
+                    } else {
+                        listener.requestLocationPermission()
+                    }
                 }
             }
 
