@@ -13,9 +13,7 @@ interface PetListingApi {
         location: String,
         age: String? = null,
         offset: Int? = null,
-        count: Int? = null,
-        output: String? = null,
-        format: String? = null
+        count: Int? = null
     ): Call<PetFinderResponse>
 }
 
@@ -29,10 +27,8 @@ class PetListingApiImpl : PetListingApi {
         location: String,
         age: String?,
         offset: Int?,
-        count: Int?,
-        output: String?,
-        format: String?
+        count: Int?
     ): Call<PetFinderResponse> {
-        return RetrofitApi().getPetListing(animal, breed, size, sex, location, age, offset, count, output, format)
+        return RetrofitApi().getPetListing(animal, breed, size, sex, location, age, offset, count)
     }
 }

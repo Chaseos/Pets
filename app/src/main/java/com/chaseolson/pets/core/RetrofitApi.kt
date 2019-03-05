@@ -40,11 +40,25 @@ class RetrofitApi {
         location: String,
         age: String? = null,
         offset: Int? = null,
-        count: Int? = null,
-        output: String? = null,
-        format: String? = null
+        count: Int? = null
     ): Call<PetFinderResponse> {
+
         val key = BuildConfig.petFinderKey
-        return mobileEndpoints.getPetListing(key, animal, breed, size, sex, location, age, offset, count, output, format)
+        val output = "basic"
+        val format = "xml"
+
+        return mobileEndpoints.getPetListing(
+            key,
+            animal,
+            breed,
+            size,
+            sex,
+            location,
+            age,
+            offset,
+            count,
+            output,
+            format
+        )
     }
 }

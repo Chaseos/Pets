@@ -144,7 +144,11 @@ class HomeScreenPresenter {
                 val fusedLocationClient = LocationServices.getFusedLocationProviderClient(root.context as Activity)
 
                 myLocatonIcon.setOnClickListener {
-                    if (ContextCompat.checkSelfPermission(root.context, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+                    if (ContextCompat.checkSelfPermission(
+                            root.context,
+                            Manifest.permission.ACCESS_COARSE_LOCATION
+                        ) == PackageManager.PERMISSION_GRANTED
+                    ) {
                         fusedLocationClient.requestLocationUpdates(locationRequest, locationCallback, null)
                     } else {
                         listener.requestLocationPermission()
@@ -187,11 +191,11 @@ class HomeScreenPresenter {
         fun presentError(container: Container, error: String) {
             container.progressBar.visibility = View.GONE
             val dialog = AlertDialog.Builder(container.root.context)
-                    .setTitle(error)
-                    .setPositiveButton("Ok") { _, _ ->
-                        //TODO
-                    }
-                    .create()
+                .setTitle(error)
+                .setPositiveButton("Ok") { _, _ ->
+                    //TODO
+                }
+                .create()
             dialog.show()
         }
     }

@@ -2,4 +2,38 @@
     <string name="app_name">Pets</string>
     <string name="pet_image">Pet Image</string>
     <string name="scroll_to_top">Scroll to Top</string>
+
+    <string-array name="animal_type">
+        <item>Animal Type</item>
+        <item>Dogs</item>
+        <item>Cats</item>
+        <item>Rabbits</item>
+        <item>Small &amp; Furry</item>
+        <item>Scales, Fins, &amp; Other</item>
+        <item>Birds</item>
+        <item>Horses</item>
+        <item>Barnyard</item>
+    </string-array>
+
+    <string-array name="animal_size">
+        <item>Size</item>
+        <item>Small</item>
+        <item>Medium</item>
+        <item>Large</item>
+        <item>Extra Large</item>
+    </string-array>
+
+    <string-array name="animal_age">
+        <item>Age</item>
+        <item>Baby</item>
+        <item>Young</item>
+        <item>Adult</item>
+        <item>Senior</item>
+    </string-array>
+
+    <string-array name="animal_gender">
+        <item>Gender</item>
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
 </resources>

@@ -17,7 +17,10 @@ class PetFeed(val listener: PetFeed.Listener, val api: PetListingApi, val search
 
     override fun loadInitial(params: LoadInitialParams<Int>, callback: LoadInitialCallback<PetListItemViewModel.Pet>) {
         try {
-            val request = api.getPetsList(location = searchModel.location ?: "75001", count = params.requestedLoadSize, format = "xml").execute()
+            val request = api.getPetsList(
+                location = searchModel.location ?: "75001",
+                count = params.requestedLoadSize
+            ).execute()
             currentTries = 0
             val pets = HomeScreenLogic.responseToViewModel(request.body())
             callback.onResult(pets?.pets?.toMutableList() ?: emptyList())
@@ -33,7 +36,11 @@ class PetFeed(val listener: PetFeed.Listener, val api: PetListingApi, val search
 
     override fun loadAfter(params: LoadParams<Int>, callback: LoadCallback<PetListItemViewModel.Pet>) {
         try {
-            val request = api.getPetsList(location = searchModel.location ?: "75001", offset = params.key, count = params.requestedLoadSize, format = "xml").execute()
+            val request = api.getPetsList(
+                location = searchModel.location ?: "75001",
+                offset = params.key,
+                count = params.requestedLoadSize
+            ).execute()
             currentTries = 0
             val pets = HomeScreenLogic.responseToViewModel(request.body())
             callback.onResult(pets?.pets?.toMutableList() ?: emptyList())
@@ -53,7 +60,8 @@ class PetFeed(val listener: PetFeed.Listener, val api: PetListingApi, val search
 
 }
 
-class PetDataSourceFactory(val listener: PetFeed.Listener, var searchModel: SearchModel) : DataSource.Factory<Int, PetListItemViewModel.Pet>() {
+class PetDataSourceFactory(val listener: PetFeed.Listener, var searchModel: SearchModel) :
+    DataSource.Factory<Int, PetListItemViewModel.Pet>() {
     override fun create(): DataSource<Int, PetListItemViewModel.Pet> {
         return PetFeed(listener, PetListingApiImpl(), searchModel)
     }
