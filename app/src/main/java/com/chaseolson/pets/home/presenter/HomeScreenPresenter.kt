@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.chaseolson.pets.R
+import com.chaseolson.pets.core.setDebounceOnClickListener
 import com.chaseolson.pets.home.model.PetListItemViewModel
 import com.google.android.gms.location.LocationCallback
 import com.google.android.gms.location.LocationRequest
@@ -81,7 +82,7 @@ class HomeScreenPresenter {
                 }
             })
 
-            location.setOnClickListener {
+            location.setDebounceOnClickListener(500) {
                 locationOnClick()
             }
 

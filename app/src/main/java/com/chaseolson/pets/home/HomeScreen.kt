@@ -18,7 +18,7 @@ import kotlinx.android.synthetic.main.location_dialog.view.*
 
 class HomeScreen : Fragment(), HomeScreenPresenter.Listener {
 
-    val LOCATION_REQUEST_CODE = 0
+    val LOCATION_REQUEST_CODE = 100
 
     private val avm: HomeScreenAVM by lazy { ViewModelProviders.of(this).get(HomeScreenAVM::class.java) }
     private lateinit var container: HomeScreenPresenter.Container
@@ -35,7 +35,9 @@ class HomeScreen : Fragment(), HomeScreenPresenter.Listener {
         avm.pets().observe(this, Observer { HomeScreenPresenter.present(container, it) })
 
         val searchDialog = SearchDialog()
-        home_search_icon.setOnClickListener { fragmentManager?.run { searchDialog.show(this, null) } }
+        home_search_icon.setOnClickListener { fragmentManager?.run {
+            if (findFragmentByTag(SearchDialog.TAG) == null) searchDialog.show(this, SearchDialog.TAG)
+        } }
 
         super.onViewCreated(view, savedInstanceState)
     }

@@ -12,6 +12,10 @@ import kotlinx.android.synthetic.main.home_search_dialogfrag.view.*
 
 class SearchDialog : DialogFragment() {
 
+    companion object {
+        val TAG = "SearchDialogTag"
+    }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.home_search_dialogfrag, container, false)
     }
