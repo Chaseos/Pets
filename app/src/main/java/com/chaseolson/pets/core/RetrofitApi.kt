@@ -36,7 +36,7 @@ class RetrofitApi {
         animal: String? = null,
         breed: String? = null,
         size: String? = null,
-        sex: Char? = null,
+        sex: String? = null,
         location: String,
         age: String? = null,
         offset: Int? = null,
@@ -47,18 +47,6 @@ class RetrofitApi {
         val output = "basic"
         val format = "xml"
 
-        return mobileEndpoints.getPetListing(
-            key,
-            animal,
-            breed,
-            size,
-            sex,
-            location,
-            age,
-            offset,
-            count,
-            output,
-            format
-        )
+        return mobileEndpoints.getPetListing(key, animal, breed, size, sex, location, age, offset, count, output, format)
     }
 }

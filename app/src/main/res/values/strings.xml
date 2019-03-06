@@ -4,7 +4,7 @@
     <string name="scroll_to_top">Scroll to Top</string>
 
     <string-array name="animal_type">
-        <item>Animal Type</item>
+        <item>Animal Type (Optional)</item>
         <item>Dogs</item>
         <item>Cats</item>
         <item>Rabbits</item>
@@ -16,7 +16,7 @@
     </string-array>
 
     <string-array name="animal_size">
-        <item>Size</item>
+        <item>Size (Optional)</item>
         <item>Small</item>
         <item>Medium</item>
         <item>Large</item>
@@ -24,7 +24,7 @@
     </string-array>
 
     <string-array name="animal_age">
-        <item>Age</item>
+        <item>Age (Optional)</item>
         <item>Baby</item>
         <item>Young</item>
         <item>Adult</item>
@@ -32,7 +32,7 @@
     </string-array>
 
     <string-array name="animal_gender">
-        <item>Gender</item>
+        <item>Gender (Optional)</item>
         <item>Male</item>
         <item>Female</item>
     </string-array>

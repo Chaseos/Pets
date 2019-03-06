@@ -13,7 +13,7 @@ interface MobileEndpoints {
         @Query("animal") animal: String?,
         @Query("breed") breed: String?,
         @Query("size") size: String?,
-        @Query("sex") sex: Char?,
+        @Query("sex") sex: String?,
         @Query("location") location: String,
         @Query("age") age: String?,
         @Query("offset") offset: Int?,

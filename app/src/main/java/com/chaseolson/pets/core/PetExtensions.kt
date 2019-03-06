@@ -5,7 +5,7 @@ import com.chaseolson.pets.home.model.PetFinderResponse
 
 fun String.filterName(): String {
     val nonNumberOrDollarSignRegex = Regex("[^A-Za-z &()*-]")
-    return this.replace(nonNumberOrDollarSignRegex, "").trim()
+    return this.replace("&amp", "&").replace(nonNumberOrDollarSignRegex, "").trim()
 }
 
 fun String.animalToBackupImage() = when (this.toUpperCase()) {

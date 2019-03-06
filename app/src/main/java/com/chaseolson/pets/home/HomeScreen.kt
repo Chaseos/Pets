@@ -6,11 +6,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.chaseolson.pets.R
 import com.chaseolson.pets.home.presenter.HomeScreenPresenter
+import com.google.android.material.textfield.TextInputEditText
 import kotlinx.android.synthetic.main.fragment_home_screen.*
 import kotlinx.android.synthetic.main.location_dialog.view.*
 
@@ -33,7 +35,7 @@ class HomeScreen : Fragment(), HomeScreenPresenter.Listener {
         avm.pets().observe(this, Observer { HomeScreenPresenter.present(container, it) })
 
         val searchDialog = SearchDialog()
-        fragmentManager?.let { fragMan -> home_search_icon.setOnClickListener { searchDialog.show(fragMan, null) } }
+        home_search_icon.setOnClickListener { fragmentManager?.run { searchDialog.show(this, null) } }
 
         super.onViewCreated(view, savedInstanceState)
     }

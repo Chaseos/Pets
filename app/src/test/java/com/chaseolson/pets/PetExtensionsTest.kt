@@ -30,10 +30,17 @@ class PetExtensionsTest {
         val weirdName = "^_#+=':Max;/{}][<>,.!!!"
         assertEquals("Max", weirdName.filterName())
     }
+
     @Test
     fun `String filterName with allowed chars`() {
         val goodName = "MaX & (LoLa) * FrAnK - BoB"
         assertEquals("MaX & (LoLa) * FrAnK - BoB", goodName.filterName())
+    }
+
+    @Test
+    fun `String filterName with ampersand`() {
+        val goodName = "Max &amp Lola"
+        assertEquals("Max & Lola", goodName.filterName())
     }
 
     @Test
