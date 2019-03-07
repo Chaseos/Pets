@@ -36,3 +36,23 @@ fun String.genderAndLocationToString(city: String) = when (this.toUpperCase()) {
 //fun List<PetFinderResponse.Pet.Breed>.mapBreedsToList() = this.map { it.breed }
 
 fun List<PetFinderResponse.Pet.Photo>.filterImagesList() = this.filter { it.size == "pn" }.map { it.photo }
+
+fun String.animalToSearchQuery() = when (this) {
+    "Dogs" -> "dog"
+    "Cats" -> "cat"
+    else -> null
+}
+
+fun String.sizeToSearchQuery() = when (this) {
+    "Small" -> "S"
+    "Medium" -> "M"
+    "Large" -> "L"
+    "Extra Large" -> "XL"
+    else -> null
+}
+
+fun String.genderToSearchQuery() = when (this) {
+    "Female" -> "F"
+    "Male" -> "M"
+    else -> null
+}

@@ -1,6 +1,7 @@
 package com.chaseolson.pets.core
 
 import com.chaseolson.pets.BuildConfig
+import com.chaseolson.pets.home.model.PetBreedsResponse
 import com.chaseolson.pets.home.model.PetFinderResponse
 import com.tickaroo.tikxml.TikXml
 import com.tickaroo.tikxml.retrofit.TikXmlConverterFactory
@@ -48,5 +49,12 @@ class RetrofitApi {
         val format = "xml"
 
         return mobileEndpoints.getPetListing(key, animal, breed, size, sex, location, age, offset, count, output, format)
+    }
+
+    fun getPetBreeds(animal: String? = null): Call<PetBreedsResponse> {
+        val key = BuildConfig.petFinderKey
+        val format = "xml"
+
+        return mobileEndpoints.getPetBreeds(key, animal, format)
     }
 }

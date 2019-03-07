@@ -1,5 +1,6 @@
 package com.chaseolson.pets.core
 
+import com.chaseolson.pets.home.model.PetBreedsResponse
 import com.chaseolson.pets.home.model.PetFinderResponse
 import retrofit2.Call
 import retrofit2.http.GET
@@ -19,6 +20,13 @@ interface MobileEndpoints {
         @Query("offset") offset: Int?,
         @Query("count") count: Int?,
         @Query("output") output: String?,
-        @Query("format") format: String?
+        @Query("format") format: String
     ): Call<PetFinderResponse>
+
+    @GET("breed.list")
+    fun getPetBreeds(
+            @Query("key") key: String,
+            @Query("animal") animal: String?,
+            @Query("format") format: String
+    ): Call<PetBreedsResponse>
 }

@@ -40,7 +40,11 @@ class HomeScreenAVM : ViewModel() {
 
     fun searchByZipCode(zipCode: String) {
         petFeedFactory.searchModel = petFeedFactory.searchModel.copy(location = zipCode)
-        petFeedFactory.create()
+        pets.value?.dataSource?.invalidate()
+    }
+
+    fun search(searchModel: SearchModel) {
+        petFeedFactory.searchModel = searchModel
         pets.value?.dataSource?.invalidate()
     }
 }

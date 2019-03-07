@@ -11,12 +11,17 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.chaseolson.pets.R
+import com.chaseolson.pets.core.RetrofitApi
+import com.chaseolson.pets.home.model.PetBreedsResponse
 import com.chaseolson.pets.home.presenter.HomeScreenPresenter
 import com.google.android.material.textfield.TextInputEditText
 import kotlinx.android.synthetic.main.fragment_home_screen.*
 import kotlinx.android.synthetic.main.location_dialog.view.*
+import retrofit2.Call
+import retrofit2.Response
+import javax.security.auth.callback.Callback
 
-class HomeScreen : Fragment(), HomeScreenPresenter.Listener {
+class HomeScreen : Fragment(), HomeScreenPresenter.Listener, SearchDialog.SearchDialogListener {
 
     val LOCATION_REQUEST_CODE = 100
 
@@ -35,6 +40,7 @@ class HomeScreen : Fragment(), HomeScreenPresenter.Listener {
         avm.pets().observe(this, Observer { HomeScreenPresenter.present(container, it) })
 
         val searchDialog = SearchDialog()
+        searchDialog.setTargetFragment(this, 0)
         home_search_icon.setOnClickListener { fragmentManager?.run {
             if (findFragmentByTag(SearchDialog.TAG) == null) searchDialog.show(this, SearchDialog.TAG)
         } }
@@ -63,5 +69,9 @@ class HomeScreen : Fragment(), HomeScreenPresenter.Listener {
             }
         }
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+    }
+
+    override fun search(searchModel: SearchModel) {
+        avm.search(searchModel)
     }
 }

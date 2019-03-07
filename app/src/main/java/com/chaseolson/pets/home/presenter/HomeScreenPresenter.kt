@@ -165,10 +165,6 @@ class HomeScreenPresenter {
                     zipCodeLayout.error = null
                     zipCodeLayout.isErrorEnabled = false
                     zipCode.text?.clear()
-                    GlobalScope.launch(Dispatchers.Main) {
-                        delay(500)
-                        petRecycler.scrollToPosition(0)
-                    }
                     popupWindow.dismiss()
                 }
             }
@@ -187,6 +183,10 @@ class HomeScreenPresenter {
             container.swipeLayout.isRefreshing = false
             container.progressBar.visibility = View.GONE
             container.petAdapter.submitList(pets)
+            GlobalScope.launch(Dispatchers.Main) {
+                delay(1000)
+                container.petRecycler.smoothScrollToPosition(0)
+            }
         }
 
         fun presentError(container: Container, error: String) {

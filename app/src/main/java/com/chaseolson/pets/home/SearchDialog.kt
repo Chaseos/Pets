@@ -5,12 +5,25 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.fragment.app.DialogFragment
 import com.chaseolson.pets.R
+import com.chaseolson.pets.core.RetrofitApi
+import com.chaseolson.pets.core.animalToSearchQuery
+import com.chaseolson.pets.core.genderToSearchQuery
+import com.chaseolson.pets.core.sizeToSearchQuery
+import com.chaseolson.pets.home.model.PetBreedsResponse
 import kotlinx.android.synthetic.main.home_search_dialogfrag.view.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class SearchDialog : DialogFragment() {
+
+    interface SearchDialogListener {
+        fun search(searchModel: SearchModel)
+    }
 
     companion object {
         val TAG = "SearchDialogTag"
@@ -50,5 +63,38 @@ class SearchDialog : DialogFragment() {
         dialog?.window?.setBackgroundDrawableResource(android.R.color.transparent)
         dialog?.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE)
         view.zip_code.requestFocus()
+
+        view.animal_type_spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+
+            }
+
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                if (parent?.selectedItemPosition != 0) {
+                    val callback = object : Callback<PetBreedsResponse> {
+                        override fun onResponse(call: Call<PetBreedsResponse>, response: Response<PetBreedsResponse>) {
+                            val breeds = response.body()?.breeds
+                        }
+
+                        override fun onFailure(call: Call<PetBreedsResponse>, t: Throwable) {
+
+                        }
+
+                    }
+                    RetrofitApi().getPetBreeds(parent?.selectedItem?.toString()?.animalToSearchQuery()).enqueue(callback)
+                }
+            }
+        }
+
+        view.search_button.setOnClickListener {
+            (targetFragment as SearchDialogListener).search(SearchModel(
+                    animal = view.animal_type_spinner.selectedItem?.toString()?.animalToSearchQuery(),
+                    size = view.size_spinner.selectedItem?.toString()?.sizeToSearchQuery(),
+                    sex = view.gender_spinner?.selectedItem?.toString()?.genderToSearchQuery(),
+                    age = if (view.age_spinner.selectedItemPosition != 0) view.age_spinner?.selectedItem?.toString() else null,
+                    location = view.zip_code?.text?.toString()
+            ))
+            dismiss()
+        }
     }
 }
