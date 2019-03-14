@@ -64,23 +64,22 @@ class SearchDialog : DialogFragment() {
         dialog?.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE)
         view.zip_code.requestFocus()
 
-        view.animal_type_spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-
+        val callback = object : Callback<PetBreedsResponse> {
+            override fun onResponse(call: Call<PetBreedsResponse>, response: Response<PetBreedsResponse>) {
+                val breeds = response.body()?.breeds
+                val adapter = breeds?.run { ArrayAdapter<String>(context, android.R.layout.simple_dropdown_item_1line, breeds.map { it.breed }.toMutableList()) }
+                view.breeds_auto_complete?.threshold = 1
+                view.breeds_auto_complete?.setAdapter(adapter)
             }
 
+            override fun onFailure(call: Call<PetBreedsResponse>, t: Throwable) {}
+
+        }
+
+        view.animal_type_spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onNothingSelected(parent: AdapterView<*>?) {}
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 if (parent?.selectedItemPosition != 0) {
-                    val callback = object : Callback<PetBreedsResponse> {
-                        override fun onResponse(call: Call<PetBreedsResponse>, response: Response<PetBreedsResponse>) {
-                            val breeds = response.body()?.breeds
-                        }
-
-                        override fun onFailure(call: Call<PetBreedsResponse>, t: Throwable) {
-
-                        }
-
-                    }
                     RetrofitApi().getPetBreeds(parent?.selectedItem?.toString()?.animalToSearchQuery()).enqueue(callback)
                 }
             }
@@ -89,6 +88,7 @@ class SearchDialog : DialogFragment() {
         view.search_button.setOnClickListener {
             (targetFragment as SearchDialogListener).search(SearchModel(
                     animal = view.animal_type_spinner.selectedItem?.toString()?.animalToSearchQuery(),
+                    breed = view.breeds_auto_complete.text?.toString(),
                     size = view.size_spinner.selectedItem?.toString()?.sizeToSearchQuery(),
                     sex = view.gender_spinner?.selectedItem?.toString()?.genderToSearchQuery(),
                     age = if (view.age_spinner.selectedItemPosition != 0) view.age_spinner?.selectedItem?.toString() else null,
