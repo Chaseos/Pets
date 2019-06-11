@@ -11,9 +11,13 @@ object Libs {
     const val android_arch_lifecycle_extensions: String = "android.arch.lifecycle:extensions:" +
             Versions.android_arch_lifecycle_extensions
 
+    /**
+     * https://developer.android.com/topic/libraries/architecture/index.html */
     const val navigation_fragment_ktx: String = "android.arch.navigation:navigation-fragment-ktx:" +
             Versions.android_arch_navigation
 
+    /**
+     * https://developer.android.com/topic/libraries/architecture/index.html */
     const val navigation_ui_ktx: String = "android.arch.navigation:navigation-ui-ktx:" +
             Versions.android_arch_navigation
 
@@ -46,6 +50,9 @@ object Libs {
     /**
      * https://developer.android.com/studio */
     const val lint_gradle: String = "com.android.tools.lint:lint-gradle:" + Versions.lint_gradle
+
+    const val play_services_location: String = "com.google.android.gms:play-services-location:" +
+            Versions.play_services_location
 
     /**
      * http://developer.android.com/tools/extras/support-library.html */

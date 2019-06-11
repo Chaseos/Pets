@@ -8,7 +8,7 @@ class HomeScreenLogic {
     companion object {
         fun responseToViewModel(pets: PetFinderResponse?): PetListItemViewModel? {
             val petList = mutableListOf<PetListItemViewModel.Pet>()
-            pets?.pet?.distinct()?.forEach { pet ->
+            pets?.pet?.distinctBy { pet -> pet.id }?.forEach { pet ->
                 petList.add(
                         PetListItemViewModel.Pet(
                                 name = pet.name.filterName(),
@@ -19,7 +19,7 @@ class HomeScreenLogic {
                         )
                 )
             }
-            return PetListItemViewModel(petList.distinct())
+            return PetListItemViewModel(petList)
         }
     }
 }

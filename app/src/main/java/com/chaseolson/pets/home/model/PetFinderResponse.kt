@@ -15,6 +15,8 @@ data class PetFinderResponse(
     @Xml
     data class Pet(
             @PropertyElement
+            val id: Long = 0,
+            @PropertyElement
             val name: String = "N/A",
             @PropertyElement
             val animal: String = "N/A",

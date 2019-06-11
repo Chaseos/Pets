@@ -9,7 +9,7 @@ import kotlin.String
 object Versions {
     const val android_arch_lifecycle_extensions: String = "1.1.1" 
 
-    const val android_arch_navigation: String = "1.0.0-beta01"
+    const val android_arch_navigation: String = "1.0.0"
 
     const val appcompat: String = "1.0.2" 
 
@@ -19,13 +19,15 @@ object Versions {
 
     const val recyclerview: String = "1.0.0" 
 
-    const val androidx_test_core: String = "1.1.0" 
+    const val androidx_test_core: String = "1.2.0"
 
-    const val com_android_tools_build_gradle: String = "3.3.0"
+    const val com_android_tools_build_gradle: String = "3.4.1"
 
-    const val lint_gradle: String = "26.4.0-beta02" 
+    const val lint_gradle: String = "26.4.1"
 
-    const val material: String = "1.1.0-alpha03"
+    const val play_services_location: String = "16.0.0" 
+
+    const val material: String = "1.1.0-alpha03" 
 
     const val picasso: String = "2.71828" 
 
@@ -37,11 +39,11 @@ object Versions {
 
     const val junit: String = "4.12" 
 
-    const val org_jetbrains_kotlin: String = "1.3.20" 
+    const val org_jetbrains_kotlin: String = "1.3.31"
 
     const val org_jetbrains_kotlinx: String = "1.1.1" 
 
-    const val mockito_core: String = "2.24.0"
+    const val mockito_core: String = "2.28.2"
 
     /**
      *
@@ -51,10 +53,10 @@ object Versions {
     object Gradle {
         const val runningVersion: String = "5.1.1"
 
-        const val currentVersion: String = "5.2"
+        const val currentVersion: String = "5.4.1"
 
-        const val nightlyVersion: String = "5.3-20190205001603+0000"
+        const val nightlyVersion: String = "5.6-20190611000032+0000"
 
-        const val releaseCandidate: String = ""
+        const val releaseCandidate: String = "5.5-rc-2"
     }
 }

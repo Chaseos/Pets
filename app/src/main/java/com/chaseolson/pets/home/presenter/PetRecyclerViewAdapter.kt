@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.chaseolson.pets.R
 import com.chaseolson.pets.home.model.PetFinderResponse
 import com.chaseolson.pets.home.model.PetListItemViewModel
+import kotlinx.android.synthetic.main.pet_list_item.view.*
 
 class PetRecyclerViewAdapter :
     PagedListAdapter<PetListItemViewModel.Pet, RecyclerView.ViewHolder>(PET_COMPARATOR) {
@@ -18,7 +19,7 @@ class PetRecyclerViewAdapter :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val root = LayoutInflater.from(parent.context).inflate(R.layout.pet_list_item, parent, false)
-        val cardViewLayout: CardView = root.findViewById(R.id.pet_layout)
+        val cardViewLayout: CardView = root.pet_layout
         return PetRecyclerItemPresenter.Container(cardViewLayout)
     }
 
@@ -26,7 +27,7 @@ class PetRecyclerViewAdapter :
         val PET_COMPARATOR = object : DiffUtil.ItemCallback<PetListItemViewModel.Pet>() {
             override fun areItemsTheSame(
                 oldItem: PetListItemViewModel.Pet, newItem: PetListItemViewModel.Pet
-            ): Boolean = oldItem.name == newItem.name
+            ): Boolean = oldItem.name == newItem.name && oldItem.id == newItem.id
 
             override fun areContentsTheSame(
                 oldItem: PetListItemViewModel.Pet, newItem: PetListItemViewModel.Pet
