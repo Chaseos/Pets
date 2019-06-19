@@ -13,12 +13,12 @@ object Libs {
 
     /**
      * https://developer.android.com/topic/libraries/architecture/index.html */
-    const val navigation_fragment_ktx: String = "android.arch.navigation:navigation-fragment-ktx:" +
+    const val navigation_fragment: String = "androidx.navigation:navigation-fragment:" +
             Versions.android_arch_navigation
 
     /**
      * https://developer.android.com/topic/libraries/architecture/index.html */
-    const val navigation_ui_ktx: String = "android.arch.navigation:navigation-ui-ktx:" +
+    const val navigation_ui: String = "androidx.navigation:navigation-ui:" +
             Versions.android_arch_navigation
 
     /**

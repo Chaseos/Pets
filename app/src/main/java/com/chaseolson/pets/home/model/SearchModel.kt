@@ -1,4 +1,4 @@
-package com.chaseolson.pets.home
+package com.chaseolson.pets.home.model
 
 data class SearchModel(
         val animal: String? = null, // all lowercase ("dog")

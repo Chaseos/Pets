@@ -7,14 +7,13 @@ import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.chaseolson.pets.R
-import com.chaseolson.pets.home.model.PetFinderResponse
-import com.chaseolson.pets.home.model.PetListItemViewModel
+import com.chaseolson.pets.home.model.PetListItemViewState
 import kotlinx.android.synthetic.main.pet_list_item.view.*
 
-class PetRecyclerViewAdapter :
-    PagedListAdapter<PetListItemViewModel.Pet, RecyclerView.ViewHolder>(PET_COMPARATOR) {
+class PetRecyclerViewAdapter(val listener: PetRecyclerItemPresenter.Listener) :
+    PagedListAdapter<PetListItemViewState.Pet, RecyclerView.ViewHolder>(PET_COMPARATOR) {
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        PetRecyclerItemPresenter.present(holder as PetRecyclerItemPresenter.Container, getItem(position) ?: PetListItemViewModel.Pet())
+        PetRecyclerItemPresenter(listener).present(holder as PetRecyclerItemPresenter.Container, getItem(position) ?: PetListItemViewState.Pet())
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -24,13 +23,13 @@ class PetRecyclerViewAdapter :
     }
 
     companion object {
-        val PET_COMPARATOR = object : DiffUtil.ItemCallback<PetListItemViewModel.Pet>() {
+        val PET_COMPARATOR = object : DiffUtil.ItemCallback<PetListItemViewState.Pet>() {
             override fun areItemsTheSame(
-                oldItem: PetListItemViewModel.Pet, newItem: PetListItemViewModel.Pet
+                    oldItem: PetListItemViewState.Pet, newItem: PetListItemViewState.Pet
             ): Boolean = oldItem.name == newItem.name && oldItem.id == newItem.id
 
             override fun areContentsTheSame(
-                oldItem: PetListItemViewModel.Pet, newItem: PetListItemViewModel.Pet
+                    oldItem: PetListItemViewState.Pet, newItem: PetListItemViewState.Pet
             ): Boolean = oldItem == newItem
 
         }

@@ -20,7 +20,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.chaseolson.pets.R
 import com.chaseolson.pets.core.setDebounceOnClickListener
-import com.chaseolson.pets.home.model.PetListItemViewModel
+import com.chaseolson.pets.home.model.PetListItemViewState
 import com.google.android.gms.location.LocationCallback
 import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationResult
@@ -39,14 +39,14 @@ import java.util.*
 
 class HomeScreenPresenter {
 
-    class Container(val root: View, private val listener: Listener) {
+    class Container(val root: View, private val listener: Listener, petListener: PetRecyclerItemPresenter.Listener) {
         val swipeLayout: SwipeRefreshLayout = root.home_swipelayout
         val progressBar: ProgressBar = root.home_progressBar
         val scrollToTopButton: MaterialCardView = root.scroll_to_top_button
         val appBarLayout: AppBarLayout = root.pet_appbar_layout
         val location: TextView = root.location
         val bottomBar: BottomNavigationView = root.home_bottom_nav
-        val petAdapter = PetRecyclerViewAdapter()
+        val petAdapter = PetRecyclerViewAdapter(petListener)
         val petRecycler: RecyclerView = root.pet_recyclerView
         var locationLayout = LayoutInflater.from(root.context).inflate(R.layout.location_dialog, null)
         val myLocatonIcon = locationLayout.my_location_icon
@@ -179,7 +179,7 @@ class HomeScreenPresenter {
 
     companion object {
 
-        fun present(container: Container, pets: PagedList<PetListItemViewModel.Pet>) {
+        fun present(container: Container, pets: PagedList<PetListItemViewState.Pet>) {
             container.swipeLayout.isRefreshing = false
             container.progressBar.visibility = View.GONE
             container.petAdapter.submitList(pets)

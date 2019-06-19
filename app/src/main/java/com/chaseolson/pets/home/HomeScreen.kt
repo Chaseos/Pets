@@ -6,26 +6,23 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.WindowManager
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.NavHostFragment.findNavController
 import com.chaseolson.pets.R
-import com.chaseolson.pets.core.RetrofitApi
-import com.chaseolson.pets.home.model.PetBreedsResponse
+import com.chaseolson.pets.core.MainActivityViewModel
+import com.chaseolson.pets.home.model.SearchModel
 import com.chaseolson.pets.home.presenter.HomeScreenPresenter
-import com.google.android.material.textfield.TextInputEditText
+import com.chaseolson.pets.home.presenter.PetRecyclerItemPresenter
 import kotlinx.android.synthetic.main.fragment_home_screen.*
 import kotlinx.android.synthetic.main.location_dialog.view.*
-import retrofit2.Call
-import retrofit2.Response
-import javax.security.auth.callback.Callback
 
-class HomeScreen : Fragment(), HomeScreenPresenter.Listener, SearchDialog.SearchDialogListener {
-
+class HomeScreen : Fragment(), HomeScreenPresenter.Listener, SearchDialog.SearchDialogListener, PetRecyclerItemPresenter.Listener {
     val LOCATION_REQUEST_CODE = 100
 
-    private val avm: HomeScreenAVM by lazy { ViewModelProviders.of(this).get(HomeScreenAVM::class.java) }
+    private val viewModel: HomeScreenViewModel by lazy { ViewModelProviders.of(this).get(HomeScreenViewModel::class.java) }
+    private val vmMainActivity: MainActivityViewModel by lazy { ViewModelProviders.of(this).get(MainActivityViewModel::class.java) }
     private lateinit var container: HomeScreenPresenter.Container
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -33,27 +30,29 @@ class HomeScreen : Fragment(), HomeScreenPresenter.Listener, SearchDialog.Search
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        container = HomeScreenPresenter.Container(view, this)
+        container = HomeScreenPresenter.Container(view, this, this)
 
-        avm.presentError().observe(this, Observer { HomeScreenPresenter.presentError(container, it) })
+        viewModel.presentError().observe(this, Observer { HomeScreenPresenter.presentError(container, it) })
 
-        avm.pets().observe(this, Observer { HomeScreenPresenter.present(container, it) })
+        viewModel.pets().observe(this, Observer { HomeScreenPresenter.present(container, it) })
 
         val searchDialog = SearchDialog()
         searchDialog.setTargetFragment(this, 0)
-        home_search_icon.setOnClickListener { fragmentManager?.run {
-            if (findFragmentByTag(SearchDialog.TAG) == null) searchDialog.show(this, SearchDialog.TAG)
-        } }
+        home_search_icon.setOnClickListener {
+            fragmentManager?.run {
+                if (findFragmentByTag(SearchDialog.TAG) == null) searchDialog.show(this, SearchDialog.TAG)
+            }
+        }
 
         super.onViewCreated(view, savedInstanceState)
     }
 
     override fun swipeRefresh() {
-        avm.swipeRefresh()
+        viewModel.swipeRefresh()
     }
 
     override fun zipCodeSearch(zipCode: String) {
-        avm.searchByZipCode(zipCode)
+        viewModel.searchByZipCode(zipCode)
     }
 
     override fun requestLocationPermission() {
@@ -72,6 +71,16 @@ class HomeScreen : Fragment(), HomeScreenPresenter.Listener, SearchDialog.Search
     }
 
     override fun search(searchModel: SearchModel) {
-        avm.search(searchModel)
+        viewModel.search(searchModel)
+    }
+
+    override fun petOnClick(id: Int, petImage: View) {
+//        val extras = FragmentNavigatorExtras(
+//            petImage to petImage.transitionName
+//        )
+//
+        val args = Bundle()
+        args.putInt("petId", id)
+        findNavController(this).navigate(R.id.action_list_to_pet, args, null, null)
     }
 }

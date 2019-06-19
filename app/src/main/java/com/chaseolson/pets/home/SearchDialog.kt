@@ -14,6 +14,7 @@ import com.chaseolson.pets.core.animalToSearchQuery
 import com.chaseolson.pets.core.genderToSearchQuery
 import com.chaseolson.pets.core.sizeToSearchQuery
 import com.chaseolson.pets.home.model.PetBreedsResponse
+import com.chaseolson.pets.home.model.SearchModel
 import kotlinx.android.synthetic.main.home_search_dialogfrag.view.*
 import retrofit2.Call
 import retrofit2.Callback

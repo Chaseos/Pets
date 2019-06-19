@@ -42,8 +42,8 @@ dependencies {
     implementation(Libs.android_arch_lifecycle_extensions)
 
     //Navigation
-    implementation(Libs.navigation_fragment_ktx)
-    implementation(Libs.navigation_ui_ktx)
+    implementation(Libs.navigation_fragment)
+    implementation(Libs.navigation_ui)
 
     //Material
     implementation(Libs.material)

@@ -9,7 +9,7 @@ import kotlin.String
 object Versions {
     const val android_arch_lifecycle_extensions: String = "1.1.1" 
 
-    const val android_arch_navigation: String = "1.0.0"
+    const val android_arch_navigation: String = "2.1.0-alpha05"
 
     const val appcompat: String = "1.0.2" 
 

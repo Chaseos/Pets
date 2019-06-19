@@ -3,6 +3,7 @@ package com.chaseolson.pets.core
 import com.chaseolson.pets.BuildConfig
 import com.chaseolson.pets.home.model.PetBreedsResponse
 import com.chaseolson.pets.home.model.PetFinderResponse
+import com.chaseolson.pets.petdetails.PetResponse
 import com.tickaroo.tikxml.TikXml
 import com.tickaroo.tikxml.retrofit.TikXmlConverterFactory
 import okhttp3.OkHttpClient
@@ -56,5 +57,12 @@ class RetrofitApi {
         val format = "xml"
 
         return mobileEndpoints.getPetBreeds(key, animal, format)
+    }
+
+    fun getPet(id: Int): Call<PetResponse> {
+        val key = BuildConfig.petFinderKey
+        val format = "xml"
+
+        return mobileEndpoints.getPet(key, id, format)
     }
 }
