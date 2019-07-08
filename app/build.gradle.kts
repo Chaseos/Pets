@@ -58,10 +58,10 @@ dependencies {
     implementation(Libs.picasso)
 
     //Tickaroo Xml Parser
-    implementation(Libs.tickaroo_tikxml_core)
-    implementation(Libs.tickaroo_annotation)
-    implementation(Libs.tickaroo_retrofit_converter)
-    kapt(Libs.tickaroo_processor)
+    implementation(Libs.com_tickaroo_tikxml_core)
+    implementation(Libs.annotation)
+    implementation(Libs.retrofit_converter)
+    kapt(Libs.processor)
 
     //Testing
     testImplementation(Libs.junit)

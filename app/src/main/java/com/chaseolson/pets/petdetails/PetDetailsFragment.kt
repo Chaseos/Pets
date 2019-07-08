@@ -24,7 +24,10 @@ class PetDetailsFragment: Fragment() {
                 }
 
                 override fun onResponse(call: Call<PetResponse>, response: Response<PetResponse>) {
-
+                    if (response.isSuccessful) {
+                        val pet = response.body()?.pet
+                        response
+                    }
                 }
 
             }

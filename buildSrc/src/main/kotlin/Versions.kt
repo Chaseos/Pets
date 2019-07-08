@@ -9,29 +9,29 @@ import kotlin.String
 object Versions {
     const val android_arch_lifecycle_extensions: String = "1.1.1" 
 
-    const val android_arch_navigation: String = "2.1.0-alpha05"
-
     const val appcompat: String = "1.0.2" 
 
     const val constraintlayout: String = "2.0.0-alpha3" 
+
+    const val androidx_navigation: String = "2.1.0-alpha05" 
 
     const val paging_runtime: String = "2.1.0" 
 
     const val recyclerview: String = "1.0.0" 
 
-    const val androidx_test_core: String = "1.2.0"
+    const val androidx_test_core: String = "1.2.0" 
 
-    const val com_android_tools_build_gradle: String = "3.4.1"
+    const val com_android_tools_build_gradle: String = "3.4.1" 
 
-    const val lint_gradle: String = "26.4.1"
+    const val lint_gradle: String = "26.4.1" 
 
-    const val play_services_location: String = "16.0.0" 
+    const val play_services_location: String = "17.0.0"
 
     const val material: String = "1.1.0-alpha03" 
 
     const val picasso: String = "2.71828" 
 
-    const val retrofit: String = "2.5.0" 
+    const val retrofit: String = "2.6.0"
 
     const val com_tickaroo_tikxml: String = "0.8.13" 
 
@@ -39,11 +39,11 @@ object Versions {
 
     const val junit: String = "4.12" 
 
-    const val org_jetbrains_kotlin: String = "1.3.31"
+    const val org_jetbrains_kotlin: String = "1.3.40"
 
-    const val org_jetbrains_kotlinx: String = "1.1.1" 
+    const val org_jetbrains_kotlinx: String = "1.2.2"
 
-    const val mockito_core: String = "2.28.2"
+    const val mockito_core: String = "2.28.2" 
 
     /**
      *
@@ -53,10 +53,10 @@ object Versions {
     object Gradle {
         const val runningVersion: String = "5.1.1"
 
-        const val currentVersion: String = "5.4.1"
+        const val currentVersion: String = "5.5"
 
-        const val nightlyVersion: String = "5.6-20190611000032+0000"
+        const val nightlyVersion: String = "5.6-20190708000030+0000"
 
-        const val releaseCandidate: String = "5.5-rc-2"
+        const val releaseCandidate: String = ""
     }
 }

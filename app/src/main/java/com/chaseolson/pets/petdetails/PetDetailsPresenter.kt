@@ -8,5 +8,9 @@ class PetDetailsPresenter {
 
     class Container(val root: View, val listener: Listener) {
         val petImage = root.pet_image
+
+        init {
+
+        }
     }
 }

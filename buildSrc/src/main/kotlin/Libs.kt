@@ -12,16 +12,6 @@ object Libs {
             Versions.android_arch_lifecycle_extensions
 
     /**
-     * https://developer.android.com/topic/libraries/architecture/index.html */
-    const val navigation_fragment: String = "androidx.navigation:navigation-fragment:" +
-            Versions.android_arch_navigation
-
-    /**
-     * https://developer.android.com/topic/libraries/architecture/index.html */
-    const val navigation_ui: String = "androidx.navigation:navigation-ui:" +
-            Versions.android_arch_navigation
-
-    /**
      * http://developer.android.com/tools/extras/support-library.html */
     const val appcompat: String = "androidx.appcompat:appcompat:" + Versions.appcompat
 
@@ -29,6 +19,16 @@ object Libs {
      * http://tools.android.com */
     const val constraintlayout: String = "androidx.constraintlayout:constraintlayout:" +
             Versions.constraintlayout
+
+    /**
+     * https://developer.android.com/topic/libraries/architecture/index.html */
+    const val navigation_fragment: String = "androidx.navigation:navigation-fragment:" +
+            Versions.androidx_navigation
+
+    /**
+     * https://developer.android.com/topic/libraries/architecture/index.html */
+    const val navigation_ui: String = "androidx.navigation:navigation-ui:" +
+            Versions.androidx_navigation
 
     /**
      * https://developer.android.com/topic/libraries/architecture/index.html */
@@ -68,20 +68,20 @@ object Libs {
 
     /**
      * https://github.com/Tickaroo/tikxml */
-    const val tickaroo_annotation: String = "com.tickaroo.tikxml:annotation:" + Versions.com_tickaroo_tikxml
+    const val annotation: String = "com.tickaroo.tikxml:annotation:" + Versions.com_tickaroo_tikxml
 
     /**
      * https://github.com/Tickaroo/tikxml */
-    const val tickaroo_tikxml_core: String = "com.tickaroo.tikxml:core:" +
+    const val com_tickaroo_tikxml_core: String = "com.tickaroo.tikxml:core:" +
             Versions.com_tickaroo_tikxml
 
     /**
      * https://github.com/Tickaroo/tikxml */
-    const val tickaroo_processor: String = "com.tickaroo.tikxml:processor:" + Versions.com_tickaroo_tikxml
+    const val processor: String = "com.tickaroo.tikxml:processor:" + Versions.com_tickaroo_tikxml
 
     /**
      * https://github.com/Tickaroo/tikxml */
-    const val tickaroo_retrofit_converter: String = "com.tickaroo.tikxml:retrofit-converter:" +
+    const val retrofit_converter: String = "com.tickaroo.tikxml:retrofit-converter:" +
             Versions.com_tickaroo_tikxml
 
     const val de_fayard_buildsrcversions_gradle_plugin: String =
@@ -91,6 +91,12 @@ object Libs {
     /**
      * http://junit.org */
     const val junit: String = "junit:junit:" + Versions.junit
+
+    /**
+     * https://kotlinlang.org/ */
+    const val kotlin_android_extensions_runtime: String =
+            "org.jetbrains.kotlin:kotlin-android-extensions-runtime:" +
+            Versions.org_jetbrains_kotlin
 
     /**
      * https://kotlinlang.org/ */
