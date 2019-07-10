@@ -82,15 +82,13 @@ class HomeScreenPresenter {
                 }
             })
 
-            location.setDebounceOnClickListener(500) {
-                locationOnClick()
-            }
+            location.setDebounceOnClickListener(500) { locationOnClick() }
 
             bottomBar.setOnNavigationItemSelectedListener {
                 when (it.itemId) {
                     R.id.action_home -> {
                         if (it.isChecked) {
-                            petRecycler.smoothScrollToPosition(0)
+//                            petRecycler.smoothScrollToPosition(0)
                             appBarLayout.setExpanded(true)
                         }
                         true
@@ -183,10 +181,10 @@ class HomeScreenPresenter {
             container.swipeLayout.isRefreshing = false
             container.progressBar.visibility = View.GONE
             container.petAdapter.submitList(pets)
-            GlobalScope.launch(Dispatchers.Main) {
-                delay(1000)
-                container.petRecycler.smoothScrollToPosition(0)
-            }
+//            GlobalScope.launch(Dispatchers.Main) {
+//                delay(1000)
+//                container.petRecycler.smoothScrollToPosition(0)
+//            }
         }
 
         fun presentError(container: Container, error: String) {

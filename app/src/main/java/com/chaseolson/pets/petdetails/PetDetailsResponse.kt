@@ -1,10 +1,11 @@
 package com.chaseolson.pets.petdetails
 
+import com.chaseolson.pets.core.Photo
 import com.chaseolson.pets.home.model.PetFinderResponse
 import com.tickaroo.tikxml.annotation.*
 
 @Xml(name = "petfinder")
-data class PetResponse(
+data class PetDetailsResponse(
         @Element
         val pet: Pet
 ) {
@@ -34,14 +35,6 @@ data class PetResponse(
                 data class Breed(
                         @TextContent
                         val breed: String = ""
-                )
-
-                @Xml
-                data class Photo(
-                        @Attribute
-                        val size: String = "",
-                        @TextContent
-                        val photo: String = ""
                 )
         }
 }

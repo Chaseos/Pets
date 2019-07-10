@@ -1,5 +1,6 @@
 package com.chaseolson.pets.home.model
 
+import com.chaseolson.pets.core.Photo
 import com.tickaroo.tikxml.annotation.*
 
 
@@ -28,14 +29,6 @@ data class PetFinderResponse(
             @Element
             val contact: Contact
     ) {
-
-        @Xml
-        data class Photo(
-                @Attribute
-                val size: String = "",
-                @TextContent
-                val photo: String = ""
-        )
 
         @Xml
         data class Contact(

@@ -25,16 +25,16 @@ class PetRecyclerItemPresenter(val listener: Listener) {
         }
     }
 
-    fun present(container: Container, vm: PetListItemViewState.Pet) {
+    fun present(container: Container, vs: PetListItemViewState.Pet) {
         container.run {
-            name.text = vm.name
-            city.text = vm.city
-            vm.images.getOrNull(0)?.run {
-                Picasso.get().load(this).error(vm.backupImage).into(image)
-            } ?: run { Picasso.get().load(vm.backupImage).into(image) }
+            name.text = vs.name
+            city.text = vs.city
+            vs.images.getOrNull(0)?.run {
+                Picasso.get().load(this).error(vs.backupImage).into(image)
+            } ?: run { Picasso.get().load(vs.backupImage).into(image) }
 
             root.setOnClickListener {
-                listener.petOnClick(vm.id, image)
+                listener.petOnClick(vs.id, image)
                 Toast.makeText(root.context, "Pet Details New Click!", Toast.LENGTH_SHORT).show()
             }
         }

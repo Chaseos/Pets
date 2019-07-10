@@ -1,6 +1,7 @@
 package com.chaseolson.pets.petdetails
 
 import android.view.View
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.pet_details_fragment.view.*
 
 class PetDetailsPresenter {
@@ -12,5 +13,9 @@ class PetDetailsPresenter {
         init {
 
         }
+    }
+
+    fun present(container: Container, vs: PetDetailsViewState) {
+        vs.images.getOrNull(0)?.run { Picasso.get().load(this).into(container.petImage) }
     }
 }

@@ -21,6 +21,8 @@ import kotlinx.android.synthetic.main.location_dialog.view.*
 class HomeScreen : Fragment(), HomeScreenPresenter.Listener, SearchDialog.SearchDialogListener, PetRecyclerItemPresenter.Listener {
     val LOCATION_REQUEST_CODE = 100
 
+    companion object { val PET_ID = "petId" }
+
     private val viewModel: HomeScreenViewModel by lazy { ViewModelProviders.of(this).get(HomeScreenViewModel::class.java) }
     private val vmMainActivity: MainActivityViewModel by lazy { ViewModelProviders.of(this).get(MainActivityViewModel::class.java) }
     private lateinit var container: HomeScreenPresenter.Container
@@ -80,7 +82,8 @@ class HomeScreen : Fragment(), HomeScreenPresenter.Listener, SearchDialog.Search
 //        )
 //
         val args = Bundle()
-        args.putInt("petId", id)
+        args.putInt(PET_ID, id)
+//        vmMainActivity.petId = id
         findNavController(this).navigate(R.id.action_list_to_pet, args, null, null)
     }
 }

@@ -10,7 +10,7 @@ import com.chaseolson.pets.home.model.SearchModel
 
 class HomeScreenViewModel : ViewModel() {
     private val presentError = MutableLiveData<String>()
-    private val config = PagedList.Config.Builder().setPageSize(20).build()
+    private val config = PagedList.Config.Builder().setPageSize(10).build()
     private val petFeedFactory: PetDataSourceFactory
     private val pets: LiveData<PagedList<PetListItemViewState.Pet>>
 
@@ -29,15 +29,12 @@ class HomeScreenViewModel : ViewModel() {
      * Observables
      */
     fun presentError(): LiveData<String> = presentError
-
     fun pets(): LiveData<PagedList<PetListItemViewState.Pet>> = pets
 
     /**
      * Actionables
      */
-    fun swipeRefresh() {
-        pets().value?.dataSource?.invalidate()
-    }
+    fun swipeRefresh() { pets().value?.dataSource?.invalidate() }
 
     fun searchByZipCode(zipCode: String) {
         petFeedFactory.searchModel = petFeedFactory.searchModel.copy(location = zipCode)

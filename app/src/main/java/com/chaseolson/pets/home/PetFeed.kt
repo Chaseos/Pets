@@ -6,9 +6,9 @@ import com.chaseolson.pets.home.model.PetListItemViewState
 import com.chaseolson.pets.home.model.SearchModel
 import java.io.EOFException
 
-class PetFeed(val listener: PetFeed.Listener, val api: PetListingApi, val searchModel: SearchModel) : ItemKeyedDataSource<Int, PetListItemViewState.Pet>() {
+class PetFeed(val listener: Listener, val api: PetListingApi, val searchModel: SearchModel) : ItemKeyedDataSource<Int, PetListItemViewState.Pet>() {
 
-    val CALL_TRIES = 10
+    val CALL_TRIES = 5
     var currentTries = 0
 
     interface Listener {
