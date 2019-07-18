@@ -16,23 +16,77 @@ object Libs {
     const val appcompat: String = "androidx.appcompat:appcompat:" + Versions.appcompat
 
     /**
+     * http://developer.android.com/tools/extras/support-library.html */
+    const val collection_ktx: String = "androidx.collection:collection-ktx:" +
+            Versions.collection_ktx
+
+    /**
      * http://tools.android.com */
     const val constraintlayout: String = "androidx.constraintlayout:constraintlayout:" +
             Versions.constraintlayout
 
     /**
-     * https://developer.android.com/topic/libraries/architecture/index.html */
-    const val navigation_fragment: String = "androidx.navigation:navigation-fragment:" +
-            Versions.androidx_navigation
+     * http://developer.android.com/tools/extras/support-library.html */
+    const val core_ktx: String = "androidx.core:core-ktx:" + Versions.core_ktx
+
+    const val databinding_adapters: String = "androidx.databinding:databinding-adapters:" +
+            Versions.androidx_databinding
+
+    /**
+     * https://developer.android.com/studio */
+    const val databinding_common: String = "androidx.databinding:databinding-common:" +
+            Versions.androidx_databinding
+
+    /**
+     * https://developer.android.com/studio */
+    const val databinding_compiler: String = "androidx.databinding:databinding-compiler:" +
+            Versions.androidx_databinding
+
+    const val databinding_runtime: String = "androidx.databinding:databinding-runtime:" +
+            Versions.androidx_databinding
+
+    /**
+     * http://developer.android.com/tools/extras/support-library.html */
+    const val fragment_ktx: String = "androidx.fragment:fragment-ktx:" + Versions.fragment_ktx
+
+    const val lifecycle_livedata_ktx: String = "androidx.lifecycle:lifecycle-livedata-ktx:" +
+            Versions.lifecycle_livedata_ktx
+
+    /**
+     * http://developer.android.com/tools/extras/support-library.html */
+    const val lifecycle_viewmodel_ktx: String = "androidx.lifecycle:lifecycle-viewmodel-ktx:" +
+            Versions.lifecycle_viewmodel_ktx
+
+    const val lifecycle_viewmodel_savedstate: String =
+            "androidx.lifecycle:lifecycle-viewmodel-savedstate:" +
+            Versions.lifecycle_viewmodel_savedstate
 
     /**
      * https://developer.android.com/topic/libraries/architecture/index.html */
-    const val navigation_ui: String = "androidx.navigation:navigation-ui:" +
-            Versions.androidx_navigation
+    const val navigation_fragment_ktx: String = "androidx.navigation:navigation-fragment-ktx:" +
+            Versions.navigation_fragment_ktx
+
+    /**
+     * https://developer.android.com/topic/libraries/architecture/index.html */
+    const val navigation_fragment: String = "androidx.navigation:navigation-fragment:" +
+            Versions.navigation_fragment
+
+    /**
+     * https://developer.android.com/topic/libraries/architecture/index.html */
+    const val navigation_ui_ktx: String = "androidx.navigation:navigation-ui-ktx:" +
+            Versions.navigation_ui_ktx
+
+    /**
+     * https://developer.android.com/topic/libraries/architecture/index.html */
+    const val navigation_ui: String = "androidx.navigation:navigation-ui:" + Versions.navigation_ui
 
     /**
      * https://developer.android.com/topic/libraries/architecture/index.html */
     const val paging_runtime: String = "androidx.paging:paging-runtime:" + Versions.paging_runtime
+
+    /**
+     * http://developer.android.com/tools/extras/support-library.html */
+    const val palette_ktx: String = "androidx.palette:palette-ktx:" + Versions.palette_ktx
 
     /**
      * http://developer.android.com/tools/extras/support-library.html */

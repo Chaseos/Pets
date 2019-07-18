@@ -26,6 +26,8 @@ android {
             buildConfigField("String", "petFinderKey", "\"2922d4a277ba3eca9ed8342c8aee7070\"")
         }
     }
+
+    dataBinding.isEnabled = true
 }
 
 dependencies {
@@ -33,6 +35,7 @@ dependencies {
     implementation(Libs.appcompat)
     implementation(Libs.recyclerview)
     implementation(Libs.constraintlayout)
+    implementation(Libs.play_services_location)
 
     //Coroutines
     implementation(Libs.kotlinx_coroutines_core)
@@ -40,6 +43,7 @@ dependencies {
 
     //ViewModel & LiveData
     implementation(Libs.android_arch_lifecycle_extensions)
+    implementation(Libs.lifecycle_viewmodel_savedstate)
 
     //Navigation
     implementation(Libs.navigation_fragment)
@@ -50,6 +54,16 @@ dependencies {
 
     //Paging
     implementation(Libs.paging_runtime)
+
+    //KTX
+    implementation(Libs.core_ktx)
+    implementation(Libs.fragment_ktx)
+    implementation(Libs.palette_ktx)
+    implementation(Libs.collection_ktx)
+    implementation(Libs.navigation_fragment_ktx)
+    implementation(Libs.navigation_ui_ktx)
+    implementation(Libs.lifecycle_viewmodel_ktx)
+    implementation(Libs.lifecycle_livedata_ktx)
 
     //Retrofit
     implementation(Libs.retrofit)
@@ -67,6 +81,4 @@ dependencies {
     testImplementation(Libs.junit)
     testImplementation(Libs.androidx_test_core)
     testImplementation(Libs.mockito_core)
-
-    implementation("com.google.android.gms:play-services-location:16.0.0")
 }
