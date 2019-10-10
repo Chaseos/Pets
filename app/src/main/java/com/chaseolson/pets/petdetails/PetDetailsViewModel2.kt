@@ -30,11 +30,11 @@ class PetDetailsViewModel2 : ViewModel() {
     fun setup(petId: Int?) {
         if (currentViewState.value == null) currentViewState.value = PetDetailsViewState(id = petId)
 
-        petId?.run {
-            viewModelScope.async {
-                currentViewState.value = buildPets2(petDetailsRepo.getPetDetailsData2(petId))
-            }
-        }
+//        petId?.run {
+//            viewModelScope.async {
+//                currentViewState.value = buildPets2(petDetailsRepo.getPetDetailsData2(petId))
+//            }
+//        }
 
 //        petId?.run {
 //            currentViewState.value = Transformations.map(petDetailsRepo.getPetDetailsData(petId)) {
