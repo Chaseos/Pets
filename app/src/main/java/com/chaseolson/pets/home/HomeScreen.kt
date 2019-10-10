@@ -83,7 +83,7 @@ class HomeScreen : Fragment(), HomeScreenPresenter.Listener, SearchDialog.Search
 //
         val args = Bundle()
         args.putInt(PET_ID, id)
-//        vmMainActivity.petId = id
-        findNavController(this).navigate(R.id.action_list_to_pet, args, null, null)
+        vmMainActivity.petId = id
+        findNavController(this).navigate(R.id.action_homeScreen_to_petDetailsFragment2, args, null, null)
     }
 }

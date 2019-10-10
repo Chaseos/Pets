@@ -16,6 +16,6 @@ class PetDetailsPresenter {
     }
 
     fun present(container: Container, vs: PetDetailsViewState) {
-        vs.images.getOrNull(0)?.run { Picasso.get().load(this).into(container.petImage) }
+//        vs.images.getOrNull(0)?.run { Picasso.get().load(this).into(container.petImage) }
     }
 }

@@ -5,6 +5,17 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class PetDetailsViewModel : ViewModel() {
+    // LiveData
+    private var currentViewState = MutableLiveData<PetDetailsViewState>()
+    val viewState: LiveData<PetDetailsViewState> = currentViewState
+
+    // Functions called
+    fun setup(petId: Int?) {
+        if (currentViewState.value == null) currentViewState.value = PetDetailsViewState(id = petId)
+
+//        currentViewState.value = Transformations.map(flightBookingRepo.getRoutes(RoutesQuery.build())) { buildRoutes(it) }.value
+        }
+
     var petDetailsRepo: PetDetailsRepo? = null
     private val present = MutableLiveData<PetDetailsViewState>()
 
@@ -20,7 +31,6 @@ class PetDetailsViewModel : ViewModel() {
 
     var presentObs: LiveData<PetDetailsViewState> = present
 
-    fun setup(petId: Int) {
-        petDetailsRepo?.setup(petId)
-    }
+//    fun setup(petId: Int) {
+//    }
 }

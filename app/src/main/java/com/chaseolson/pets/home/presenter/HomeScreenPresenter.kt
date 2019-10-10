@@ -88,7 +88,7 @@ class HomeScreenPresenter {
                 when (it.itemId) {
                     R.id.action_home -> {
                         if (it.isChecked) {
-//                            petRecycler.smoothScrollToPosition(0)
+                            petRecycler.smoothScrollToPosition(0)
                             appBarLayout.setExpanded(true)
                         }
                         true

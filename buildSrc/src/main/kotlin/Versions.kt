@@ -15,7 +15,7 @@ object Versions {
 
     const val constraintlayout: String = "2.0.0-alpha3" 
 
-    const val core_ktx: String = "1.2.0-alpha02" 
+    const val core_ktx: String = "1.0.2" 
 
     const val androidx_databinding: String = "3.4.2" 
 
@@ -53,17 +53,17 @@ object Versions {
 
     const val picasso: String = "2.71828" 
 
-    const val retrofit: String = "2.6.0" 
+    const val retrofit: String = "2.6.1" 
 
     const val com_tickaroo_tikxml: String = "0.8.13" 
 
-    const val de_fayard_buildsrcversions_gradle_plugin: String = "0.3.2" 
+    const val de_fayard_buildsrcversions_gradle_plugin: String = "0.4.0"
 
     const val junit: String = "4.12" 
 
     const val org_jetbrains_kotlin: String = "1.3.41" 
 
-    const val org_jetbrains_kotlinx: String = "1.2.2" 
+    const val org_jetbrains_kotlinx: String = "1.3.0-RC"
 
     const val mockito_core: String = "3.0.0" 
 
@@ -77,8 +77,8 @@ object Versions {
 
         const val currentVersion: String = "5.5.1"
 
-        const val nightlyVersion: String = "5.6-20190718055002+0000"
+        const val nightlyVersion: String = "5.7-20190808220314+0000"
 
-        const val releaseCandidate: String = ""
+        const val releaseCandidate: String = "5.6-rc-2"
     }
 }

@@ -10,10 +10,9 @@
         android:name="com.chaseolson.pets.home.HomeScreen"
         android:label="Pets"
         tools:layout="@layout/fragment_home_screen">
-
         <action
-            android:id="@+id/action_list_to_pet"
-            app:destination="@id/petDetailsFragment" />
+            android:id="@+id/action_homeScreen_to_petDetailsFragment2"
+            app:destination="@id/petDetailsFragment2" />
     </fragment>
     <fragment
         android:id="@+id/petDetailsFragment"
@@ -22,5 +21,13 @@
         <argument
             android:name="petId"
             app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/petDetailsFragment2"
+        android:name="com.chaseolson.pets.petdetails.PetDetailsFragment2"
+        android:label="PetDetailsFragment2" >
+    <argument
+        android:name="petId"
+        app:argType="integer" />
     </fragment>
 </navigation>
