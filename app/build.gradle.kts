@@ -81,4 +81,18 @@ dependencies {
     testImplementation(Libs.junit)
     testImplementation(Libs.androidx_test_core)
     testImplementation(Libs.mockito_core)
+
+    //Glide
+    implementation(Libs.glide)
+    annotationProcessor(Libs.com_github_bumptech_glide_compiler)
+
+    //Bento
+    implementation(Libs.bento)
+    androidTestImplementation(Libs.bento_testing)
+
+    // Moshi
+    implementation(Libs.moshi)
+
+    // Koin
+    implementation(Libs.koin_android)
 }

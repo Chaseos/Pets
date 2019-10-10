@@ -12,7 +12,7 @@ object Libs {
             Versions.android_arch_lifecycle_extensions
 
     /**
-     * http://developer.android.com/tools/extras/support-library.html */
+     * https://developer.android.com/jetpack/androidx */
     const val appcompat: String = "androidx.appcompat:appcompat:" + Versions.appcompat
 
     /**
@@ -46,9 +46,11 @@ object Libs {
             Versions.androidx_databinding
 
     /**
-     * http://developer.android.com/tools/extras/support-library.html */
+     * https://developer.android.com/jetpack/androidx */
     const val fragment_ktx: String = "androidx.fragment:fragment-ktx:" + Versions.fragment_ktx
 
+    /**
+     * http://developer.android.com/tools/extras/support-library.html */
     const val lifecycle_livedata_ktx: String = "androidx.lifecycle:lifecycle-livedata-ktx:" +
             Versions.lifecycle_livedata_ktx
 
@@ -105,12 +107,26 @@ object Libs {
      * https://developer.android.com/studio */
     const val lint_gradle: String = "com.android.tools.lint:lint-gradle:" + Versions.lint_gradle
 
+    /**
+     * https://github.com/bumptech/glide */
+    const val com_github_bumptech_glide_compiler: String = "com.github.bumptech.glide:compiler:" +
+            Versions.com_github_bumptech_glide
+
+    /**
+     * https://github.com/bumptech/glide */
+    const val glide: String = "com.github.bumptech.glide:glide:" +
+            Versions.com_github_bumptech_glide
+
     const val play_services_location: String = "com.google.android.gms:play-services-location:" +
             Versions.play_services_location
 
     /**
      * http://developer.android.com/tools/extras/support-library.html */
     const val material: String = "com.google.android.material:material:" + Versions.material
+
+    /**
+     * https://github.com/square/moshi */
+    const val moshi: String = "com.squareup.moshi:moshi:" + Versions.moshi
 
     /**
      * https://github.com/square/picasso/ */
@@ -137,6 +153,14 @@ object Libs {
      * https://github.com/Tickaroo/tikxml */
     const val retrofit_converter: String = "com.tickaroo.tikxml:retrofit-converter:" +
             Versions.com_tickaroo_tikxml
+
+    /**
+     * https://github.com/Yelp/bento */
+    const val bento_testing: String = "com.yelp.android:bento-testing:" + Versions.com_yelp_android
+
+    /**
+     * https://github.com/Yelp/bento */
+    const val bento: String = "com.yelp.android:bento:" + Versions.com_yelp_android
 
     const val de_fayard_buildsrcversions_gradle_plugin: String =
             "de.fayard.buildSrcVersions:de.fayard.buildSrcVersions.gradle.plugin:" +
@@ -182,6 +206,8 @@ object Libs {
      * https://github.com/Kotlin/kotlinx.coroutines */
     const val kotlinx_coroutines_core: String = "org.jetbrains.kotlinx:kotlinx-coroutines-core:" +
             Versions.org_jetbrains_kotlinx
+
+    const val koin_android: String = "org.koin:koin-android:" + Versions.koin_android
 
     /**
      * https://github.com/mockito/mockito */
