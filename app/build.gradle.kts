@@ -1,9 +1,13 @@
 plugins {
     id("com.android.application")
+    id("kotlinx-serialization")
     kotlin("android")
     kotlin("android.extensions")
     kotlin("kapt")
 }
+
+val Petfinder_CONSUMER_KEY: String by project
+val Petfinder_CONSUMER_SECRET: String by project
 
 android {
     compileSdkVersion(28)
@@ -14,6 +18,8 @@ android {
         versionCode = 1
         versionName = "1.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField("String", "petFinderKey2", Petfinder_CONSUMER_KEY)
+        buildConfigField("String", "petFinderSecret2", Petfinder_CONSUMER_SECRET)
     }
 
     buildTypes {
@@ -37,11 +43,11 @@ dependencies {
     implementation(Libs.constraintlayout)
     implementation(Libs.play_services_location)
 
-    //Coroutines
+    // Coroutines
     implementation(Libs.kotlinx_coroutines_core)
     implementation(Libs.kotlinx_coroutines_android)
 
-    //ViewModel & LiveData
+    // ViewModel & LiveData
     implementation(Libs.android_arch_lifecycle_extensions)
     implementation(Libs.lifecycle_viewmodel_savedstate)
 
@@ -49,13 +55,14 @@ dependencies {
     implementation(Libs.navigation_fragment)
     implementation(Libs.navigation_ui)
 
-    //Material
+    // Material
     implementation(Libs.material)
+    implementation(Libs.swiperefreshlayout)
 
-    //Paging
+    // Paging
     implementation(Libs.paging_runtime)
 
-    //KTX
+    // KTX
     implementation(Libs.core_ktx)
     implementation(Libs.fragment_ktx)
     implementation(Libs.palette_ktx)
@@ -64,35 +71,36 @@ dependencies {
     implementation(Libs.navigation_ui_ktx)
     implementation(Libs.lifecycle_viewmodel_ktx)
     implementation(Libs.lifecycle_livedata_ktx)
+    implementation(Libs.kotlinx_serialization_runtime)
 
-    //Retrofit
+    // Retrofit
     implementation(Libs.retrofit)
+    implementation(Libs.retrofit2_kotlinx_serialization_converter)
+    implementation(Libs.retrofit2_kotlin_coroutines_adapter)
 
-    //Picasso
+    // Picasso
     implementation(Libs.picasso)
 
-    //Tickaroo Xml Parser
+    // Tickaroo Xml Parser
     implementation(Libs.com_tickaroo_tikxml_core)
     implementation(Libs.annotation)
     implementation(Libs.retrofit_converter)
     kapt(Libs.processor)
 
-    //Testing
+    // Testing
     testImplementation(Libs.junit)
     testImplementation(Libs.androidx_test_core)
     testImplementation(Libs.mockito_core)
 
-    //Glide
+    // Glide
     implementation(Libs.glide)
     annotationProcessor(Libs.com_github_bumptech_glide_compiler)
 
-    //Bento
-    implementation(Libs.bento)
-    androidTestImplementation(Libs.bento_testing)
-
-    // Moshi
-    implementation(Libs.moshi)
+    // Epoxy
+    implementation(Libs.epoxy)
 
     // Koin
     implementation(Libs.koin_android)
+    implementation(Libs.koin_android_viewmodel)
+    implementation(Libs.koin_android_scope)
 }

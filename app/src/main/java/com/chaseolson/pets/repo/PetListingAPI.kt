@@ -1,4 +1,4 @@
-package com.chaseolson.pets.home
+package com.chaseolson.pets.repo
 
 import com.chaseolson.pets.core.RetrofitApi
 import com.chaseolson.pets.home.model.PetFinderResponse

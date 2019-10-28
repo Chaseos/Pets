@@ -4,6 +4,8 @@ import androidx.paging.DataSource
 import androidx.paging.ItemKeyedDataSource
 import com.chaseolson.pets.home.model.PetListItemViewState
 import com.chaseolson.pets.home.model.SearchModel
+import com.chaseolson.pets.repo.PetListingApi
+import com.chaseolson.pets.repo.PetListingApiImpl
 import java.io.EOFException
 
 class PetFeed(val listener: Listener, val api: PetListingApi, val searchModel: SearchModel) : ItemKeyedDataSource<Int, PetListItemViewState.Pet>() {

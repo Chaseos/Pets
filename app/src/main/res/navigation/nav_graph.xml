@@ -3,16 +3,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/homeScreen">
+    app:startDestination="@id/homeScreenFragment">
+
+    <fragment
+        android:id="@+id/homeScreenFragment"
+        android:name="com.chaseolson.pets.newhome.HomeScreenFragment"
+        android:label="Pets"
+        tools:layout="@layout/home_screen_fragment"/>
 
     <fragment
         android:id="@+id/homeScreen"
         android:name="com.chaseolson.pets.home.HomeScreen"
         android:label="Pets"
         tools:layout="@layout/fragment_home_screen">
-        <action
-            android:id="@+id/action_homeScreen_to_petDetailsFragment2"
-            app:destination="@id/petDetailsFragment2" />
+<!--        <action-->
+<!--            android:id="@+id/action_homeScreen_to_petDetailsFragment2"-->
+<!--            app:destination="@id/petDetailsFragment2" />-->
     </fragment>
     <fragment
         android:id="@+id/petDetailsFragment"
@@ -22,12 +28,12 @@
             android:name="petId"
             app:argType="integer" />
     </fragment>
-    <fragment
-        android:id="@+id/petDetailsFragment2"
-        android:name="com.chaseolson.pets.petdetails.PetDetailsFragment2"
-        android:label="PetDetailsFragment2" >
-    <argument
-        android:name="petId"
-        app:argType="integer" />
-    </fragment>
+<!--    <fragment-->
+<!--        android:id="@+id/petDetailsFragment2"-->
+<!--        android:name="com.chaseolson.pets.petdetails.PetDetailsFragment2"-->
+<!--        android:label="PetDetailsFragment2" >-->
+<!--    <argument-->
+<!--        android:name="petId"-->
+<!--        app:argType="integer" />-->
+<!--    </fragment>-->
 </navigation>

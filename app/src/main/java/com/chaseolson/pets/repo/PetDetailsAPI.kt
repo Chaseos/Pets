@@ -1,6 +1,7 @@
-package com.chaseolson.pets.petdetails
+package com.chaseolson.pets.repo
 
 import com.chaseolson.pets.core.RetrofitApi
+import com.chaseolson.pets.petdetails.PetDetailsResponse
 import retrofit2.Call
 
 interface PetDetailsAPI {

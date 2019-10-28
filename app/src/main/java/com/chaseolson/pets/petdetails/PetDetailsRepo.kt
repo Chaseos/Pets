@@ -1,14 +1,5 @@
 package com.chaseolson.pets.petdetails
 
-import androidx.lifecycle.liveData
-import com.chaseolson.pets.core.ResultWrapper
-import com.chaseolson.pets.core.Status
-import com.chaseolson.pets.core.filterImagesList
-import com.chaseolson.pets.home.HomeScreenRepo.Companion.responseToViewModel
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-
 class PetDetailsRepo(val listener: Listener) {
     interface Listener {
         fun present(vs: PetDetailsViewState)
