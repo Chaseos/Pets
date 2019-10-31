@@ -1,0 +1,16 @@
+package com.chaseolson.pets.repo
+
+import com.chaseolson.pets.BuildConfig
+import com.chaseolson.pets.core.TokenResponseDto
+import retrofit2.Response
+import retrofit2.http.*
+
+interface RefreshEndpoint {
+    @FormUrlEncoded
+    @POST("oauth2/token")
+    suspend fun getToken(
+        @Field("grant_type") type: String = "client_credentials",
+        @Field("client_id") key: String = BuildConfig.petFinderKey2,
+        @Field("client_secret") secret: String = BuildConfig.petFinderSecret2
+    ): Response<TokenResponseDto>
+}

@@ -10,7 +10,7 @@
 
         <variable
             name="viewModel"
-            type="com.chaseolson.pets.newhome.HomeScreenViewModel2" />
+            type="com.chaseolson.pets.newhome.HomeScreenViewModel3" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout

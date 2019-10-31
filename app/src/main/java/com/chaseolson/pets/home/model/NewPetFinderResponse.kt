@@ -5,112 +5,112 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class NewPetFinderResponse(
-    val animals: List<Animal>?,
-    val pagination: Pagination?
+    val animals: List<Animal>? = null,
+    val pagination: Pagination? = null
 ) {
     @Serializable
     data class Animal(
         @SerialName("_links")
-        val links: AnimalLinks?,
-        val age: String?,
-        val attributes: Attributes?,
-        val breeds: Breeds?,
-        val coat: String?,
-        val colors: Colors?,
-        val contact: Contact?,
-        val description: String?,
-        val distance: Double?,
-        val environment: Environment?,
-        val gender: String?,
-        val id: Int?,
-        val name: String?,
+        val links: AnimalLinks? = null,
+        val age: String? = null,
+        val attributes: Attributes? = null,
+        val breeds: Breeds? = null,
+        val coat: String? = null,
+        val colors: Colors? = null,
+        val contact: Contact? = null,
+        val description: String? = null,
+        val distance: Double? = null,
+        val environment: Environment? = null,
+        val gender: String? = null,
+        val id: Int? = null,
+        val name: String? = null,
         @SerialName("organization_id")
-        val organizationId: String?,
-        val photos: List<Photo>?,
+        val organizationId: String? = null,
+        val photos: List<Photo>? = null,
         @SerialName("published_at")
-        val publishedAt: String?,
-        val size: String?,
-        val species: String?,
-        val status: String?,
-        val tags: List<String>?,
-        val type: String?,
-        val url: String?
+        val publishedAt: String? = null,
+        val size: String? = null,
+        val species: String? = null,
+        val status: String? = null,
+        val tags: List<String>? = null,
+        val type: String? = null,
+        val url: String? = null
     ) {
         @Serializable
         data class Attributes(
-            val declawed: Boolean?,
+            val declawed: Boolean? = null,
             @SerialName("house_trained")
-            val houseTrained: Boolean?,
+            val houseTrained: Boolean? = null,
             @SerialName("shots_current")
-            val shotsCurrent: Boolean?,
+            val shotsCurrent: Boolean? = null,
             @SerialName("spayed_neutered")
-            val spayedNeutered: Boolean?,
+            val spayedNeutered: Boolean? = null,
             @SerialName("special_needs")
-            val specialNeeds: Boolean?
+            val specialNeeds: Boolean? = null
         )
 
         @Serializable
         data class Breeds(
-            val mixed: Boolean?,
-            val primary: String?,
-            val secondary: String?,
-            val unknown: Boolean?
+            val mixed: Boolean? = null,
+            val primary: String? = null,
+            val secondary: String? = null,
+            val unknown: Boolean? = null
         )
 
         @Serializable
         data class Colors(
-            val primary: String?,
-            val secondary: String?,
-            val tertiary: String?
+            val primary: String? = null,
+            val secondary: String? = null,
+            val tertiary: String? = null
         )
 
         @Serializable
         data class Contact(
-            val address: Address?,
-            val email: String?,
-            val phone: String?
+            val address: Address? = null,
+            val email: String? = null,
+            val phone: String? = null
         )
 
         @Serializable
         data class Environment(
-            val cats: Boolean?,
-            val children: Boolean?,
-            val dogs: Boolean?
+            val cats: Boolean? = null,
+            val children: Boolean? = null,
+            val dogs: Boolean? = null
         )
     }
 
     @Serializable
     data class AnimalLinks(
-        val organization: Organization?,
-        val self: Self?,
-        val type: Type?
+        val organization: Organization? = null,
+        val self: Self? = null,
+        val type: Type? = null
     ) {
         @Serializable
         data class Organization(
-            val href: String?
+            val href: String? = null
         )
 
         @Serializable
         data class Self(
-            val href: String?
+            val href: String? = null
         )
 
         @Serializable
         data class Type(
-            val href: String?
+            val href: String? = null
         )
     }
 
     @Serializable
     data class Pagination(
         @SerialName("_links")
-        val links: AnimalLinks?,
+        val links: AnimalLinks? = null,
         @SerialName("count_per_page")
-        val countPerPage: Int?,
+        val countPerPage: Int? = null,
         @SerialName("current_page")
-        val currentPage: Int?,
+        val currentPage: Int? = null,
         @SerialName("total_count")
-        val totalCount: Int?,
+        val totalCount: Int? = null,
         @SerialName("total_pages")
         val totalPages: Int
     )

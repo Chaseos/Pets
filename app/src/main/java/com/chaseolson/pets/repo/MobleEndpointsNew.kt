@@ -5,9 +5,7 @@ import com.chaseolson.pets.core.TokenResponseDto
 import com.chaseolson.pets.home.model.NewPetFinderResponse
 import com.chaseolson.pets.home.model.PetFinderResponse
 import retrofit2.Response
-import retrofit2.http.GET
-import retrofit2.http.Header
-import retrofit2.http.Query
+import retrofit2.http.*
 
 interface MobileEndpointsNew {
     /**
@@ -35,15 +33,16 @@ interface MobileEndpointsNew {
     Each invalid parameter includes the location of the parameter using the "in" key (e.g. "query" for a query parameter), the parameter name ("path"), and a message on why it's invalid.
      **/
 
-    @GET("oauth2/token")
+    @FormUrlEncoded
+    @POST("oauth2/token")
     suspend fun getToken(
-        @Query("client_id") key: String = BuildConfig.petFinderKey2,
-        @Query("client_secret") secret: String = BuildConfig.petFinderSecret2
+        @Field("grant_type") type: String = "client_credentials",
+        @Field("client_id") key: String = BuildConfig.petFinderKey2,
+        @Field("client_secret") secret: String = BuildConfig.petFinderSecret2
     ): Response<TokenResponseDto>
 
     @GET("animals")
     suspend fun getPetListingNew(
-        @Header("Authorization")
         @Query("type") type: String? = null, // Grabbed from getAnimalTypes call
         @Query("breed") breed: String? = null, // Grabbed from getAnimalBreeds call
         @Query("size") size: String? = null, // small, medium, large, xlarge (accepts multiple values)
