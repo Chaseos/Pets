@@ -27,6 +27,6 @@ class HomeScreenFragment2 : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        homeViewModel3.pets.observe(viewLifecycleOwner, Observer { it != null })
+        homeViewModel3.petsResponse.observe(viewLifecycleOwner, Observer { it != null })
     }
 }

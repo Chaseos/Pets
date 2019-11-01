@@ -18,8 +18,8 @@ android {
         versionCode = 1
         versionName = "1.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        buildConfigField("String", "petFinderKey2", Petfinder_CONSUMER_KEY)
-        buildConfigField("String", "petFinderSecret2", Petfinder_CONSUMER_SECRET)
+        buildConfigField("String", "petFinderKey", Petfinder_CONSUMER_KEY)
+        buildConfigField("String", "petFinderSecret", Petfinder_CONSUMER_SECRET)
     }
 
     buildTypes {

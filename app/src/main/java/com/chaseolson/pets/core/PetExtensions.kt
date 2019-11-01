@@ -1,6 +1,7 @@
 package com.chaseolson.pets.core
 
 import com.chaseolson.pets.R
+import com.chaseolson.pets.home.model.NewPhoto
 
 fun String.filterName(): String {
     val nonNumberOrDollarSignRegex = Regex("[^A-Za-z &()*-]")
@@ -35,6 +36,7 @@ fun String.genderAndLocationToString(city: String) = when (this.toUpperCase()) {
 //fun List<PetFinderResponse.Pet.Breed>.mapBreedsToList() = this.map { it.breed }
 
 fun List<Photo>.filterImagesList() = this.filter { it.size == "pn" }.map { it.photo }
+fun List<NewPhoto>.filterImagesList2() = map { it.small }
 
 fun String.animalToSearchQuery() = when (this) {
     "Dogs" -> "dog"

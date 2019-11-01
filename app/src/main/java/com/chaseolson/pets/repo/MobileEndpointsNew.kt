@@ -37,8 +37,8 @@ interface MobileEndpointsNew {
     @POST("oauth2/token")
     suspend fun getToken(
         @Field("grant_type") type: String = "client_credentials",
-        @Field("client_id") key: String = BuildConfig.petFinderKey2,
-        @Field("client_secret") secret: String = BuildConfig.petFinderSecret2
+        @Field("client_id") key: String = BuildConfig.petFinderKey,
+        @Field("client_secret") secret: String = BuildConfig.petFinderSecret
     ): Response<TokenResponseDto>
 
     @GET("animals")
