@@ -28,5 +28,6 @@ class HomeScreenFragment2 : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         homeViewModel3.petsResponse.observe(viewLifecycleOwner, Observer { it != null })
+        homeViewModel3.animalsLiveData.observe(viewLifecycleOwner, Observer { it != null })
     }
 }
