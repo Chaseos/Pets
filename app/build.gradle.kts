@@ -57,7 +57,7 @@ dependencies {
     implementation(Libs.swiperefreshlayout)
 
     // Paging
-    implementation(Libs.paging_runtime)
+    implementation(Libs.paging_runtime_ktx)
 
     // KTX
     implementation(Libs.core_ktx)

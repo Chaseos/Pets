@@ -234,6 +234,12 @@ object Libs {
     /**
      * http://developer.android.com/tools/extras/support-library.html
      */
+    const val paging_runtime_ktx: String = "androidx.paging:paging-runtime-ktx:" +
+            Versions.paging_runtime_ktx
+
+    /**
+     * http://developer.android.com/tools/extras/support-library.html
+     */
     const val swiperefreshlayout: String = "androidx.swiperefreshlayout:swiperefreshlayout:" +
             Versions.swiperefreshlayout
 
@@ -248,11 +254,6 @@ object Libs {
      */
     const val collection_ktx: String = "androidx.collection:collection-ktx:" +
             Versions.collection_ktx
-
-    /**
-     * https://developer.android.com/topic/libraries/architecture/index.html
-     */
-    const val paging_runtime: String = "androidx.paging:paging-runtime:" + Versions.paging_runtime
 
     /**
      * https://developer.android.com/jetpack/androidx

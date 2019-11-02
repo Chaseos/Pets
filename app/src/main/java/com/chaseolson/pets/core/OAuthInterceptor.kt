@@ -21,7 +21,7 @@ class OAuthInterceptor(val refreshEndpoint: RefreshEndpoint, val tokenPreference
 
                     if (responseNewTokenLoginModel.isSuccessful) {
                         val newToken = responseNewTokenLoginModel.body()?.accessToken?.let { token ->
-                            tokenPreferences.edit().putString("token", token)
+                            tokenPreferences.edit().putString("token", token).apply()
                             token
                         }
                         val newAuthenticationRequest = originalRequest.newBuilder().addHeader("Authorization", "Bearer $newToken").build()

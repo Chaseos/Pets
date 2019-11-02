@@ -4,7 +4,6 @@ import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
 import com.chaseolson.pets.core.OAuthInterceptor
-import com.chaseolson.pets.home.presenter.PetFeedNew
 import com.chaseolson.pets.newhome.HomeScreenViewModel3
 import com.chaseolson.pets.repo.MobileEndpointsNew
 import com.chaseolson.pets.repo.RefreshEndpoint

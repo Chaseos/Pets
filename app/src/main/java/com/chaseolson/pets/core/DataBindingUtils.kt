@@ -3,6 +3,7 @@ package com.chaseolson.pets.core
 import android.view.View
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.bumptech.glide.Glide
 import com.chaseolson.pets.home.model.NewPetListItemViewState
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -24,6 +25,8 @@ fun View.setVisibility(value: Boolean?) {
 }
 
 @BindingAdapter("onNavigationItemSelected")
-fun BottomNavigationView.setOnNavigationItemSelectedListener(listener: BottomNavigationView.OnNavigationItemSelectedListener) {
-    setOnNavigationItemSelectedListener(listener)
-}
+fun BottomNavigationView.setNavigationItemSelectedListener(listener: BottomNavigationView.OnNavigationItemSelectedListener) =
+        setOnNavigationItemSelectedListener(listener)
+
+@BindingAdapter("onRefreshListener")
+fun SwipeRefreshLayout.setRefreshListener(listener: SwipeRefreshLayout.OnRefreshListener) = setOnRefreshListener(listener)

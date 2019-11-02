@@ -47,12 +47,12 @@ class PetFeedNew(val api: MobileEndpointsNew,
                     age = searchModel.age,
                     location = searchModel.location ?: "75001",
                     sort = "distance",
-                    page = params.key + 1
+                    page = params.key
             )
             if (petsResponse.isSuccessful) {
                 viewModel.isLoading.postValue(false)
                 val pets = HomeScreenRepo.responseToViewModelNew(petsResponse.body())
-                callback.onResult(pets?.pets?.toMutableList() ?: emptyList(), petsResponse.body()?.pagination?.currentPage?.plus(1) ?: params.key + 1)
+                callback.onResult(pets?.pets?.toMutableList() ?: emptyList(), petsResponse.body()?.pagination?.currentPage?.plus(1) ?: params.key)
             }
         }
     }
