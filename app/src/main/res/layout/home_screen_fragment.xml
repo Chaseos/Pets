@@ -23,6 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            android:layout_marginBottom="46dp"
             tools:context=".home.HomeScreen">
 
             <com.airbnb.epoxy.EpoxyRecyclerView
@@ -39,8 +40,8 @@
             android:id="@+id/home_progressBar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            isVisible="@{viewModel.isLoading()}"
             android:layout_gravity="top|center_horizontal"
-            android:visibility="gone"
             android:layout_marginTop="76dp" />
 
         <com.google.android.material.card.MaterialCardView
@@ -63,7 +64,6 @@
                 android:src="@drawable/ic_round_arrow_upward_24px" />
 
         </com.google.android.material.card.MaterialCardView>
-
 
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/pet_appbar_layout"

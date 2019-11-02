@@ -1,5 +1,6 @@
 package com.chaseolson.pets.core
 
+import android.view.View
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
@@ -13,4 +14,9 @@ fun ImageView.loadGlideImage(pet: NewPetListItemViewState.NewPet) {
             .thumbnail(Glide.with(context).load(pet.smallImage))
             .fallback(pet.backupImage)
             .into(this)
+}
+
+@BindingAdapter("isVisible")
+fun View.setVisibility(value: Boolean?) {
+    visibility = if (value == true) View.VISIBLE else View.GONE
 }

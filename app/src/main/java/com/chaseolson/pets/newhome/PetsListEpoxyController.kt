@@ -5,13 +5,12 @@ import com.airbnb.epoxy.paging.PagedListEpoxyController
 import com.chaseolson.pets.PetCardBindingModel_
 import com.chaseolson.pets.home.model.NewPetListItemViewState
 
-class PetsListEpoxyController(val viewModel: HomeScreenViewModel3): PagedListEpoxyController<NewPetListItemViewState.NewPet>() {
-    var idNumber = 0
-
+class PetsListEpoxyController(val viewModel: HomeScreenViewModel3) : PagedListEpoxyController<NewPetListItemViewState.NewPet>() {
     override fun buildItemModel(currentPosition: Int, item: NewPetListItemViewState.NewPet?): EpoxyModel<*> {
+        requireNotNull(item)
         return PetCardBindingModel_()
-            .id(idNumber++)
-            .pet(item)
-            .viewModel(viewModel)
+                .id(currentPosition)
+                .pet(item)
+                .viewModel(viewModel)
     }
 }

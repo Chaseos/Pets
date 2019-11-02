@@ -4,19 +4,17 @@ import androidx.paging.DataSource
 import androidx.paging.PageKeyedDataSource
 import com.chaseolson.pets.home.HomeScreenRepo
 import com.chaseolson.pets.home.model.NewPetListItemViewState
-import com.chaseolson.pets.home.model.PetListItemViewState
 import com.chaseolson.pets.home.model.SearchModel
+import com.chaseolson.pets.newhome.HomeScreenViewModel3
 import com.chaseolson.pets.repo.MobileEndpointsNew
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 
-class PetFeedNew(val api: MobileEndpointsNew, val searchModel: SearchModel, val scope: CoroutineScope) : PageKeyedDataSource<Int, NewPetListItemViewState.NewPet>() {
-    //    val CALL_TRIES = 5
-//    var currentTries = 0
-
-//    interface Listener {
-//        fun presentError(error: String)
-//    }
+class PetFeedNew(val api: MobileEndpointsNew,
+                 val searchModel: SearchModel,
+                 val viewModel: HomeScreenViewModel3,
+                 val scope: CoroutineScope) : PageKeyedDataSource<Int, NewPetListItemViewState.NewPet>() {
 
     override fun loadInitial(params: LoadInitialParams<Int>, callback: LoadInitialCallback<Int, NewPetListItemViewState.NewPet>) {
         scope.launch {
@@ -27,24 +25,20 @@ class PetFeedNew(val api: MobileEndpointsNew, val searchModel: SearchModel, val 
                     gender = searchModel.sex,
                     age = searchModel.age,
                     location = searchModel.location ?: "75001",
+                    page = 1,
                     sort = "distance"
             )
             if (petsResponse.isSuccessful) {
+                viewModel.isLoading.postValue(false)
                 val pets = HomeScreenRepo.responseToViewModelNew(petsResponse.body())
-                callback.onResult(pets?.pets?.toMutableList() ?: emptyList(), 1, 2)
+                callback.onResult(pets?.pets?.toMutableList() ?: emptyList(), null, petsResponse.body()?.pagination?.currentPage?.plus(1) ?: 2)
             }
-//            currentTries = 0
-//            if (currentTries < CALL_TRIES) {
-//                currentTries++
-//                loadInitial(params, callback)
-//            } else {
-//                listener.presentError("Unable to load data")
-//            }
         }
     }
 
     override fun loadAfter(params: LoadParams<Int>, callback: LoadCallback<Int, NewPetListItemViewState.NewPet>) {
         scope.launch {
+            viewModel.isLoading.postValue(true)
             val petsResponse = api.getPetListingNew(
                     type = searchModel.animal,
                     breed = searchModel.breed,
@@ -53,26 +47,31 @@ class PetFeedNew(val api: MobileEndpointsNew, val searchModel: SearchModel, val 
                     age = searchModel.age,
                     location = searchModel.location ?: "75001",
                     sort = "distance",
-                    page = params.key
+                    page = params.key + 1
             )
             if (petsResponse.isSuccessful) {
+                viewModel.isLoading.postValue(false)
                 val pets = HomeScreenRepo.responseToViewModelNew(petsResponse.body())
-                callback.onResult(pets?.pets?.toMutableList() ?: emptyList(), params.key)
+                callback.onResult(pets?.pets?.toMutableList() ?: emptyList(), petsResponse.body()?.pagination?.currentPage?.plus(1) ?: params.key + 1)
             }
-
-//        currentTries = 0
-//        val pets = HomeScreenRepo.responseToViewModelNew(request.body())
-//        callback.onResult(pets?.pets?.toMutableList() ?: emptyList())
-//        listener.presentError("Unable to load data")
         }
     }
 
     override fun loadBefore(params: LoadParams<Int>, callback: LoadCallback<Int, NewPetListItemViewState.NewPet>) {}
+
+    override fun invalidate() {
+        super.invalidate()
+        scope.cancel()
+    }
 }
 
 
-class PetDataSourceFactoryNew(val api: MobileEndpointsNew, var searchModel: SearchModel, val scope: CoroutineScope) : DataSource.Factory<Int, NewPetListItemViewState.NewPet>() {
+class PetDataSourceFactoryNew(val api: MobileEndpointsNew,
+                              var searchModel: SearchModel,
+                              val viewModel: HomeScreenViewModel3,
+                              val scope: CoroutineScope) : DataSource.Factory<Int, NewPetListItemViewState.NewPet>() {
+
     override fun create(): DataSource<Int, NewPetListItemViewState.NewPet> {
-        return PetFeedNew(api, searchModel, scope)
+        return PetFeedNew(api, searchModel, viewModel, scope)
     }
 }
