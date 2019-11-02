@@ -103,4 +103,7 @@ dependencies {
     implementation(Libs.koin_android)
     implementation(Libs.koin_android_viewmodel)
     implementation(Libs.koin_android_scope)
+
+    // LiveEvent
+    implementation(Libs.liveevent)
 }

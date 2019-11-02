@@ -26,6 +26,8 @@ object Versions {
 
     const val com_tickaroo_tikxml: String = "0.8.13"
 
+    const val com_airbnb_android: String = "3.8.0"
+
     const val org_koin: String = "2.0.1"
 
     const val android_arch_lifecycle_extensions: String = "1.1.1"
@@ -50,17 +52,11 @@ object Versions {
 
     const val swiperefreshlayout: String = "1.0.0"
 
-    const val epoxy_databinding: String = "3.8.0"
-
     const val constraintlayout: String = "1.1.3"
-
-    const val epoxy_processor: String = "3.8.0"
 
     const val collection_ktx: String = "1.1.0"
 
     const val paging_runtime: String = "2.1.0"
-
-    const val epoxy_paging: String = "3.8.0"
 
     const val fragment_ktx: String = "1.1.0"
 
@@ -74,6 +70,8 @@ object Versions {
 
     const val appcompat: String = "1.1.0"
 
+    const val liveevent: String = "1.0.1"
+
     const val core_ktx: String = "1.1.0"
 
     const val material: String = "1.2.0-alpha01"
@@ -84,8 +82,6 @@ object Versions {
 
     const val aapt2: String = "3.5.1-5435860"
 
-    const val epoxy: String = "3.8.0"
-
     const val junit: String = "4.12"
 
     /**
@@ -93,7 +89,7 @@ object Versions {
      * See issue 19: How to update Gradle itself?
      * https://github.com/jmfayard/buildSrcVersions/issues/19
      */
-    const val gradleLatestVersion: String = "5.6.3"
+    const val gradleLatestVersion: String = "5.6.4"
 }
 
 /**

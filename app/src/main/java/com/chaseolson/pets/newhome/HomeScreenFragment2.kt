@@ -32,5 +32,6 @@ class HomeScreenFragment2 : Fragment() {
         view.pet_recyclerView.adapter = controller.adapter
         view.pet_recyclerView.layoutManager = GridLayoutManager(requireContext(), 2)
         homeViewModel3.animalsLiveData.observe(viewLifecycleOwner, Observer { controller.submitList(it) })
+        homeViewModel3.scrollToTop.observe(viewLifecycleOwner, Observer { view.pet_recyclerView.smoothScrollToPosition(0) })
     }
 }

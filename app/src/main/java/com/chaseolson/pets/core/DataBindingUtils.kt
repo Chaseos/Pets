@@ -5,6 +5,8 @@ import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import com.chaseolson.pets.home.model.NewPetListItemViewState
+import com.google.android.material.bottomnavigation.BottomNavigationView
+
 
 @BindingAdapter("glidePet")
 fun ImageView.loadGlideImage(pet: NewPetListItemViewState.NewPet) {
@@ -19,4 +21,9 @@ fun ImageView.loadGlideImage(pet: NewPetListItemViewState.NewPet) {
 @BindingAdapter("isVisible")
 fun View.setVisibility(value: Boolean?) {
     visibility = if (value == true) View.VISIBLE else View.GONE
+}
+
+@BindingAdapter("onNavigationItemSelected")
+fun BottomNavigationView.setOnNavigationItemSelectedListener(listener: BottomNavigationView.OnNavigationItemSelectedListener) {
+    setOnNavigationItemSelectedListener(listener)
 }

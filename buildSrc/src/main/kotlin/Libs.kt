@@ -147,6 +147,29 @@ object Libs {
     const val retrofit_converter: String = "com.tickaroo.tikxml:retrofit-converter:" +
             Versions.com_tickaroo_tikxml
 
+    /**
+     * https://github.com/airbnb/epoxy
+     */
+    const val epoxy: String = "com.airbnb.android:epoxy:" + Versions.com_airbnb_android
+
+    /**
+     * https://github.com/airbnb/epoxy
+     */
+    const val epoxy_databinding: String = "com.airbnb.android:epoxy-databinding:" +
+            Versions.com_airbnb_android
+
+    /**
+     * https://github.com/airbnb/epoxy
+     */
+    const val epoxy_paging: String = "com.airbnb.android:epoxy-paging:" +
+            Versions.com_airbnb_android
+
+    /**
+     * https://github.com/airbnb/epoxy
+     */
+    const val epoxy_processor: String = "com.airbnb.android:epoxy-processor:" +
+            Versions.com_airbnb_android
+
     const val koin_android: String = "org.koin:koin-android:" + Versions.org_koin
 
     const val koin_android_scope: String = "org.koin:koin-android-scope:" + Versions.org_koin
@@ -215,22 +238,10 @@ object Libs {
             Versions.swiperefreshlayout
 
     /**
-     * https://github.com/airbnb/epoxy
-     */
-    const val epoxy_databinding: String = "com.airbnb.android:epoxy-databinding:" +
-            Versions.epoxy_databinding
-
-    /**
      * http://tools.android.com
      */
     const val constraintlayout: String = "androidx.constraintlayout:constraintlayout:" +
             Versions.constraintlayout
-
-    /**
-     * https://github.com/airbnb/epoxy
-     */
-    const val epoxy_processor: String = "com.airbnb.android:epoxy-processor:" +
-            Versions.epoxy_processor
 
     /**
      * http://developer.android.com/tools/extras/support-library.html
@@ -242,11 +253,6 @@ object Libs {
      * https://developer.android.com/topic/libraries/architecture/index.html
      */
     const val paging_runtime: String = "androidx.paging:paging-runtime:" + Versions.paging_runtime
-
-    /**
-     * https://github.com/airbnb/epoxy
-     */
-    const val epoxy_paging: String = "com.airbnb.android:epoxy-paging:" + Versions.epoxy_paging
 
     /**
      * https://developer.android.com/jetpack/androidx
@@ -279,6 +285,11 @@ object Libs {
     const val appcompat: String = "androidx.appcompat:appcompat:" + Versions.appcompat
 
     /**
+     * https://github.com/hadilq/LiveEvent
+     */
+    const val liveevent: String = "com.github.hadilq.liveevent:liveevent:" + Versions.liveevent
+
+    /**
      * http://developer.android.com/tools/extras/support-library.html
      */
     const val core_ktx: String = "androidx.core:core-ktx:" + Versions.core_ktx
@@ -302,11 +313,6 @@ object Libs {
      * https://developer.android.com/studio
      */
     const val aapt2: String = "com.android.tools.build:aapt2:" + Versions.aapt2
-
-    /**
-     * https://github.com/airbnb/epoxy
-     */
-    const val epoxy: String = "com.airbnb.android:epoxy:" + Versions.epoxy
 
     /**
      * http://junit.org
