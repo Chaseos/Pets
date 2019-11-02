@@ -215,10 +215,22 @@ object Libs {
             Versions.swiperefreshlayout
 
     /**
+     * https://github.com/airbnb/epoxy
+     */
+    const val epoxy_databinding: String = "com.airbnb.android:epoxy-databinding:" +
+            Versions.epoxy_databinding
+
+    /**
      * http://tools.android.com
      */
     const val constraintlayout: String = "androidx.constraintlayout:constraintlayout:" +
             Versions.constraintlayout
+
+    /**
+     * https://github.com/airbnb/epoxy
+     */
+    const val epoxy_processor: String = "com.airbnb.android:epoxy-processor:" +
+            Versions.epoxy_processor
 
     /**
      * http://developer.android.com/tools/extras/support-library.html
@@ -230,6 +242,11 @@ object Libs {
      * https://developer.android.com/topic/libraries/architecture/index.html
      */
     const val paging_runtime: String = "androidx.paging:paging-runtime:" + Versions.paging_runtime
+
+    /**
+     * https://github.com/airbnb/epoxy
+     */
+    const val epoxy_paging: String = "com.airbnb.android:epoxy-paging:" + Versions.epoxy_paging
 
     /**
      * https://developer.android.com/jetpack/androidx

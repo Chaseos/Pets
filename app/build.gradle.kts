@@ -95,6 +95,9 @@ dependencies {
 
     // Epoxy
     implementation(Libs.epoxy)
+    implementation(Libs.epoxy_paging)
+    implementation(Libs.epoxy_databinding)
+    kapt (Libs.epoxy_processor)
 
     // Koin
     implementation(Libs.koin_android)

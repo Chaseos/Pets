@@ -1,14 +1,16 @@
 package com.chaseolson.pets.core
 
-import android.R
 import android.widget.ImageView
-import com.squareup.picasso.Picasso
 import androidx.databinding.BindingAdapter
+import com.bumptech.glide.Glide
+import com.chaseolson.pets.home.model.NewPetListItemViewState
 
-class DataBindingUtils {
-
-    @BindingAdapter("android:imageUrl")
-    fun loadImage(view: ImageView, imageUrl: String) {
-        Picasso.get().load(imageUrl).error(com.chaseolson.pets.R.drawable.cat_silhouette).into(view)
-    }
+@BindingAdapter("glidePet")
+fun ImageView.loadGlideImage(pet: NewPetListItemViewState.NewPet) {
+    Glide.with(context)
+            .load(pet.mediumImage)
+            .centerCrop()
+            .thumbnail(Glide.with(context).load(pet.smallImage))
+            .fallback(pet.backupImage)
+            .into(this)
 }

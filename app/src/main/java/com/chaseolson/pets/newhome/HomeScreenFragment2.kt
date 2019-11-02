@@ -8,9 +8,11 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.GridLayoutManager
 import com.chaseolson.pets.R
 import com.chaseolson.pets.core.MainActivityViewModel2
 import com.chaseolson.pets.databinding.HomeScreenFragmentBinding
+import kotlinx.android.synthetic.main.home_screen_fragment.view.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class HomeScreenFragment2 : Fragment() {
@@ -26,8 +28,9 @@ class HomeScreenFragment2 : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        homeViewModel3.petsResponse.observe(viewLifecycleOwner, Observer { it != null })
-        homeViewModel3.animalsLiveData.observe(viewLifecycleOwner, Observer { it != null })
+        val controller = PetsListEpoxyController(homeViewModel3)
+        view.pet_recyclerView.adapter = controller.adapter
+        view.pet_recyclerView.layoutManager = GridLayoutManager(requireContext(), 2)
+        homeViewModel3.animalsLiveData.observe(viewLifecycleOwner, Observer { controller.submitList(it) })
     }
 }

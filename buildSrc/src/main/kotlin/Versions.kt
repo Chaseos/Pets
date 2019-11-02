@@ -50,11 +50,17 @@ object Versions {
 
     const val swiperefreshlayout: String = "1.0.0"
 
+    const val epoxy_databinding: String = "3.8.0"
+
     const val constraintlayout: String = "1.1.3"
+
+    const val epoxy_processor: String = "3.8.0"
 
     const val collection_ktx: String = "1.1.0"
 
     const val paging_runtime: String = "2.1.0"
+
+    const val epoxy_paging: String = "3.8.0"
 
     const val fragment_ktx: String = "1.1.0"
 

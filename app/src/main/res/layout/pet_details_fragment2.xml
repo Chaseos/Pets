@@ -22,7 +22,6 @@
             android:layout_height="200dp"
             android:transitionName="transition_pet_image"
             app:layout_collapseMode="parallax"
-            android:imageUrl="@{viewState.image }"
             app:layout_collapseParallaxMultiplier="0.5"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

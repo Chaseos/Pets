@@ -25,12 +25,11 @@
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
             tools:context=".home.HomeScreen">
 
-            <androidx.recyclerview.widget.RecyclerView
+            <com.airbnb.epoxy.EpoxyRecyclerView
                 android:id="@+id/pet_recyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:scrollbarSize="4dp"
-                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                 android:scrollbars="vertical"
                 tools:listitem="@layout/pet_list_item" />
 
@@ -41,6 +40,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="top|center_horizontal"
+            android:visibility="gone"
             android:layout_marginTop="76dp" />
 
         <com.google.android.material.card.MaterialCardView

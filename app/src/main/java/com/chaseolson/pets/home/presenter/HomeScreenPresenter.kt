@@ -104,7 +104,7 @@ class HomeScreenPresenter {
         private fun locationOnClick() {
             val popupWindow = PopupWindow(locationLayout, 700, 175, true)
             popupWindow.softInputMode = WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE
-            popupWindow.animationStyle = R.style.Animation_MaterialComponents_BottomSheetDialog
+//            popupWindow.animationStyle = R.style.Animation_MaterialComponents_BottomSheetDialog
 
             val search = popupWindow.contentView.search_icon
             val zipCode = popupWindow.contentView.zip_code
