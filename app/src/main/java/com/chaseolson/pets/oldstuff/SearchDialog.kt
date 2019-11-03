@@ -62,15 +62,15 @@ class SearchDialog : DialogFragment() {
         dialog?.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE)
         view.zip_code.requestFocus()
 
-        val callback = object : Callback<PetBreedsResponse> {
-            override fun onResponse(call: Call<PetBreedsResponse>, response: Response<PetBreedsResponse>) {
+        val callback = object : Callback<OldPetBreedsResponse> {
+            override fun onResponse(call: Call<OldPetBreedsResponse>, response: Response<OldPetBreedsResponse>) {
                 val breeds = response.body()?.breeds
                 val adapter = breeds?.run { ArrayAdapter<String>(context, android.R.layout.simple_dropdown_item_1line, breeds.map { it.breed }.toMutableList()) }
                 view.breeds_auto_complete?.threshold = 1
                 view.breeds_auto_complete?.setAdapter(adapter)
             }
 
-            override fun onFailure(call: Call<PetBreedsResponse>, t: Throwable) {}
+            override fun onFailure(call: Call<OldPetBreedsResponse>, t: Throwable) {}
 
         }
 

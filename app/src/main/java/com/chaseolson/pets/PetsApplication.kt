@@ -6,11 +6,11 @@ import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
 
-class PetsApplication : Application(){
+class PetsApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         // Start Koin
-        startKoin{
+        startKoin {
             androidLogger()
             androidContext(this@PetsApplication)
             modules(NetworkModule().retrofitModule)

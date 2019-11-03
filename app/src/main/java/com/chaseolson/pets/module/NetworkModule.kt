@@ -25,11 +25,13 @@ class NetworkModule {
         single { HomeScreenViewModel(get()) }
     }
 
+    val BASE_URL = "https://api.petfinder.com/v2/"
+
     fun provideRefreshInterceptor(tokenPreferences: SharedPreferences) =
             OAuthInterceptor(Retrofit
                     .Builder()
                     .client(OkHttpClient.Builder().build())
-                    .baseUrl("https://api.petfinder.com/v2/")
+                    .baseUrl(BASE_URL)
                     .addConverterFactory(Json.asConverterFactory(MediaType.get("application/json")))
                     .build()
                     .create(RefreshEndpoint::class.java), tokenPreferences)
@@ -44,7 +46,7 @@ class NetworkModule {
                     .writeTimeout(30, TimeUnit.SECONDS)
                     .addInterceptor(interceptor)
                     .build())
-            .baseUrl("https://api.petfinder.com/v2/")
+            .baseUrl(BASE_URL)
             .addConverterFactory(Json.nonstrict.asConverterFactory(MediaType.get("application/json")))
             .build()
             .create(MobileEndpointsNew::class.java)

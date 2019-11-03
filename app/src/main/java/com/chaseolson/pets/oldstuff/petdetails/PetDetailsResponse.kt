@@ -1,7 +1,7 @@
 package com.chaseolson.pets.oldstuff.petdetails
 
-import com.chaseolson.pets.oldstuff.Photo
-import com.chaseolson.pets.oldstuff.PetFinderResponse
+import com.chaseolson.pets.oldstuff.OldPhoto
+import com.chaseolson.pets.oldstuff.OldPetFinderResponse
 import com.tickaroo.tikxml.annotation.*
 
 @Xml(name = "petfinder")
@@ -11,24 +11,24 @@ data class PetDetailsResponse(
 ) {
         @Xml
         data class Pet(
-            @PropertyElement
+                @PropertyElement
                 val id: Int = 0,
-            @PropertyElement
+                @PropertyElement
                 val name: String = "N/A",
-            @PropertyElement
+                @PropertyElement
                 val animal: String = "N/A",
-            @PropertyElement
+                @PropertyElement
                 val sex: String = "N/A",
-            @PropertyElement
+                @PropertyElement
                 val age: String = "N/A",
-            @Path("breeds")
+                @Path("breeds")
                 @Element
                 val breeds: List<Breed>? = emptyList(),
-            @Path("media/photos")
+                @Path("media/oldPhotos")
                 @Element
-                val photos: List<Photo>? = emptyList(),
-            @Element
-                val contact: PetFinderResponse.Pet.Contact
+                val oldPhotos: List<OldPhoto>? = emptyList(),
+                @Element
+                val contact: OldPetFinderResponse.Pet.Contact
         ) {
 
                 @Xml

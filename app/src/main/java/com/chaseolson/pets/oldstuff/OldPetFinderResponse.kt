@@ -4,7 +4,7 @@ import com.tickaroo.tikxml.annotation.*
 
 
 @Xml(name = "petfinder")
-data class PetFinderResponse(
+data class OldPetFinderResponse(
         @PropertyElement
         val lastOffset: Int? = 40,
         @Path("pets")
@@ -14,18 +14,18 @@ data class PetFinderResponse(
 
     @Xml
     data class Pet(
-        @PropertyElement
+            @PropertyElement
             val id: Int = 0,
-        @PropertyElement
+            @PropertyElement
             val name: String = "N/A",
-        @PropertyElement
+            @PropertyElement
             val animal: String = "N/A",
-        @PropertyElement
+            @PropertyElement
             val sex: String = "N/A",
-        @Path("media/photos")
+            @Path("media/photos")
             @Element
-            val photos: List<Photo>? = emptyList(),
-        @Element
+            val oldPhotos: List<OldPhoto>? = emptyList(),
+            @Element
             val contact: Contact
     ) {
 

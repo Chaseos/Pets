@@ -21,14 +21,14 @@ interface MobileEndpointsOld {
         @Query("count") count: Int?,
         @Query("output") output: String?,
         @Query("format") format: String
-    ): Call<PetFinderResponse>
+    ): Call<OldPetFinderResponse>
 
     @GET("breed.list")
     fun getPetBreeds(
             @Query("key") key: String,
             @Query("animal") animal: String?,
             @Query("format") format: String
-    ): Call<PetBreedsResponse>
+    ): Call<OldPetBreedsResponse>
 
     @GET("pet.get")
     fun getPet(
@@ -56,14 +56,14 @@ interface MobileEndpointsOld {
         @Query("count") count: Int?,
         @Query("output") output: String?,
         @Query("format") format: String
-    ): Call<PetFinderResponse>
+    ): Call<OldPetFinderResponse>
 
     @GET("breed.list")
     suspend fun getPetBreeds2(
             @Query("key") key: String,
             @Query("animal") animal: String?,
             @Query("format") format: String
-    ): Call<PetBreedsResponse>
+    ): Call<OldPetBreedsResponse>
 
     @GET("pet.get")
     suspend fun getPet2(

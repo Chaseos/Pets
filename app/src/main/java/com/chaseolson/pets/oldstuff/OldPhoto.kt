@@ -5,7 +5,7 @@ import com.tickaroo.tikxml.annotation.TextContent
 import com.tickaroo.tikxml.annotation.Xml
 
 @Xml
-data class Photo(
+data class OldPhoto(
         @Attribute
         val size: String = "",
         @TextContent

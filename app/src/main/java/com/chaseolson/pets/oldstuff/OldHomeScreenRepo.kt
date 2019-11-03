@@ -14,7 +14,7 @@ class OldHomeScreenRepo {
                                 id = pet.id,
                                 name = pet.name?.filterName() ?: ""
 //                                city = pet.sex.genderAndLocationToString(pet.contact.city),
-//                                images = pet.photos?.run { this.filterImagesList() } ?: emptyList(),
+//                                images = pet.oldPhotos?.run { this.filterImagesList() } ?: emptyList(),
 //                                backupImage = pet.animal.animalToBackupImage(),
 //                                offset = pets.lastOffset
                         )

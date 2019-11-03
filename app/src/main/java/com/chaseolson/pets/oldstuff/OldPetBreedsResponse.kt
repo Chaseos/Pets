@@ -6,7 +6,7 @@ import com.tickaroo.tikxml.annotation.TextContent
 import com.tickaroo.tikxml.annotation.Xml
 
 @Xml(name = "petfinder")
-data class PetBreedsResponse(
+data class OldPetBreedsResponse(
         @Path("breeds")
         @Element
         val breeds: List<Breed>? = emptyList()

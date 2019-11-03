@@ -1,8 +1,6 @@
 package com.chaseolson.pets.home
 
-import androidx.paging.DataSource
 import androidx.paging.PageKeyedDataSource
-import com.chaseolson.pets.oldstuff.OldHomeScreenRepo
 import com.chaseolson.pets.home.models.PetListItemViewState
 import com.chaseolson.pets.home.models.responseToViewModel
 import com.chaseolson.pets.oldstuff.SearchModel
@@ -62,16 +60,5 @@ class PetFeedNew(val api: MobileEndpointsNew,
     override fun invalidate() {
         super.invalidate()
         scope.cancel()
-    }
-}
-
-
-class PetDataSourceFactoryNew(val api: MobileEndpointsNew,
-                              var searchModel: SearchModel,
-                              val viewModel: HomeScreenViewModel,
-                              val scope: CoroutineScope) : DataSource.Factory<Int, PetListItemViewState.Pet>() {
-
-    override fun create(): DataSource<Int, PetListItemViewState.Pet> {
-        return PetFeedNew(api, searchModel, viewModel, scope)
     }
 }

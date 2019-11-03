@@ -1,7 +1,6 @@
 package com.chaseolson.pets.core
 
 import com.chaseolson.pets.core.Status.*
-import retrofit2.Response
 
 /*
  * Copyright (C) 2017 The Android Open Source Project

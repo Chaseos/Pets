@@ -2,8 +2,8 @@ package com.chaseolson.pets
 
 import com.chaseolson.pets.oldstuff.OldHomeScreenRepo
 import com.chaseolson.pets.oldstuff.PetFeed
-import com.chaseolson.pets.oldstuff.PetFinderResponse
-import com.chaseolson.pets.oldstuff.PetFinderResponse.Pet
+import com.chaseolson.pets.oldstuff.OldPetFinderResponse
+import com.chaseolson.pets.oldstuff.OldPetFinderResponse.Pet
 import com.chaseolson.pets.oldstuff.OldPetListItemViewState
 import org.junit.Assert.assertEquals
 import org.junit.Before
@@ -22,7 +22,7 @@ class HomeScreenRepoTest {
             name = "Snowball",
             animal = "Dog",
             sex = "M",
-            photos = listOf(
+            oldPhotos = listOf(
                     Pet.Photo("pn", "http://www.photoL.com/"),
                     Pet.Photo("pnt", "http://www.photoNotL.com/")),
             contact = Pet.Contact("Addison")
@@ -72,14 +72,14 @@ class HomeScreenRepoTest {
 
     @Test
     fun `responseToViewModel Default Response`() {
-        val vm = OldHomeScreenRepo.oldResponseToViewModel(PetFinderResponse())
+        val vm = OldHomeScreenRepo.oldResponseToViewModel(OldPetFinderResponse())
         assertEquals(OldPetListItemViewState(emptyList()), vm)
     }
 
     @Test
     fun `responseToViewModel Real One Pet Two Images`() {
         val vm = OldHomeScreenRepo.oldResponseToViewModel(
-            PetFinderResponse(
+            OldPetFinderResponse(
                 pet = listOf(petResponse),
                 lastOffset = 20
             )
@@ -90,7 +90,7 @@ class HomeScreenRepoTest {
     @Test
     fun `responseToViewModel Real Two Pet Two Images`() {
         val vm = OldHomeScreenRepo.oldResponseToViewModel(
-            PetFinderResponse(
+            OldPetFinderResponse(
                 pet = listOf(petResponse, petResponseTwo),
                 lastOffset = 20
             )

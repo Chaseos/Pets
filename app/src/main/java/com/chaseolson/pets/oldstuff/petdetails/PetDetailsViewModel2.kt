@@ -57,7 +57,7 @@ class PetDetailsViewModel2 : ViewModel() {
     fun responseToViewModel(petDetails: PetDetailsResponse.Pet?): PetDetailsViewState {
         return PetDetailsViewState(
                 id = petDetails?.id,
-                image = petDetails?.photos?.get(0)?.photo
+                image = petDetails?.oldPhotos?.get(0)?.photo
 //                .run { this.filterImagesList() } ?: emptyList()
         )
     }
