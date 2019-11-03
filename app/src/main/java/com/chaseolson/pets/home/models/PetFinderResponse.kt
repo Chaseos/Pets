@@ -1,10 +1,11 @@
 package com.chaseolson.pets.home.models
 
+import com.chaseolson.pets.core.*
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class NewPetFinderResponse(
+data class PetFinderResponse(
     val animals: List<Animal>? = null,
     val pagination: Pagination? = null
 ) {
@@ -24,43 +25,44 @@ data class NewPetFinderResponse(
         val gender: String? = null,
         val name: String? = null,
         @SerialName("organization_id")
-            val organizationId: String? = null,
+        val organizationId: String? = null,
         val photos: List<NewPhoto> = emptyList(),
         @SerialName("published_at")
-            val publishedAt: String? = null,
+        val publishedAt: String? = null,
         val size: String? = null,
         val species: String? = null,
         val status: String? = null,
         val tags: List<String>? = null,
         val url: String? = null,
         @SerialName("_links")
-            val links: AnimalLinks? = null) {
+        val links: AnimalLinks? = null
+    ) {
         @Serializable
         data class Attributes(
-                val declawed: Boolean? = null,
-                @SerialName("house_trained")
-                val houseTrained: Boolean? = null,
-                @SerialName("shots_current")
-                val shotsCurrent: Boolean? = null,
-                @SerialName("spayed_neutered")
-                val spayedNeutered: Boolean? = null,
-                @SerialName("special_needs")
-                val specialNeeds: Boolean? = null
+            val declawed: Boolean? = null,
+            @SerialName("house_trained")
+            val houseTrained: Boolean? = null,
+            @SerialName("shots_current")
+            val shotsCurrent: Boolean? = null,
+            @SerialName("spayed_neutered")
+            val spayedNeutered: Boolean? = null,
+            @SerialName("special_needs")
+            val specialNeeds: Boolean? = null
         )
 
         @Serializable
         data class Breeds(
-                val mixed: Boolean? = null,
-                val primary: String? = null,
-                val secondary: String? = null,
-                val unknown: Boolean? = null
+            val mixed: Boolean? = null,
+            val primary: String? = null,
+            val secondary: String? = null,
+            val unknown: Boolean? = null
         )
 
         @Serializable
         data class Colors(
-                val primary: String? = null,
-                val secondary: String? = null,
-                val tertiary: String? = null
+            val primary: String? = null,
+            val secondary: String? = null,
+            val tertiary: String? = null
         )
 
         @Serializable
@@ -72,9 +74,9 @@ data class NewPetFinderResponse(
 
         @Serializable
         data class Environment(
-                val cats: Boolean? = null,
-                val children: Boolean? = null,
-                val dogs: Boolean? = null
+            val cats: Boolean? = null,
+            val children: Boolean? = null,
+            val dogs: Boolean? = null
         )
     }
 
@@ -86,31 +88,47 @@ data class NewPetFinderResponse(
     ) {
         @Serializable
         data class Organization(
-                val href: String? = null
+            val href: String? = null
         )
 
         @Serializable
         data class Self(
-                val href: String? = null
+            val href: String? = null
         )
 
         @Serializable
         data class Type(
-                val href: String? = null
+            val href: String? = null
         )
     }
 
     @Serializable
     data class Pagination(
         @SerialName("_links")
-            val links: AnimalLinks? = null,
+        val links: AnimalLinks? = null,
         @SerialName("count_per_page")
-            val countPerPage: Int? = null,
+        val countPerPage: Int? = null,
         @SerialName("current_page")
-            val currentPage: Int? = null,
+        val currentPage: Int? = null,
         @SerialName("total_count")
-            val totalCount: Int? = null,
+        val totalCount: Int? = null,
         @SerialName("total_pages")
-            val totalPages: Int
+        val totalPages: Int
     )
+}
+
+fun PetFinderResponse.responseToViewModel(): PetListItemViewState? {
+    val newList = animals?.distinctBy { it.id }?.map { pet ->
+        PetListItemViewState.Pet(
+            id = pet.id,
+            name = pet.name?.filterName() ?: "No Name",
+            city = pet.gender?.genderAndLocationToString(pet.contact.address.city),
+            smallImage = pet.photos.getSmallImage(),
+            mediumImage = pet.photos.getMediumImage(),
+            backupImage = pet.type.animalToBackupImage(),
+            offset = pagination?.currentPage ?: 0
+        )
+    }
+
+    return PetListItemViewState(newList)
 }

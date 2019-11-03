@@ -1,11 +1,9 @@
-package com.chaseolson.pets.petdetails
+package com.chaseolson.pets.oldstuff.petdetails
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import com.chaseolson.pets.core.ResultWrapper
-import kotlinx.coroutines.async
 
 //TODO Build motionlayout
 //TODO Build builder
@@ -46,7 +44,7 @@ class PetDetailsViewModel2 : ViewModel() {
         return responseToViewModel(petDetailsData.data?.pet)
 //        when (petDetailsData.status) {
 //            Status.LOADING -> {}
-//            Status.SUCCESS -> currentViewState.postValue(responseToViewModel(petDetailsData.data?.pet))
+//            Status.SUCCESS -> currentViewState.postValue(oldResponseToViewModel(petDetailsData.data?.pet))
 //            Status.ERROR -> {}
 //        }
 //        return PetDetailsViewState()

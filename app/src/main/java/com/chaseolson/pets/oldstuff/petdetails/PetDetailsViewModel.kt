@@ -1,4 +1,4 @@
-package com.chaseolson.pets.petdetails
+package com.chaseolson.pets.oldstuff.petdetails
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

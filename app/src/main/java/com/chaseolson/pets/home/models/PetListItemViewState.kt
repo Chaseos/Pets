@@ -1,8 +1,8 @@
 package com.chaseolson.pets.home.models
 
-data class NewPetListItemViewState(val pets: List<NewPet>? = null) {
+data class PetListItemViewState(val pets: List<Pet>? = null) {
 
-    data class NewPet(
+    data class Pet(
         val id: Int = 0,
         val name: String = "N/A",
         val age: String = "N/A",

@@ -1,6 +1,5 @@
-package com.chaseolson.pets.petdetails
+package com.chaseolson.pets.oldstuff.petdetails
 
-import android.graphics.drawable.Drawable
 import com.chaseolson.pets.R
 
 data class PetDetailsViewState(

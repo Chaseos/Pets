@@ -1,4 +1,4 @@
-package com.chaseolson.pets.petdetails
+package com.chaseolson.pets.oldstuff.petdetails
 
 class PetDetailsRepo(val listener: Listener) {
     interface Listener {
@@ -25,7 +25,7 @@ class PetDetailsRepo(val listener: Listener) {
 //
 //            override fun onResponse(call: Call<PetDetailsResponse>, response: Response<PetDetailsResponse>) {
 //                if (response.isSuccessful) {
-////                    return responseToViewModel(response.body()?.pet)
+////                    return oldResponseToViewModel(response.body()?.pet)
 //                }
 //            }
 //        }

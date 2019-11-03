@@ -1,4 +1,4 @@
-package com.chaseolson.pets.module
+package com.chaseolson.pets.home.models
 
 import kotlinx.serialization.Serializable
 

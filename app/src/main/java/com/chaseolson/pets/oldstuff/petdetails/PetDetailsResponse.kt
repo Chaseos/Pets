@@ -1,4 +1,4 @@
-package com.chaseolson.pets.petdetails
+package com.chaseolson.pets.oldstuff.petdetails
 
 import com.chaseolson.pets.oldstuff.Photo
 import com.chaseolson.pets.oldstuff.PetFinderResponse
