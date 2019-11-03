@@ -4,7 +4,7 @@ import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
 import com.chaseolson.pets.core.OAuthInterceptor
-import com.chaseolson.pets.newhome.HomeScreenViewModel3
+import com.chaseolson.pets.home.HomeScreenViewModel
 import com.chaseolson.pets.repo.MobileEndpointsNew
 import com.chaseolson.pets.repo.RefreshEndpoint
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
@@ -22,7 +22,7 @@ class NetworkModule {
         single { tokenPreferences(androidApplication()) }
         single { provideRefreshInterceptor(get()) }
         single { provideMobileEndpoints(get()) }
-        single { HomeScreenViewModel3(get()) }
+        single { HomeScreenViewModel(get()) }
     }
 
     fun provideRefreshInterceptor(tokenPreferences: SharedPreferences) =

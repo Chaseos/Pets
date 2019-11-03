@@ -1,7 +1,7 @@
 package com.chaseolson.pets
 
 import com.chaseolson.pets.core.*
-import com.chaseolson.pets.home.model.PetFinderResponse
+import com.chaseolson.pets.oldstuff.PetFinderResponse
 import org.junit.Assert.assertEquals
 import org.junit.Test
 

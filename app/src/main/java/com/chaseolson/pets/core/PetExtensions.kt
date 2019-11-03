@@ -1,7 +1,8 @@
 package com.chaseolson.pets.core
 
 import com.chaseolson.pets.R
-import com.chaseolson.pets.home.model.NewPhoto
+import com.chaseolson.pets.home.models.NewPhoto
+import com.chaseolson.pets.oldstuff.Photo
 
 fun String.filterName(): String {
     val nonNumberOrDollarSignRegex = Regex("[^A-Za-z &()*-]")

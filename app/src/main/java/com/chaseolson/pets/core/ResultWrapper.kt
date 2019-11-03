@@ -1,6 +1,7 @@
 package com.chaseolson.pets.core
 
 import com.chaseolson.pets.core.Status.*
+import retrofit2.Response
 
 /*
  * Copyright (C) 2017 The Android Open Source Project
@@ -19,6 +20,7 @@ import com.chaseolson.pets.core.Status.*
  */
 
 /**
+ * TODO I don't know if I want to use this or not... Requires extra layer of abstraction from API calls
  * A generic class that holds a value with its loading status.
  * @param <T>
 </T> */
@@ -42,3 +44,12 @@ enum class Status {
     ERROR,
     LOADING
 }
+
+//fun <T> Response<T>.toResult(): ResultWrapper<T> {
+//    return try {
+//        if (this.isSuccessful) ResultWrapper.success(this.body())
+//        else ResultWrapper.error(this.message(), this.code(), null)
+//    } catch (e: Exception) {
+//        ResultWrapper.error(e.localizedMessage, null, null)
+//    }
+//}

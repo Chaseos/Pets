@@ -4,7 +4,7 @@
         xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <variable name="viewState" type="com.chaseolson.pets.petdetails.PetDetailsViewState"/>
+        <variable name="viewState" type="com.chaseolson.pets.oldstuff.petdetails.PetDetailsViewState"/>
     </data>
 <androidx.coordinatorlayout.widget.CoordinatorLayout
     android:layout_width="match_parent"

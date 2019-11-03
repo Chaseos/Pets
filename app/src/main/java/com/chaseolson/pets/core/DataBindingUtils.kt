@@ -5,12 +5,12 @@ import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.bumptech.glide.Glide
-import com.chaseolson.pets.home.model.NewPetListItemViewState
+import com.chaseolson.pets.home.models.PetListItemViewState
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
 @BindingAdapter("glidePet")
-fun ImageView.loadGlideImage(pet: NewPetListItemViewState.NewPet) {
+fun ImageView.loadGlideImage(pet: PetListItemViewState.Pet) {
     Glide.with(context)
             .load(pet.mediumImage)
             .centerCrop()

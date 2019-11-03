@@ -6,16 +6,8 @@ import androidx.navigation.Navigation.findNavController
 import com.chaseolson.pets.R
 
 class MainActivity : AppCompatActivity() {
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-//        setupNavigation()
-    }
-
-    private fun setupNavigation() {
-        val navController = findNavController(this, R.id.nav_host_fragment)
-
-        //TODO(Nav Stuff)
     }
 }

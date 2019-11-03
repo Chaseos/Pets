@@ -7,13 +7,13 @@
 
     <fragment
         android:id="@+id/homeScreenFragment"
-        android:name="com.chaseolson.pets.newhome.HomeScreenFragment2"
+        android:name="com.chaseolson.pets.home.HomeScreenFragment"
         android:label="Pets"
         tools:layout="@layout/home_screen_fragment"/>
 
     <fragment
         android:id="@+id/homeScreen"
-        android:name="com.chaseolson.pets.home.HomeScreen"
+        android:name="com.chaseolson.pets.oldstuff.HomeScreen"
         android:label="Pets"
         tools:layout="@layout/fragment_home_screen">
 <!--        <action-->
@@ -22,7 +22,7 @@
     </fragment>
     <fragment
         android:id="@+id/petDetailsFragment"
-        android:name="com.chaseolson.pets.petdetails.PetDetailsFragment"
+        android:name="com.chaseolson.pets.oldstuff.petdetails.PetDetailsFragment"
         android:label="PetDetailsFragment" >
         <argument
             android:name="petId"
@@ -30,7 +30,7 @@
     </fragment>
 <!--    <fragment-->
 <!--        android:id="@+id/petDetailsFragment2"-->
-<!--        android:name="com.chaseolson.pets.petdetails.PetDetailsFragment2"-->
+<!--        android:name="com.chaseolson.pets.oldstuff.petdetails.PetDetailsFragment2"-->
 <!--        android:label="PetDetailsFragment2" >-->
 <!--    <argument-->
 <!--        android:name="petId"-->
