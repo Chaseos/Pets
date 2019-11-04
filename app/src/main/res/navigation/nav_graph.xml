@@ -10,30 +10,4 @@
         android:name="com.chaseolson.pets.home.HomeScreenFragment"
         android:label="Pets"
         tools:layout="@layout/home_screen_fragment"/>
-
-    <fragment
-        android:id="@+id/homeScreen"
-        android:name="com.chaseolson.pets.oldstuff.HomeScreen"
-        android:label="Pets"
-        tools:layout="@layout/fragment_home_screen">
-<!--        <action-->
-<!--            android:id="@+id/action_homeScreen_to_petDetailsFragment2"-->
-<!--            app:destination="@id/petDetailsFragment2" />-->
-    </fragment>
-    <fragment
-        android:id="@+id/petDetailsFragment"
-        android:name="com.chaseolson.pets.oldstuff.petdetails.PetDetailsFragment"
-        android:label="PetDetailsFragment" >
-        <argument
-            android:name="petId"
-            app:argType="integer" />
-    </fragment>
-<!--    <fragment-->
-<!--        android:id="@+id/petDetailsFragment2"-->
-<!--        android:name="com.chaseolson.pets.oldstuff.petdetails.PetDetailsFragment2"-->
-<!--        android:label="PetDetailsFragment2" >-->
-<!--    <argument-->
-<!--        android:name="petId"-->
-<!--        app:argType="integer" />-->
-<!--    </fragment>-->
 </navigation>
