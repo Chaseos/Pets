@@ -6,17 +6,17 @@ import com.chaseolson.pets.home.models.PetListItemViewState
 
 class OldHomeScreenRepo {
     companion object {
-        fun oldResponseToViewModel(pets: PetFinderResponse?): OldPetListItemViewState? {
+        fun oldResponseToViewModel(pets: OldPetFinderResponse?): OldPetListItemViewState? {
             val petList = mutableListOf<OldPetListItemViewState.Pet>()
-            pets?.animals?.distinctBy { pet -> pet.id }?.forEach { pet ->
+            pets?.pet?.distinctBy { pet -> pet.id }?.forEach { pet ->
                 petList.add(
                         OldPetListItemViewState.Pet(
                                 id = pet.id,
-                                name = pet.name?.filterName() ?: ""
-//                                city = pet.sex.genderAndLocationToString(pet.contact.city),
-//                                images = pet.oldPhotos?.run { this.filterImagesList() } ?: emptyList(),
-//                                backupImage = pet.animal.animalToBackupImage(),
-//                                offset = pets.lastOffset
+                                name = pet.name.filterName(),
+                                city = pet.sex.genderAndLocationToString(pet.contact.city),
+                                images = pet.oldPhotos?.run { this.filterImagesList() } ?: emptyList(),
+                                backupImage = pet.animal.animalToBackupImage(),
+                                offset = pets.lastOffset
                         )
                 )
             }

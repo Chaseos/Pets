@@ -26,8 +26,13 @@ android {
         getByName("release") {
             isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            buildConfigField("String", "petFinderKey", Petfinder_CONSUMER_KEY)
+            buildConfigField("String", "petFinderSecret", Petfinder_CONSUMER_SECRET)
         }
-        getByName("debug") {}
+        getByName("debug") {
+            buildConfigField("String", "petFinderKey", Petfinder_CONSUMER_KEY)
+            buildConfigField("String", "petFinderSecret", Petfinder_CONSUMER_SECRET)
+        }
     }
 
     dataBinding.isEnabled = true
