@@ -59,3 +59,5 @@ fun String.genderToSearchQuery() = when (this) {
     "Male" -> "M"
     else -> null
 }
+
+fun Double.getDistance() = String.format("%.1f", this) + "mi"

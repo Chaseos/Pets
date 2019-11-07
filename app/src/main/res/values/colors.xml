@@ -3,4 +3,6 @@
     <color name="colorPrimary">#111111</color>
     <color name="colorPrimaryDark">#111111</color>
     <color name="colorAccent">#111111</color>
+    <color name="card_light_transparent">#80FFFFFF</color>
+    <color name="dark_grey">#616161</color>
 </resources>

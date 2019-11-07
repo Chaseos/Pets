@@ -126,6 +126,7 @@ fun PetFinderResponse.responseToViewModel(): PetListItemViewState? {
                 smallImage = pet.photos.getSmallImage(),
                 mediumImage = pet.photos.getMediumImage(),
                 backupImage = pet.type.animalToBackupImage(),
+                distance = pet.distance?.getDistance(),
                 offset = pagination?.currentPage ?: 0
         )
     }

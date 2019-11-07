@@ -13,6 +13,7 @@ data class PetListItemViewState(val pets: List<Pet>? = null) {
             val mediumImage: String? = null,
             val backupImage: Int = 0,
             val city: String? = null,
+            val distance: String?,
             val offset: Int? = 0
     )
 }
