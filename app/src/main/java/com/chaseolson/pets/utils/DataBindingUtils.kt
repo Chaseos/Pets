@@ -1,4 +1,4 @@
-package com.chaseolson.pets.core
+package com.chaseolson.pets.utils
 
 import android.view.View
 import android.widget.ImageView

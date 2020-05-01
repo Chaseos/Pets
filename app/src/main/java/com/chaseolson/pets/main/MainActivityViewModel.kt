@@ -1,4 +1,4 @@
-package com.chaseolson.pets.core
+package com.chaseolson.pets.main
 
 import androidx.lifecycle.ViewModel
 

@@ -1,4 +1,4 @@
-package com.chaseolson.pets.core
+package com.chaseolson.pets.utils
 
 import com.chaseolson.pets.R
 import com.chaseolson.pets.home.models.Photo
@@ -28,7 +28,6 @@ fun String.charGenderToStringGender() = when (this.toUpperCase(Locale.getDefault
     else -> "Gender N/A"
 }
 
-//TODO if name has "and" in it, make it They
 fun String.genderAndLocationToString(city: String, name: String): String {
     return when {
         name.contains(" and ") or name.contains(" & ") -> "They're in $city"

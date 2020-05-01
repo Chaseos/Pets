@@ -1,7 +1,7 @@
-package com.chaseolson.pets.repo
+package com.chaseolson.pets.network.repo
 
 import com.chaseolson.pets.BuildConfig
-import com.chaseolson.pets.core.TokenResponseDto
+import com.chaseolson.pets.network.TokenResponseDto
 import retrofit2.Response
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded

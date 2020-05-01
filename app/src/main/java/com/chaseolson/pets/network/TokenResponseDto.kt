@@ -1,4 +1,4 @@
-package com.chaseolson.pets.core
+package com.chaseolson.pets.network
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

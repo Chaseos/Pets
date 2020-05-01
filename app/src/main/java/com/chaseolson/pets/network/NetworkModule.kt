@@ -1,12 +1,11 @@
-package com.chaseolson.pets.module
+package com.chaseolson.pets.network
 
 import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
-import com.chaseolson.pets.core.OAuthInterceptor
 import com.chaseolson.pets.home.HomeScreenViewModel
-import com.chaseolson.pets.repo.PetFinderEndpoints
-import com.chaseolson.pets.repo.RefreshEndpoint
+import com.chaseolson.pets.network.repo.PetFinderEndpoints
+import com.chaseolson.pets.network.repo.RefreshEndpoint
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonConfiguration

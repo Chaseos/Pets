@@ -1,7 +1,7 @@
-package com.chaseolson.pets.core
+package com.chaseolson.pets.network
 
 import android.content.SharedPreferences
-import com.chaseolson.pets.repo.RefreshEndpoint
+import com.chaseolson.pets.network.repo.RefreshEndpoint
 import kotlinx.coroutines.runBlocking
 import okhttp3.Interceptor
 import okhttp3.Response

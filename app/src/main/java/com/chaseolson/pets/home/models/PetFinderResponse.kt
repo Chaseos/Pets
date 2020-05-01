@@ -1,6 +1,6 @@
 package com.chaseolson.pets.home.models
 
-import com.chaseolson.pets.core.*
+import com.chaseolson.pets.utils.*
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 

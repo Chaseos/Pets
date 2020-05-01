@@ -1,7 +1,7 @@
 package com.chaseolson.pets
 
 import android.app.Application
-import com.chaseolson.pets.module.NetworkModule
+import com.chaseolson.pets.network.NetworkModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin

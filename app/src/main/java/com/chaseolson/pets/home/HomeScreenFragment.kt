@@ -11,7 +11,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import com.chaseolson.pets.R
-import com.chaseolson.pets.core.MainActivityViewModel
+import com.chaseolson.pets.main.MainActivityViewModel
 import com.chaseolson.pets.databinding.HomeScreenFragmentBinding
 import com.google.android.material.behavior.HideBottomViewOnScrollBehavior
 import kotlinx.android.synthetic.main.home_screen_fragment.view.*

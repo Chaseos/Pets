@@ -1,4 +1,4 @@
-package com.chaseolson.pets.repo
+package com.chaseolson.pets.network.repo
 
 import com.chaseolson.pets.home.models.PetFinderResponse
 import retrofit2.Response

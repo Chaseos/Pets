@@ -6,16 +6,15 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.DataSource
 import androidx.paging.LivePagedListBuilder
 import com.chaseolson.pets.R
-import com.chaseolson.pets.core.call
 import com.chaseolson.pets.home.models.PetListItemViewState
-import com.chaseolson.pets.repo.PetFinderEndpoints
+import com.chaseolson.pets.network.repo.PetFinderEndpoints
 import com.chaseolson.pets.search.SearchModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.hadilq.liveevent.LiveEvent
+import com.chaseolson.pets.core.LiveEvent
 
 class HomeScreenViewModel(repo: PetFinderEndpoints) : ViewModel() {
     val isLoading = MutableLiveData(true)
-    val scrollToTop = LiveEvent<Unit>()
+    val scrollToTop = LiveEvent()
     private val petFeedFactory = object : DataSource.Factory<Int, PetListItemViewState.Pet>() {
         override fun create(): DataSource<Int, PetListItemViewState.Pet> =
             AnimalFeed(repo, SearchModel(), this@HomeScreenViewModel, viewModelScope)
@@ -32,5 +31,5 @@ class HomeScreenViewModel(repo: PetFinderEndpoints) : ViewModel() {
             true
         })
 
-    fun scrollToTop() = scrollToTop.call()
+    fun scrollToTop() = scrollToTop.callEvent()
 }

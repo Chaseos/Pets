@@ -9,7 +9,7 @@ buildscript {
     dependencies {
         classpath(Libs.kotlin_gradle_plugin)
         classpath(Libs.kotlin_serialization)
-        classpath("com.android.tools.build:gradle:4.1.0-alpha08")
+        classpath(Libs.com_android_tools_build_gradle)
     }
 }
 

@@ -3,17 +3,17 @@ package com.chaseolson.pets.home
 import androidx.paging.PageKeyedDataSource
 import com.chaseolson.pets.home.models.PetListItemViewState
 import com.chaseolson.pets.home.models.responseToViewState
-import com.chaseolson.pets.repo.PetFinderEndpoints
+import com.chaseolson.pets.network.repo.PetFinderEndpoints
 import com.chaseolson.pets.search.SearchModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 
 class AnimalFeed(
-    val api: PetFinderEndpoints,
-    val searchModel: SearchModel,
-    val viewModel: HomeScreenViewModel,
-    val scope: CoroutineScope
+    private val api: PetFinderEndpoints,
+    private val searchModel: SearchModel,
+    private val viewModel: HomeScreenViewModel,
+    private val scope: CoroutineScope
 ) : PageKeyedDataSource<Int, PetListItemViewState.Pet>() {
 
     override fun loadInitial(
