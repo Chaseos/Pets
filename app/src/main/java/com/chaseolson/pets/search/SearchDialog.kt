@@ -8,7 +8,6 @@ import android.view.WindowManager
 import androidx.fragment.app.DialogFragment
 import com.chaseolson.pets.R
 
-//TODO Add Chips to selected items?? Maybe not
 class SearchDialog : DialogFragment() {
 
     interface SearchDialogListener {

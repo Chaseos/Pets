@@ -1,7 +1,8 @@
 package com.chaseolson.pets.home
 
+import androidx.lifecycle.viewModelScope
 import androidx.paging.PageKeyedDataSource
-import com.chaseolson.pets.home.models.PetListItemViewState
+import com.chaseolson.pets.home.models.PetListViewState
 import com.chaseolson.pets.home.models.responseToViewState
 import com.chaseolson.pets.network.repo.PetFinderEndpoints
 import com.chaseolson.pets.search.SearchModel
@@ -12,15 +13,14 @@ import kotlinx.coroutines.launch
 class AnimalFeed(
     private val api: PetFinderEndpoints,
     private val searchModel: SearchModel,
-    private val viewModel: HomeScreenViewModel,
-    private val scope: CoroutineScope
-) : PageKeyedDataSource<Int, PetListItemViewState.Pet>() {
+    private val viewModel: HomeScreenViewModel
+) : PageKeyedDataSource<Int, PetListViewState.Pet>() {
 
     override fun loadInitial(
         params: LoadInitialParams<Int>,
-        callback: LoadInitialCallback<Int, PetListItemViewState.Pet>
+        callback: LoadInitialCallback<Int, PetListViewState.Pet>
     ) {
-        scope.launch {
+        viewModel.viewModelScope.launch {
             val petsResponse = api.getPetListingNew(
                 type = searchModel.animal,
                 breed = searchModel.breed,
@@ -45,9 +45,9 @@ class AnimalFeed(
 
     override fun loadAfter(
         params: LoadParams<Int>,
-        callback: LoadCallback<Int, PetListItemViewState.Pet>
+        callback: LoadCallback<Int, PetListViewState.Pet>
     ) {
-        scope.launch {
+        viewModel.viewModelScope.launch {
             viewModel.isLoading.postValue(true)
             val petsResponse = api.getPetListingNew(
                 type = searchModel.animal,
@@ -72,12 +72,6 @@ class AnimalFeed(
 
     override fun loadBefore(
         params: LoadParams<Int>,
-        callback: LoadCallback<Int, PetListItemViewState.Pet>
-    ) {
-    }
-
-    override fun invalidate() {
-        super.invalidate()
-        scope.cancel()
-    }
+        callback: LoadCallback<Int, PetListViewState.Pet>
+    ) { }
 }

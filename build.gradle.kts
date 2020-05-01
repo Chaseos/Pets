@@ -16,6 +16,7 @@ buildscript {
 //TODO Figuring out how to update this to latest
 //./gradlew buildSrcVersions
 plugins {
+    `kotlin-dsl`
     id("de.fayard.buildSrcVersions") version Versions.de_fayard_buildsrcversions_gradle_plugin
 }
 
@@ -24,8 +25,4 @@ allprojects {
         google()
         jcenter()
     }
-}
-
-tasks.register("clean", Delete::class.java) {
-    delete(rootProject.buildDir)
 }

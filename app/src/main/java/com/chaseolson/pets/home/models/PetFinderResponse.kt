@@ -1,5 +1,6 @@
 package com.chaseolson.pets.home.models
 
+import com.chaseolson.pets.home.models.PetListViewState.Pet.Images
 import com.chaseolson.pets.utils.*
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -117,20 +118,21 @@ data class PetFinderResponse(
     )
 }
 
-fun PetFinderResponse.responseToViewState(): PetListItemViewState? {
+fun PetFinderResponse.responseToViewState(): PetListViewState? {
     val newList = animals?.distinctBy { it.id }?.map { pet ->
         val petName = pet.name?.filterName() ?: "No Name"
-        PetListItemViewState.Pet(
+        PetListViewState.Pet(
             id = pet.id,
             name = petName,
             city = pet.gender?.genderAndLocationToString(pet.contact.address.city, petName),
-            smallImage = pet.photos.getSmallImage(),
-            mediumImage = pet.photos.getMediumImage(),
-            backupImage = pet.type.animalToBackupImage(),
             distance = pet.distance?.getDistance(),
+            images = Images(
+                smallImage = pet.photos.getSmallImage(),
+                mediumImage = pet.photos.getMediumImage(),
+                backupImage = pet.type.animalToBackupImage()),
             offset = pagination?.currentPage ?: 0
         )
     }
 
-    return PetListItemViewState(newList)
+    return PetListViewState(newList)
 }

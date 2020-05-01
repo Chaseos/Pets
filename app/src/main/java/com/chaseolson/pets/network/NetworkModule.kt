@@ -28,13 +28,6 @@ class NetworkModule {
 
     val BASE_URL = "https://api.petfinder.com/v2/"
 
-    //TODO Replace Retrofit with Moshi (Udacity course)
-    // Add call adapter https://youtu.be/xZPO2hdvB8E
-
-    //TODO Add loading image (Glide) OR Consider using the shimmer effect (Facebook)
-
-    //TODO Fix padding issues (clipToPadding false on recycler)
-
     fun provideRefreshInterceptor(tokenPreferences: SharedPreferences) =
         OAuthInterceptor(
             Retrofit
