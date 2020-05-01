@@ -34,6 +34,8 @@ object Versions {
 
     const val android_arch_lifecycle_extensions: String = "1.1.1"
 
+    const val com_android_databinding_compiler: String = "+"
+
     const val com_android_tools_build_gradle: String = "4.1.0-alpha08"
 
     const val androidx_test_core: String = "1.2.0"

@@ -48,13 +48,13 @@ object Libs {
     const val databinding_common: String = "androidx.databinding:databinding-common:" +
             Versions.androidx_databinding
 
-    /**
-     * https://developer.android.com/studio
-     */
-    const val databinding_compiler: String = "androidx.databinding:databinding-compiler:" +
+    const val databinding_runtime: String = "androidx.databinding:databinding-runtime:" +
             Versions.androidx_databinding
 
-    const val databinding_runtime: String = "androidx.databinding:databinding-runtime:" +
+    /**
+     * 3.6.3
+     */
+    const val databinding_compiler: String = "androidx.databinding:databinding-compiler:" +
             Versions.androidx_databinding
 
     /**
@@ -178,6 +178,9 @@ object Libs {
      */
     const val android_arch_lifecycle_extensions: String = "android.arch.lifecycle:extensions:" +
             Versions.android_arch_lifecycle_extensions
+
+    const val com_android_databinding_compiler: String = "com.android.databinding:compiler:" +
+            Versions.com_android_databinding_compiler
 
     /**
      * https://developer.android.com/studio

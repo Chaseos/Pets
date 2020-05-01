@@ -52,6 +52,7 @@ dependencies {
     implementation(Libs.recyclerview)
     implementation(Libs.constraintlayout)
     implementation(Libs.play_services_location)
+    kapt(Libs.com_android_databinding_compiler)
 
     // Coroutines
     implementation(Libs.kotlinx_coroutines_core)
