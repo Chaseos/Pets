@@ -21,8 +21,17 @@ class HomeScreenFragment : Fragment() {
     private val homeViewModel: HomeScreenViewModel by viewModel()
     private val mainActivityViewModel: MainActivityViewModel by activityViewModels()
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return DataBindingUtil.inflate<HomeScreenFragmentBinding>(inflater, R.layout.home_screen_fragment, container, false).apply {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        return DataBindingUtil.inflate<HomeScreenFragmentBinding>(
+            inflater,
+            R.layout.home_screen_fragment,
+            container,
+            false
+        ).apply {
             viewModel = homeViewModel
             lifecycleOwner = this@HomeScreenFragment
         }.root
@@ -39,7 +48,11 @@ class HomeScreenFragment : Fragment() {
         })
         homeViewModel.scrollToTop.observe(viewLifecycleOwner, Observer {
             view.pet_recyclerView.smoothScrollToPosition(0)
-            view.scroll_to_top_button.run { ((layoutParams as CoordinatorLayout.LayoutParams).behavior as HideBottomViewOnScrollBehavior<View>).slideDown(this) }
+            view.scroll_to_top_button.run {
+                ((layoutParams as CoordinatorLayout.LayoutParams).behavior as HideBottomViewOnScrollBehavior<View>).slideDown(
+                    this
+                )
+            }
         })
     }
 }

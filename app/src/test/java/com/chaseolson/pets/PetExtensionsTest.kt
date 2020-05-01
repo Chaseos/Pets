@@ -1,7 +1,6 @@
 package com.chaseolson.pets
 
 import com.chaseolson.pets.core.*
-import com.chaseolson.pets.oldstuff.OldPhoto
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
@@ -123,19 +122,19 @@ class PetExtensionsTest {
 //                OldPetFinderResponse.Pet.Breed("Terrier"))
 //        assertEquals(listOf("Chihuahua", "Terrier"), breedList.mapBreedsToList())
 //    }
-
-    @Test
-    fun `List PetFinderResponsePetPhoto filterImagesList empty`() {
-        val emptyList = emptyList<OldPhoto>()
-        assertEquals(emptyList<OldPhoto>(), emptyList.filterImagesList())
-    }
-
-    @Test
-    fun `List PetFinderResponsePetPhoto filterImagesList 2 images`() {
-        val photos = listOf(
-            OldPhoto("pn", "http://www.photoL.com/"),
-            OldPhoto("pnt", "http://www.photoNotL.com/")
-        )
-        assertEquals(listOf("http://www.photoL.com/"), photos.filterImagesList())
-    }
+//
+//    @Test
+//    fun `List PetFinderResponsePetPhoto filterImagesList empty`() {
+//        val emptyList = emptyList<OldPhoto>()
+//        assertEquals(emptyList<OldPhoto>(), emptyList.filterImagesList())
+//    }
+//
+//    @Test
+//    fun `List PetFinderResponsePetPhoto filterImagesList 2 images`() {
+//        val photos = listOf(
+//            OldPhoto("pn", "http://www.photoL.com/"),
+//            OldPhoto("pnt", "http://www.photoNotL.com/")
+//        )
+//        assertEquals(listOf("http://www.photoL.com/"), photos.filterImagesList())
+//    }
 }

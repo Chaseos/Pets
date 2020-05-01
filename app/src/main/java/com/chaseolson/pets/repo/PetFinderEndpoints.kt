@@ -5,7 +5,7 @@ import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-interface MobileEndpointsNew {
+interface PetFinderEndpoints {
     /**
     https://www.petfinder.com/developers/v2/docs/
 
@@ -33,23 +33,23 @@ interface MobileEndpointsNew {
 
     @GET("animals")
     suspend fun getPetListingNew(
-            @Query("type") type: String? = null, // Grabbed from getAnimalTypes call
-            @Query("breed") breed: String? = null, // Grabbed from getAnimalBreeds call
-            @Query("size") size: String? = null, // small, medium, large, xlarge (accepts multiple values)
-            @Query("gender") gender: String? = null, // male, female, unknown (accepts multiple values)
-            @Query("age") age: String? = null, // baby, young, adult, senior (accepts multiple values)
-            @Query("color") color: String? = null, // Grabbed from getAnimalTypes call
-            @Query("coat") coat: String? = null, // short, medium, long, wire, hairless, curly (accepts multiple values)
-            @Query("status") status: String? = null, // adoptable, adopted, found
-            @Query("name") name: String? = null,
-            @Query("organization") organization: String? = null, // [ID1] (accepts multiple values)
-            @Query("good_with_children") goodWithChildren: Boolean? = null,
-            @Query("good_with_dogs") goodWithDogs: Boolean? = null,
-            @Query("good_with_cats") goodWithCats: Boolean? = null,
-            @Query("location") location: String? = null, // (city, state), (latitude, longitude), or postal code
-            @Query("distance") distance: Int? = null, // requires location to be set (default 100, max 500)
-            @Query("sort") sort: String? = null, // recent, -recent, distance, -distance, random
-            @Query("page") page: Int? = null,
-            @Query("limit") limit: Int? = null // default 20 max 100
+        @Query("type") type: String? = null, // Grabbed from getAnimalTypes call
+        @Query("breed") breed: String? = null, // Grabbed from getAnimalBreeds call
+        @Query("size") size: String? = null, // small, medium, large, xlarge (accepts multiple values)
+        @Query("gender") gender: String? = null, // male, female, unknown (accepts multiple values)
+        @Query("age") age: String? = null, // baby, young, adult, senior (accepts multiple values)
+        @Query("color") color: String? = null, // Grabbed from getAnimalTypes call
+        @Query("coat") coat: String? = null, // short, medium, long, wire, hairless, curly (accepts multiple values)
+        @Query("status") status: String? = null, // adoptable, adopted, found
+        @Query("name") name: String? = null,
+        @Query("organization") organization: String? = null, // [ID1] (accepts multiple values)
+        @Query("good_with_children") goodWithChildren: Boolean? = null,
+        @Query("good_with_dogs") goodWithDogs: Boolean? = null,
+        @Query("good_with_cats") goodWithCats: Boolean? = null,
+        @Query("location") location: String? = null, // (city, state), (latitude, longitude), or postal code
+        @Query("distance") distance: Int? = null, // requires location to be set (default 100, max 500)
+        @Query("sort") sort: String? = null, // recent, -recent, distance, -distance, random
+        @Query("page") page: Int? = null,
+        @Query("limit") limit: Int? = null // default 20 max 100
     ): Response<PetFinderResponse>
 }

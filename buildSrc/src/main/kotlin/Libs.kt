@@ -126,26 +126,22 @@ object Libs {
             Versions.androidx_navigation
 
     /**
-     * https://github.com/Tickaroo/tikxml
+     * https://developer.android.com/jetpack/androidx
      */
-    const val annotation: String = "com.tickaroo.tikxml:annotation:" + Versions.com_tickaroo_tikxml
+    const val lifecycle_livedata_ktx: String = "androidx.lifecycle:lifecycle-livedata-ktx:" +
+            Versions.androidx_lifecycle
 
     /**
-     * https://github.com/Tickaroo/tikxml
+     * https://developer.android.com/jetpack/androidx
      */
-    const val com_tickaroo_tikxml_core: String = "com.tickaroo.tikxml:core:" +
-            Versions.com_tickaroo_tikxml
+    const val lifecycle_viewmodel_ktx: String = "androidx.lifecycle:lifecycle-viewmodel-ktx:" +
+            Versions.androidx_lifecycle
 
     /**
-     * https://github.com/Tickaroo/tikxml
+     * https://developer.android.com/topic/libraries/architecture/index.html
      */
-    const val processor: String = "com.tickaroo.tikxml:processor:" + Versions.com_tickaroo_tikxml
-
-    /**
-     * https://github.com/Tickaroo/tikxml
-     */
-    const val retrofit_converter: String = "com.tickaroo.tikxml:retrofit-converter:" +
-            Versions.com_tickaroo_tikxml
+    const val lifecycle_viewmodel_savedstate: String =
+            "androidx.lifecycle:lifecycle-viewmodel-savedstate:" + Versions.androidx_lifecycle
 
     /**
      * https://github.com/airbnb/epoxy
@@ -212,22 +208,6 @@ object Libs {
             "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:" +
             Versions.retrofit2_kotlin_coroutines_adapter
 
-    const val lifecycle_viewmodel_savedstate: String =
-            "androidx.lifecycle:lifecycle-viewmodel-savedstate:" +
-            Versions.lifecycle_viewmodel_savedstate
-
-    /**
-     * http://developer.android.com/tools/extras/support-library.html
-     */
-    const val lifecycle_viewmodel_ktx: String = "androidx.lifecycle:lifecycle-viewmodel-ktx:" +
-            Versions.lifecycle_viewmodel_ktx
-
-    /**
-     * http://developer.android.com/tools/extras/support-library.html
-     */
-    const val lifecycle_livedata_ktx: String = "androidx.lifecycle:lifecycle-livedata-ktx:" +
-            Versions.lifecycle_livedata_ktx
-
     const val play_services_location: String = "com.google.android.gms:play-services-location:" +
             Versions.play_services_location
 
@@ -266,7 +246,7 @@ object Libs {
     const val mockito_core: String = "org.mockito:mockito-core:" + Versions.mockito_core
 
     /**
-     * http://developer.android.com/tools/extras/support-library.html
+     * https://developer.android.com/jetpack/androidx
      */
     const val recyclerview: String = "androidx.recyclerview:recyclerview:" + Versions.recyclerview
 
@@ -291,7 +271,7 @@ object Libs {
     const val liveevent: String = "com.github.hadilq.liveevent:liveevent:" + Versions.liveevent
 
     /**
-     * http://developer.android.com/tools/extras/support-library.html
+     * https://developer.android.com/jetpack/androidx
      */
     const val core_ktx: String = "androidx.core:core-ktx:" + Versions.core_ktx
 
@@ -309,6 +289,11 @@ object Libs {
      * https://github.com/square/picasso/
      */
     const val picasso: String = "com.squareup.picasso:picasso:" + Versions.picasso
+
+    /**
+     * https://github.com/JakeWharton/timber
+     */
+    const val timber: String = "com.jakewharton.timber:timber:" + Versions.timber
 
     /**
      * https://developer.android.com/studio

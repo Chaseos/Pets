@@ -8,15 +8,14 @@ import com.bumptech.glide.Glide
 import com.chaseolson.pets.home.models.PetListItemViewState
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-
 @BindingAdapter("glidePet")
 fun ImageView.loadGlideImage(pet: PetListItemViewState.Pet) {
     Glide.with(context)
-            .load(pet.mediumImage)
-            .centerCrop()
-            .thumbnail(Glide.with(context).load(pet.smallImage))
-            .fallback(pet.backupImage)
-            .into(this)
+        .load(pet.mediumImage)
+        .centerCrop()
+        .thumbnail(Glide.with(context).load(pet.smallImage))
+        .fallback(pet.backupImage)
+        .into(this)
 }
 
 @BindingAdapter("isVisible")
@@ -26,7 +25,8 @@ fun View.setVisibility(value: Boolean?) {
 
 @BindingAdapter("onNavigationItemSelected")
 fun BottomNavigationView.setNavigationItemSelectedListener(listener: BottomNavigationView.OnNavigationItemSelectedListener) =
-        setOnNavigationItemSelectedListener(listener)
+    setOnNavigationItemSelectedListener(listener)
 
 @BindingAdapter("onRefreshListener")
-fun SwipeRefreshLayout.setRefreshListener(listener: SwipeRefreshLayout.OnRefreshListener) = setOnRefreshListener(listener)
+fun SwipeRefreshLayout.setRefreshListener(listener: SwipeRefreshLayout.OnRefreshListener) =
+    setOnRefreshListener(listener)

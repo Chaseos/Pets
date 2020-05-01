@@ -11,8 +11,8 @@ interface RefreshEndpoint {
     @FormUrlEncoded
     @POST("oauth2/token")
     suspend fun getToken(
-            @Field("grant_type") type: String = "client_credentials",
-            @Field("client_id") key: String = BuildConfig.petFinderKey,
-            @Field("client_secret") secret: String = BuildConfig.petFinderSecret
+        @Field("grant_type") type: String = "client_credentials",
+        @Field("client_id") key: String = BuildConfig.petFinderKey,
+        @Field("client_secret") secret: String = BuildConfig.petFinderSecret
     ): Response<TokenResponseDto>
 }

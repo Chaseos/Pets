@@ -2,19 +2,19 @@ package com.chaseolson.pets.core
 
 import com.chaseolson.pets.R
 import com.chaseolson.pets.home.models.Photo
-import com.chaseolson.pets.oldstuff.OldPhoto
+import java.util.*
 
 fun String.filterName(): String {
     val nonNumberOrDollarSignRegex = Regex("[^A-Za-z &()*-]")
     return this.replace("&amp", "&").replace(nonNumberOrDollarSignRegex, "").trim()
 }
 
-fun String.animalToBackupImage() = when (this.toUpperCase()) {
+fun String.animalToBackupImage() = when (this.toUpperCase(Locale.getDefault())) {
     "CAT" -> R.drawable.cat_silhouette
     else -> R.drawable.dog_silhouette
 }
 
-fun String.charSizeToStringSize() = when (this.toUpperCase()) {
+fun String.charSizeToStringSize() = when (this.toUpperCase(Locale.getDefault())) {
     "S" -> "Small"
     "M" -> "Medium"
     "L" -> "Large"
@@ -22,22 +22,27 @@ fun String.charSizeToStringSize() = when (this.toUpperCase()) {
     else -> "Size N/A"
 }
 
-fun String.charGenderToStringGender() = when (this.toUpperCase()) {
+fun String.charGenderToStringGender() = when (this.toUpperCase(Locale.getDefault())) {
     "F" -> "Female"
     "M" -> "Male"
     else -> "Gender N/A"
 }
 
-fun String.genderAndLocationToString(city: String) = when (this.toLowerCase()) {
-    "female" -> "She's in $city!"
-    "male" -> "He's in $city!"
-    else -> "They're in $city!"
+//TODO if name has "and" in it, make it They
+fun String.genderAndLocationToString(city: String, name: String): String {
+    return when {
+        name.contains(" and ") or name.contains(" & ") -> "They're in $city"
+        toLowerCase(Locale.getDefault()) == "female" -> "She's in $city!"
+        toLowerCase(Locale.getDefault()) == "male" -> "He's in $city!"
+        else -> "They're in $city!"
+    }
 }
 
 //fun List<OldPetFinderResponse.Pet.Breed>.mapBreedsToList() = this.map { it.breed }
 
-fun List<OldPhoto>.filterImagesList() = this.filter { it.size == "pn" }.map { it.photo }
+//fun List<OldPhoto>.filterImagesList() = this.filter { it.size == "pn" }.map { it.photo }
 fun List<Photo>.getSmallImage() = firstOrNull()?.small
+
 fun List<Photo>.getMediumImage() = firstOrNull()?.medium
 
 fun String.animalToSearchQuery() = when (this) {

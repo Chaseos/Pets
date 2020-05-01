@@ -12,45 +12,41 @@ import org.gradle.plugin.use.PluginDependencySpec
  * YOU are responsible for updating manually the dependency version.
  */
 object Versions {
-    const val org_jetbrains_kotlinx_kotlinx_serialization: String = "0.13.0"
+    const val org_jetbrains_kotlinx_kotlinx_serialization: String = "0.20.0"
+             // available: "0.20.0-1.4-M1-release-99"
 
-    const val org_jetbrains_kotlinx_kotlinx_coroutines: String = "1.3.2"
+    const val org_jetbrains_kotlinx_kotlinx_coroutines: String = "1.3.5"
+             // available: "1.3.5-1.4-M1-release-99"
 
-    const val com_github_bumptech_glide: String = "4.10.0"
+    const val com_github_bumptech_glide: String = "4.11.0"
 
-    const val androidx_databinding: String = "3.5.1"
+    const val androidx_databinding: String = "4.1.0-alpha08"
 
-    const val org_jetbrains_kotlin: String = "1.3.50"
+    const val org_jetbrains_kotlin: String = "1.3.72"
 
-    const val androidx_navigation: String = "2.1.0"
+    const val androidx_navigation: String = "2.2.2"
 
-    const val com_tickaroo_tikxml: String = "0.8.13"
+    const val androidx_lifecycle: String = "2.2.0"
 
-    const val com_airbnb_android: String = "3.8.0"
+    const val com_airbnb_android: String = "3.9.0"
 
-    const val org_koin: String = "2.0.1"
+    const val org_koin: String = "2.1.5"
 
     const val android_arch_lifecycle_extensions: String = "1.1.1"
 
-    const val com_android_tools_build_gradle: String = "3.5.1"
+    const val com_android_tools_build_gradle: String = "4.1.0-alpha08"
 
     const val androidx_test_core: String = "1.2.0"
 
-    const val retrofit2_kotlinx_serialization_converter: String = "0.4.0"
+    const val retrofit2_kotlinx_serialization_converter: String = "0.5.0"
 
     const val de_fayard_buildsrcversions_gradle_plugin: String = "0.7.0"
 
     const val retrofit2_kotlin_coroutines_adapter: String = "0.9.2"
 
-    const val lifecycle_viewmodel_savedstate: String = "1.0.0-rc01"
-
-    const val lifecycle_viewmodel_ktx: String = "2.1.0"
-
-    const val lifecycle_livedata_ktx: String = "2.1.0"
-
     const val play_services_location: String = "17.0.0"
 
-    const val paging_runtime_ktx: String = "2.1.0"
+    const val paging_runtime_ktx: String = "2.1.2"
 
     const val swiperefreshlayout: String = "1.0.0"
 
@@ -58,38 +54,40 @@ object Versions {
 
     const val collection_ktx: String = "1.1.0"
 
-    const val fragment_ktx: String = "1.1.0"
+    const val fragment_ktx: String = "1.2.4"
 
-    const val mockito_core: String = "3.1.0"
+    const val mockito_core: String = "3.3.3"
 
-    const val recyclerview: String = "1.0.0"
+    const val recyclerview: String = "1.1.0"
 
-    const val lint_gradle: String = "26.5.1"
+    const val lint_gradle: String = "27.1.0-alpha08"
 
     const val palette_ktx: String = "1.0.0"
 
     const val appcompat: String = "1.1.0"
 
-    const val liveevent: String = "1.0.1"
+    const val liveevent: String = "1.2.0"
 
-    const val core_ktx: String = "1.1.0"
+    const val core_ktx: String = "1.2.0"
 
     const val material: String = "1.2.0-alpha01"
 
-    const val retrofit: String = "2.6.2"
+    const val retrofit: String = "2.8.1"
 
     const val picasso: String = "2.71828"
 
-    const val aapt2: String = "3.5.1-5435860"
+    const val timber: String = "4.7.1"
 
-    const val junit: String = "4.12"
+    const val aapt2: String = "4.1.0-alpha08-6376216"
+
+    const val junit: String = "4.13"
 
     /**
-     * Current version: "5.4.1"
+     * Current version: "6.3"
      * See issue 19: How to update Gradle itself?
      * https://github.com/jmfayard/buildSrcVersions/issues/19
      */
-    const val gradleLatestVersion: String = "5.6.4"
+    const val gradleLatestVersion: String = "6.3"
 }
 
 /**

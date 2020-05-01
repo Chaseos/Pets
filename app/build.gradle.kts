@@ -10,11 +10,11 @@ val Petfinder_CONSUMER_KEY: String by project
 val Petfinder_CONSUMER_SECRET: String by project
 
 android {
-    compileSdkVersion(28)
+    compileSdkVersion(29)
     defaultConfig {
         applicationId = "com.chaseolson.pets"
         minSdkVersion(21)
-        targetSdkVersion(28)
+        targetSdkVersion(29)
         versionCode = 1
         versionName = "1.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -33,7 +33,17 @@ android {
         }
     }
 
-    dataBinding.isEnabled = true
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions.apply {
+        allWarningsAsErrors = true
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+
+    buildFeatures.dataBinding = true
 }
 
 dependencies {
@@ -81,12 +91,6 @@ dependencies {
     // Picasso
     implementation(Libs.picasso)
 
-    // Tickaroo Xml Parser
-    implementation(Libs.com_tickaroo_tikxml_core)
-    implementation(Libs.annotation)
-    implementation(Libs.retrofit_converter)
-    kapt(Libs.processor)
-
     // Testing
     testImplementation(Libs.junit)
     testImplementation(Libs.androidx_test_core)
@@ -109,4 +113,7 @@ dependencies {
 
     // LiveEvent
     implementation(Libs.liveevent)
+
+    // Timber
+    implementation(Libs.timber)
 }

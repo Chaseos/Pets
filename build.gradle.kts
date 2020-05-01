@@ -7,12 +7,14 @@ buildscript {
     }
 
     dependencies {
-        classpath(Libs.com_android_tools_build_gradle)
         classpath(Libs.kotlin_gradle_plugin)
         classpath(Libs.kotlin_serialization)
+        classpath("com.android.tools.build:gradle:4.1.0-alpha08")
     }
 }
 
+//TODO Figuring out how to update this to latest
+//./gradlew buildSrcVersions
 plugins {
     id("de.fayard.buildSrcVersions") version Versions.de_fayard_buildsrcversions_gradle_plugin
 }
