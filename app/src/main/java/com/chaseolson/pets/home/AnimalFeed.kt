@@ -3,11 +3,9 @@ package com.chaseolson.pets.home
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PageKeyedDataSource
 import com.chaseolson.pets.home.models.PetListViewState
-import com.chaseolson.pets.home.models.responseToViewState
-import com.chaseolson.pets.network.repo.PetFinderEndpoints
+import com.chaseolson.pets.network.responseToViewState
+import com.chaseolson.pets.network.endpoints.PetFinderEndpoints
 import com.chaseolson.pets.search.SearchModel
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 
 class AnimalFeed(

@@ -1,6 +1,6 @@
-package com.chaseolson.pets.network.repo
+package com.chaseolson.pets.network.endpoints
 
-import com.chaseolson.pets.home.models.PetFinderResponse
+import com.chaseolson.pets.network.PetFinderResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query

@@ -52,7 +52,7 @@ object Versions {
 
     const val swiperefreshlayout: String = "1.0.0"
 
-    const val constraintlayout: String = "1.1.3"
+    const val constraintlayout: String = "2.0.0-beta4"
 
     const val collection_ktx: String = "1.1.0"
 

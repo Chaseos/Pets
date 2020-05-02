@@ -1,6 +1,9 @@
-package com.chaseolson.pets.home.models
+package com.chaseolson.pets.network
 
+import com.chaseolson.pets.home.models.Address
+import com.chaseolson.pets.home.models.PetListViewState
 import com.chaseolson.pets.home.models.PetListViewState.Pet.Images
+import com.chaseolson.pets.home.models.Photo
 import com.chaseolson.pets.utils.*
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -129,7 +132,8 @@ fun PetFinderResponse.responseToViewState(): PetListViewState? {
             images = Images(
                 smallImage = pet.photos.getSmallImage(),
                 mediumImage = pet.photos.getMediumImage(),
-                backupImage = pet.type.animalToBackupImage()),
+                backupImage = pet.type.animalToBackupImage()
+            ),
             offset = pagination?.currentPage ?: 0
         )
     }

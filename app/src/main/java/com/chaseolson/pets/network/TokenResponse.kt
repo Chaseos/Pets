@@ -4,7 +4,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class TokenResponseDto(
+data class TokenResponse(
     @SerialName("token_type")
     val tokenType: String,
     @SerialName("expires_in")

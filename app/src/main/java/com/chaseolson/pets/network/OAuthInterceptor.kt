@@ -1,14 +1,14 @@
 package com.chaseolson.pets.network
 
 import android.content.SharedPreferences
-import com.chaseolson.pets.network.repo.RefreshEndpoint
+import com.chaseolson.pets.network.endpoints.RefreshEndpoint
 import kotlinx.coroutines.runBlocking
 import okhttp3.Interceptor
 import okhttp3.Response
 
 class OAuthInterceptor(
-    val refreshEndpoint: RefreshEndpoint,
-    val tokenPreferences: SharedPreferences
+    private val refreshEndpoint: RefreshEndpoint,
+    private val tokenPreferences: SharedPreferences
 ) : Interceptor {
 
     override fun intercept(chain: Interceptor.Chain): Response {
@@ -20,7 +20,7 @@ class OAuthInterceptor(
             val initialResponse = chain.proceed(authenticationRequest)
 
             return when {
-                initialResponse.code() == 403 || initialResponse.code() == 401 -> {
+                initialResponse.code() == 401 -> {
                     val responseNewTokenLoginModel = runBlocking { refreshEndpoint.getToken() }
 
                     if (responseNewTokenLoginModel.isSuccessful) {

@@ -4,8 +4,8 @@ import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
 import com.chaseolson.pets.home.HomeScreenViewModel
-import com.chaseolson.pets.network.repo.PetFinderEndpoints
-import com.chaseolson.pets.network.repo.RefreshEndpoint
+import com.chaseolson.pets.network.endpoints.PetFinderEndpoints
+import com.chaseolson.pets.network.endpoints.RefreshEndpoint
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonConfiguration
@@ -28,7 +28,7 @@ class NetworkModule {
 
     val BASE_URL = "https://api.petfinder.com/v2/"
 
-    fun provideRefreshInterceptor(tokenPreferences: SharedPreferences) =
+    private fun provideRefreshInterceptor(tokenPreferences: SharedPreferences) =
         OAuthInterceptor(
             Retrofit
                 .Builder()
@@ -39,7 +39,7 @@ class NetworkModule {
                 .create(RefreshEndpoint::class.java), tokenPreferences
         )
 
-    fun provideMobileEndpoints(interceptor: OAuthInterceptor): PetFinderEndpoints {
+    private fun provideMobileEndpoints(interceptor: OAuthInterceptor): PetFinderEndpoints {
         val nonstrict = Json(
             JsonConfiguration(
                 isLenient = true,

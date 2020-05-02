@@ -9,6 +9,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.NavDirections
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.chaseolson.pets.R
 import com.chaseolson.pets.databinding.HomeScreenFragmentBinding
@@ -45,6 +47,10 @@ class HomeScreenFragment : Fragment() {
                     this
                 )
             }
+        }
+
+        homeViewModel.petClickedAction.observe(viewLifecycleOwner) {
+            findNavController().navigate(R.id.action_homeScreenFragment_to_petDetailFragment)
         }
     }
 }
