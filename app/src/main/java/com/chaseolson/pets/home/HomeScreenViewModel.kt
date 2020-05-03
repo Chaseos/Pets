@@ -8,15 +8,19 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.chaseolson.pets.R
 import com.chaseolson.pets.core.LiveEvent
 import com.chaseolson.pets.core.LiveEventData
-import com.chaseolson.pets.home.models.PetListViewState
+import com.chaseolson.pets.details.PetDetailViewState
+import com.chaseolson.pets.network.PetFinderResponse
 import com.chaseolson.pets.network.endpoints.PetFinderEndpoints
+import com.chaseolson.pets.network.responseToDetailViewState
 import com.chaseolson.pets.search.SearchModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class HomeScreenViewModel(repo: PetFinderEndpoints) : ViewModel() {
     val isLoading = MutableLiveData(true)
+    val petResponse: MutableList<PetFinderResponse.Animal> = mutableListOf()
     val scrollToTop = LiveEvent()
-    val petClickedAction = LiveEvent()
+    val petClickedAction = LiveEventData<PetDetailViewState>()
+
     private val petFeedFactory = object : DataSource.Factory<Int, PetListViewState.Pet>() {
         override fun create(): DataSource<Int, PetListViewState.Pet> =
             AnimalFeed(repo, SearchModel(), this@HomeScreenViewModel)
@@ -35,5 +39,5 @@ class HomeScreenViewModel(repo: PetFinderEndpoints) : ViewModel() {
         })
 
     fun scrollToTop() = scrollToTop.callEvent()
-    fun petClicked() = petClickedAction.callEvent()
+    fun petClicked(petId: Int) = petClickedAction.throttleEvent(petResponse.first { petId == it.id }.responseToDetailViewState())
 }

@@ -1,7 +1,7 @@
 package com.chaseolson.pets.utils
 
 import com.chaseolson.pets.R
-import com.chaseolson.pets.home.models.Photo
+import com.chaseolson.pets.network.PetFinderResponse.Animal.Photo
 import java.util.*
 
 fun String.filterName(): String {
@@ -14,20 +14,6 @@ fun String.animalToBackupImage() = when (this.toUpperCase(Locale.getDefault())) 
     else -> R.drawable.dog_silhouette
 }
 
-fun String.charSizeToStringSize() = when (this.toUpperCase(Locale.getDefault())) {
-    "S" -> "Small"
-    "M" -> "Medium"
-    "L" -> "Large"
-    "XL" -> "Extra Large"
-    else -> "Size N/A"
-}
-
-fun String.charGenderToStringGender() = when (this.toUpperCase(Locale.getDefault())) {
-    "F" -> "Female"
-    "M" -> "Male"
-    else -> "Gender N/A"
-}
-
 fun String.genderAndLocationToString(city: String, name: String): String {
     return when {
         name.contains(" and ") or name.contains(" & ") -> "They're in $city"
@@ -37,12 +23,11 @@ fun String.genderAndLocationToString(city: String, name: String): String {
     }
 }
 
-//fun List<OldPetFinderResponse.Pet.Breed>.mapBreedsToList() = this.map { it.breed }
-
-//fun List<OldPhoto>.filterImagesList() = this.filter { it.size == "pn" }.map { it.photo }
 fun List<Photo>.getSmallImage() = firstOrNull()?.small
 
-fun List<Photo>.getMediumImage() = firstOrNull()?.medium
+fun List<Photo>.getLargeImage() = firstOrNull()?.large
+
+fun List<Photo>.getFullImage() = firstOrNull()?.full
 
 fun String.animalToSearchQuery() = when (this) {
     "Dogs" -> "dog"

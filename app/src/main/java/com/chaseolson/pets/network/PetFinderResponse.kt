@@ -1,9 +1,8 @@
 package com.chaseolson.pets.network
 
-import com.chaseolson.pets.home.models.Address
-import com.chaseolson.pets.home.models.PetListViewState
-import com.chaseolson.pets.home.models.PetListViewState.Pet.Images
-import com.chaseolson.pets.home.models.Photo
+import com.chaseolson.pets.details.PetDetailViewState
+import com.chaseolson.pets.home.PetListViewState
+import com.chaseolson.pets.home.PetListViewState.Pet.Images
 import com.chaseolson.pets.utils.*
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -16,7 +15,6 @@ data class PetFinderResponse(
     @Serializable
     data class Animal(
         val id: Int,
-        val type: String,
         val age: String? = null,
         val attributes: Attributes? = null,
         val breeds: Breeds? = null,
@@ -31,15 +29,21 @@ data class PetFinderResponse(
         @SerialName("organization_id")
         val organizationId: String? = null,
         val photos: List<Photo> = emptyList(),
+        @SerialName("primary_photo_cropped")
+        val primaryPhotoCropped: Photo? = null,
         @SerialName("published_at")
         val publishedAt: String? = null,
         val size: String? = null,
         val species: String? = null,
         val status: String? = null,
+        @SerialName("status_changed_at")
+        val statusChangedAt: String? = null,
         val tags: List<String>? = null,
+        val type: String,
         val url: String? = null,
         @SerialName("_links")
         val links: AnimalLinks? = null
+//        val videos: List<Any> = emptyList() Don't know type as all I get is empty list
     ) {
         @Serializable
         data class Attributes(
@@ -52,6 +56,16 @@ data class PetFinderResponse(
             val spayedNeutered: Boolean? = null,
             @SerialName("special_needs")
             val specialNeeds: Boolean? = null
+        )
+
+        @Serializable
+        data class Address(
+            val address1: String? = null,
+            val address2: String? = null,
+            val city: String = "N/A",
+            val country: String? = null,
+            val postcode: String? = null,
+            val state: String? = null
         )
 
         @Serializable
@@ -81,6 +95,14 @@ data class PetFinderResponse(
             val cats: Boolean? = null,
             val children: Boolean? = null,
             val dogs: Boolean? = null
+        )
+
+        @Serializable
+        data class Photo(
+            val full: String,
+            val large: String,
+            val medium: String,
+            val small: String
         )
     }
 
@@ -130,8 +152,8 @@ fun PetFinderResponse.responseToViewState(): PetListViewState? {
             city = pet.gender?.genderAndLocationToString(pet.contact.address.city, petName),
             distance = pet.distance?.getDistance(),
             images = Images(
-                smallImage = pet.photos.getSmallImage(),
-                mediumImage = pet.photos.getMediumImage(),
+                smallImage = pet.primaryPhotoCropped?.small,
+                mediumImage = pet.primaryPhotoCropped?.medium,
                 backupImage = pet.type.animalToBackupImage()
             ),
             offset = pagination?.currentPage ?: 0
@@ -139,4 +161,36 @@ fun PetFinderResponse.responseToViewState(): PetListViewState? {
     }
 
     return PetListViewState(newList)
+}
+
+//TODO Update ViewState with states relative to the comps we end up using
+fun PetFinderResponse.Animal.responseToDetailViewState(): PetDetailViewState? {
+    val petName = name?.filterName() ?: "No Name"
+    return PetDetailViewState(
+        id = id,
+        name = petName,
+        age = age ?: "N/A",
+        attributes = attributes,
+        breeds = breeds,
+        coat = coat,
+        colors = colors,
+        contact = contact,
+        description = description,
+        distance = distance?.getDistance(),
+        environment = environment,
+        gender = gender,
+        organizationId = organizationId,
+        images = PetDetailViewState.Images(
+            smallImage = photos.getSmallImage(),
+            largeImage = photos.getLargeImage(),
+            backupImage = type.animalToBackupImage()
+        ),
+        publishedAt = publishedAt,
+        size = size,
+        species = species,
+        status = status,
+        statusChangedAt = statusChangedAt,
+        tags = tags,
+        type = type
+    )
 }

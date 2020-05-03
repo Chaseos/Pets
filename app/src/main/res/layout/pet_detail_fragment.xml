@@ -3,7 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+        <variable
+            name="pet"
+            type="com.chaseolson.pets.details.PetDetailViewState" />
 
+        <variable
+            name="viewModel"
+            type="com.chaseolson.pets.details.PetDetailViewModel" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -21,8 +27,7 @@
                 android:layout_height="match_parent"
                 android:minHeight="80dp"
                 app:layoutDescription="@xml/pet_detail_motion"
-                app:layout_scrollFlags="scroll|enterAlways|snap|exitUntilCollapsed"
-                app:motionDebug="SHOW_PATH">
+                app:layout_scrollFlags="scroll|enterAlways|snap|exitUntilCollapsed">
 
                 <ImageView
                     android:id="@+id/background"
@@ -30,10 +35,10 @@
                     android:layout_height="1000dp"
                     android:scaleType="centerCrop"
                     app:layout_constraintBottom_toBottomOf="parent"
+                    glidePet="@{pet.images}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/background" />
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView
                     android:id="@+id/moon"
@@ -46,7 +51,7 @@
                     android:id="@+id/credits"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/credits"
+                    android:text="@{pet.name}"
                     android:textColor="?colorOnPrimary"
                     android:textSize="24sp" />
             </androidx.constraintlayout.motion.widget.MotionLayout>

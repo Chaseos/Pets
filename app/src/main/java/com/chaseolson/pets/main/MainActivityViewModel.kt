@@ -1,7 +1,8 @@
 package com.chaseolson.pets.main
 
 import androidx.lifecycle.ViewModel
+import com.chaseolson.pets.details.PetDetailViewState
 
 class MainActivityViewModel : ViewModel() {
-    var petId: Int? = null
+    var selectedPet: PetDetailViewState? = null
 }

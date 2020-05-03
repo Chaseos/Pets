@@ -50,6 +50,7 @@ class HomeScreenFragment : Fragment() {
         }
 
         homeViewModel.petClickedAction.observe(viewLifecycleOwner) {
+            mainActivityViewModel.selectedPet = it
             findNavController().navigate(R.id.action_homeScreenFragment_to_petDetailFragment)
         }
     }

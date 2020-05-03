@@ -6,11 +6,9 @@
 
     <data>
 
-        <import type="android.view.View" />
-
         <variable
             name="pet"
-            type="com.chaseolson.pets.home.models.PetListViewState.Pet" />
+            type="com.chaseolson.pets.home.PetListViewState.Pet" />
 
         <variable
             name="viewModel"
@@ -31,12 +29,12 @@
             android:layout_height="match_parent"
             android:clickable="true"
             android:focusable="true"
-            android:onClick="@{() -> viewModel.petClicked()}"
+            android:onClick="@{() -> viewModel.petClicked(pet.id)}"
             android:foreground="?selectableItemBackground">
 
             <ImageView
                 android:id="@+id/pet_image"
-                glidePet="@{pet}"
+                glidePet="@{pet.images}"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:contentDescription="@string/pet_image"

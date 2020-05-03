@@ -2,7 +2,6 @@ package com.chaseolson.pets.home
 
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PageKeyedDataSource
-import com.chaseolson.pets.home.models.PetListViewState
 import com.chaseolson.pets.network.responseToViewState
 import com.chaseolson.pets.network.endpoints.PetFinderEndpoints
 import com.chaseolson.pets.search.SearchModel
@@ -31,6 +30,7 @@ class AnimalFeed(
             )
             if (petsResponse.isSuccessful) {
                 viewModel.isLoading.postValue(false)
+                viewModel.petResponse.addAll(petsResponse.body()?.animals!!)
                 val pets = petsResponse.body()?.responseToViewState()
                 callback.onResult(
                     pets?.pets?.toMutableList() ?: emptyList(),
@@ -59,6 +59,7 @@ class AnimalFeed(
             )
             if (petsResponse.isSuccessful) {
                 viewModel.isLoading.postValue(false)
+                viewModel.petResponse.addAll(petsResponse.body()?.animals!!)
                 val pets = petsResponse.body()?.responseToViewState()
                 callback.onResult(
                     pets?.pets?.toMutableList() ?: emptyList(),
