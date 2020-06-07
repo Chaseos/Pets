@@ -6,7 +6,9 @@ import java.util.*
 
 fun String.filterName(): String {
     val nonNumberOrDollarSignRegex = Regex("[^A-Za-z &()*-]")
-    return this.replace("&amp", "&").replace(nonNumberOrDollarSignRegex, "").trim()
+    return replace("&amp", "&")
+        .replace(nonNumberOrDollarSignRegex, "")
+        .trim()
 }
 
 fun String.animalToBackupImage() = when (this.toUpperCase(Locale.getDefault())) {

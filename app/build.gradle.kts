@@ -100,6 +100,8 @@ dependencies {
     // Glide
     implementation(Libs.glide)
     annotationProcessor(Libs.com_github_bumptech_glide_compiler)
+    implementation("com.github.florent37:glidepalette:2.1.2")
+    implementation("com.github.skydoves:rainbow:1.0.1")
 
     // Epoxy
     implementation(Libs.epoxy)
