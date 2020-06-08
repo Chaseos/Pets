@@ -32,15 +32,17 @@
                 app:layout_scrollFlags="scroll|enterAlways|snap|exitUntilCollapsed">
 
                 <ImageView
-                    android:id="@+id/image"
+                    android:id="@+id/pet_image"
                     paletteImage="@{pet.images}"
                     android:layout_width="0dp"
-                    android:layout_height="0dp" />
+                    android:layout_height="0dp"
+                    android:transitionName="@{@string/pet_image_transition(pet.name)}"/>
 
                 <TextView
-                    android:id="@+id/name"
+                    android:id="@+id/pet_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
                     android:elevation="8dp"
                     android:ellipsize="end"
                     android:includeFontPadding="false"
@@ -49,11 +51,11 @@
                     android:shadowDx="2"
                     android:shadowDy="2"
                     android:shadowRadius="2"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
                     android:text="@{pet.name}"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
                     android:textColor="@android:color/white"
-                    android:layout_marginBottom="4dp"
-                    android:textSize="32sp" />
+                    android:textSize="28sp"
+                    android:transitionName="@{@string/pet_name_transition(pet.name)}" />
             </androidx.constraintlayout.motion.widget.MotionLayout>
 
         </com.google.android.material.appbar.AppBarLayout>

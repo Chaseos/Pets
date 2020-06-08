@@ -4,6 +4,8 @@
     <string name="scroll_to_top">Scroll to Top</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
+    <string name="pet_name_transition">Pet %s</string>
+    <string name="pet_image_transition">Image %s</string>
 
     <string-array name="animal_type">
         <item>Animal Type (Optional)</item>

@@ -12,9 +12,6 @@ import com.chaseolson.pets.home.PetListViewState
 import com.github.florent37.glidepalette.BitmapPalette
 import com.github.florent37.glidepalette.GlidePalette
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.skydoves.rainbow.Rainbow
-import com.skydoves.rainbow.RainbowOrientation
-import com.skydoves.rainbow.color
 
 @BindingAdapter("glidePet")
 fun ImageView.loadGlideImage(images: PetListViewState.Pet.Images) {
@@ -45,25 +42,17 @@ fun ImageView.bindLoadImagePaletteView(images: PetDetailViewState.Images) {
         .fallback(images.backupImage)
         .listener(
             GlidePalette.with(images.smallImage)
-                .use(BitmapPalette.Profile.VIBRANT)
+                .use(BitmapPalette.Profile.MUTED_LIGHT)
                 .intoCallBack { palette ->
-                    val lightVib = palette?.vibrantSwatch?.rgb
-                    val lightMut = palette?.mutedSwatch?.rgb
                     val dominant = palette?.dominantSwatch?.rgb
                     if (dominant != null) {
-                        Rainbow(parent).palette {
-                            +color(dominant)
-                            +color(lightVib ?: lightMut ?: dominant)
-                        }.background(orientation = RainbowOrientation.TOP_BOTTOM)
-                        if (context is AppCompatActivity) {
-                            (context as AppCompatActivity).window.apply {
-                                addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-                                statusBarColor = dominant
-                            }
+                        parent.setBackgroundColor(dominant)
+                        (context as AppCompatActivity).window.apply {
+                            addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+                            statusBarColor = dominant
                         }
                     }
-                }
-                .crossfade(true))
+                })
         .into(this)
 }
 

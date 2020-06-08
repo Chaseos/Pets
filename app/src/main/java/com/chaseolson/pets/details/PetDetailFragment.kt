@@ -9,6 +9,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import androidx.transition.TransitionInflater
 import com.chaseolson.pets.R
 import com.chaseolson.pets.databinding.PetDetailFragmentBinding
 import com.chaseolson.pets.main.MainActivityViewModel
@@ -23,9 +24,17 @@ class PetDetailFragment : Fragment() {
         return DataBindingUtil.inflate<PetDetailFragmentBinding>(inflater, R.layout.pet_detail_fragment, container, false).apply {
             binding = this
             lifecycleOwner = viewLifecycleOwner
-            pet = mainActivityViewModel.selectedPet
             coordinateMotion()
         }.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.apply {
+            sharedElementEnterTransition = TransitionInflater.from(context).inflateTransition(android.R.transition.move)
+            pet = mainActivityViewModel.selectedPet
+            executePendingBindings()
+        }
     }
 
     private fun coordinateMotion() {

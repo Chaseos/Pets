@@ -9,7 +9,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
-import androidx.navigation.NavDirections
+import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.chaseolson.pets.R
@@ -36,10 +36,20 @@ class HomeScreenFragment : Fragment() {
         val controller = PetsListEpoxyController(homeViewModel)
         binding.petRecyclerView.adapter = controller.adapter
         binding.petRecyclerView.layoutManager = GridLayoutManager(requireContext(), 2)
-        homeViewModel.animalsLiveData.observe(viewLifecycleOwner, Observer {
+        binding.executePendingBindings()
+
+        postponeEnterTransition()
+        binding.petRecyclerView.viewTreeObserver
+            .addOnPreDrawListener {
+                startPostponedEnterTransition()
+                true
+            }
+
+        homeViewModel.petsLiveData.observe(viewLifecycleOwner, Observer {
             controller.submitList(it)
             binding.homeSwipelayout.isRefreshing = false
         })
+
         homeViewModel.scrollToTop.observe(viewLifecycleOwner) {
             binding.petRecyclerView.smoothScrollToPosition(0)
             binding.scrollToTopButton.run {
@@ -50,8 +60,12 @@ class HomeScreenFragment : Fragment() {
         }
 
         homeViewModel.petClickedAction.observe(viewLifecycleOwner) {
-            mainActivityViewModel.selectedPet = it
-            findNavController().navigate(R.id.action_homeScreenFragment_to_petDetailFragment)
+            mainActivityViewModel.selectedPet = it.petDetailViewState
+            val extras = FragmentNavigatorExtras(
+                it.petImage to it.petImage.transitionName,
+                it.petName to it.petName.transitionName
+            )
+            findNavController().navigate(R.id.action_homeScreenFragment_to_petDetailFragment, null, null, extras)
         }
     }
 }

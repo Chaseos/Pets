@@ -7,7 +7,7 @@ import com.chaseolson.pets.network.endpoints.PetFinderEndpoints
 import com.chaseolson.pets.search.SearchModel
 import kotlinx.coroutines.launch
 
-class AnimalFeed(
+class PetsHomeFeed(
     private val api: PetFinderEndpoints,
     private val searchModel: SearchModel,
     private val viewModel: HomeScreenViewModel
