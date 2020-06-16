@@ -4,6 +4,7 @@ plugins {
     kotlin("android")
     kotlin("android.extensions")
     kotlin("kapt")
+    id("kotlin-android")
 }
 
 val Petfinder_CONSUMER_KEY: String by project
@@ -52,7 +53,10 @@ dependencies {
     implementation(Libs.recyclerview)
     implementation(Libs.constraintlayout)
     implementation(Libs.play_services_location)
-    kapt(Libs.com_android_databinding_compiler)
+    implementation(Libs.legacy_support_v4)
+    implementation(Libs.lifecycle_extensions)
+    implementation(Libs.lifecycle_viewmodel_ktx)
+    kapt(Libs.databinding_compiler)
 
     // Coroutines
     implementation(Libs.kotlinx_coroutines_core)
@@ -100,8 +104,8 @@ dependencies {
     // Glide
     implementation(Libs.glide)
     annotationProcessor(Libs.com_github_bumptech_glide_compiler)
-    implementation("com.github.florent37:glidepalette:2.1.2")
-    implementation("com.github.skydoves:rainbow:1.0.1")
+    implementation(Libs.glidepalette)
+    implementation(Libs.rainbow)
 
     // Epoxy
     implementation(Libs.epoxy)

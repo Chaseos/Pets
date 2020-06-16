@@ -18,7 +18,7 @@
             <KeyPosition
                 motion:curveFit="linear"
                 motion:framePosition="60"
-                motion:motionTarget="@id/image"
+                motion:motionTarget="@id/pet_image"
                 motion:percentWidth="0"
                 motion:percentX="0" />
         </KeyFrameSet>

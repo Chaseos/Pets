@@ -21,6 +21,7 @@ class HomeScreenViewModel(repo: PetFinderEndpoints) : ViewModel() {
     val isLoading = MutableLiveData(true)
     val petResponse: MutableList<PetFinderResponse.Animal> = mutableListOf()
     val scrollToTop = LiveEvent()
+    val searchClicked = LiveEvent()
     val petClickedAction = LiveEventData<PetDetailDto>()
 
     private val petFeedFactory = object : DataSource.Factory<Int, PetListViewState.Pet>() {
@@ -42,6 +43,9 @@ class HomeScreenViewModel(repo: PetFinderEndpoints) : ViewModel() {
         })
 
     fun scrollToTop() = scrollToTop.callEvent()
+
+    fun searchClicked() = searchClicked.callEvent()
+
     fun petClicked(petId: Int, petImage: ImageView, petName: TextView) =
         petClickedAction.throttleEvent(
             PetDetailDto(

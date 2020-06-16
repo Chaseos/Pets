@@ -48,58 +48,14 @@ object Libs {
     const val databinding_common: String = "androidx.databinding:databinding-common:" +
             Versions.androidx_databinding
 
-    const val databinding_runtime: String = "androidx.databinding:databinding-runtime:" +
-            Versions.androidx_databinding
-
     /**
-     * 3.6.3
+     * https://developer.android.com/studio
      */
     const val databinding_compiler: String = "androidx.databinding:databinding-compiler:" +
             Versions.androidx_databinding
 
-    /**
-     * https://kotlinlang.org/
-     */
-    const val kotlin_android_extensions: String =
-            "org.jetbrains.kotlin:kotlin-android-extensions:" + Versions.org_jetbrains_kotlin
-
-    /**
-     * https://kotlinlang.org/
-     */
-    const val kotlin_android_extensions_runtime: String =
-            "org.jetbrains.kotlin:kotlin-android-extensions-runtime:" +
-            Versions.org_jetbrains_kotlin
-
-    /**
-     * https://kotlinlang.org/
-     */
-    const val kotlin_annotation_processing_gradle: String =
-            "org.jetbrains.kotlin:kotlin-annotation-processing-gradle:" +
-            Versions.org_jetbrains_kotlin
-
-    /**
-     * https://kotlinlang.org/
-     */
-    const val kotlin_gradle_plugin: String = "org.jetbrains.kotlin:kotlin-gradle-plugin:" +
-            Versions.org_jetbrains_kotlin
-
-    /**
-     * https://kotlinlang.org/
-     */
-    const val kotlin_serialization: String = "org.jetbrains.kotlin:kotlin-serialization:" +
-            Versions.org_jetbrains_kotlin
-
-    /**
-     * https://kotlinlang.org/
-     */
-    const val kotlin_serialization_unshaded: String =
-            "org.jetbrains.kotlin:kotlin-serialization-unshaded:" + Versions.org_jetbrains_kotlin
-
-    /**
-     * https://kotlinlang.org/
-     */
-    const val kotlin_stdlib_jdk7: String = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:" +
-            Versions.org_jetbrains_kotlin
+    const val databinding_runtime: String = "androidx.databinding:databinding-runtime:" +
+            Versions.androidx_databinding
 
     /**
      * https://developer.android.com/topic/libraries/architecture/index.html
@@ -124,24 +80,6 @@ object Libs {
      */
     const val navigation_ui_ktx: String = "androidx.navigation:navigation-ui-ktx:" +
             Versions.androidx_navigation
-
-    /**
-     * https://developer.android.com/jetpack/androidx
-     */
-    const val lifecycle_livedata_ktx: String = "androidx.lifecycle:lifecycle-livedata-ktx:" +
-            Versions.androidx_lifecycle
-
-    /**
-     * https://developer.android.com/jetpack/androidx
-     */
-    const val lifecycle_viewmodel_ktx: String = "androidx.lifecycle:lifecycle-viewmodel-ktx:" +
-            Versions.androidx_lifecycle
-
-    /**
-     * https://developer.android.com/topic/libraries/architecture/index.html
-     */
-    const val lifecycle_viewmodel_savedstate: String =
-            "androidx.lifecycle:lifecycle-viewmodel-savedstate:" + Versions.androidx_lifecycle
 
     /**
      * https://github.com/airbnb/epoxy
@@ -179,9 +117,6 @@ object Libs {
     const val android_arch_lifecycle_extensions: String = "android.arch.lifecycle:extensions:" +
             Versions.android_arch_lifecycle_extensions
 
-    const val com_android_databinding_compiler: String = "com.android.databinding:compiler:" +
-            Versions.com_android_databinding_compiler
-
     /**
      * https://developer.android.com/studio
      */
@@ -192,6 +127,10 @@ object Libs {
      * https://developer.android.com/testing
      */
     const val androidx_test_core: String = "androidx.test:core:" + Versions.androidx_test_core
+
+    const val org_gradle_kotlin_kotlin_dsl_gradle_plugin: String =
+            "org.gradle.kotlin.kotlin-dsl:org.gradle.kotlin.kotlin-dsl.gradle.plugin:" +
+            Versions.org_gradle_kotlin_kotlin_dsl_gradle_plugin
 
     /**
      * https://github.com/JakeWharton/retrofit2-kotlinx-serialization-converter/
@@ -205,14 +144,103 @@ object Libs {
             Versions.de_fayard_buildsrcversions_gradle_plugin
 
     /**
+     * https://kotlinlang.org/
+     */
+    const val kotlin_scripting_compiler_embeddable: String =
+            "org.jetbrains.kotlin:kotlin-scripting-compiler-embeddable:" +
+            Versions.kotlin_scripting_compiler_embeddable
+
+    /**
+     * https://kotlinlang.org/
+     */
+    const val kotlin_annotation_processing_gradle: String =
+            "org.jetbrains.kotlin:kotlin-annotation-processing-gradle:" +
+            Versions.kotlin_annotation_processing_gradle
+
+    /**
      * https://github.com/JakeWharton/retrofit2-kotlin-coroutines-adapter/
      */
     const val retrofit2_kotlin_coroutines_adapter: String =
             "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:" +
             Versions.retrofit2_kotlin_coroutines_adapter
 
+    /**
+     * https://kotlinlang.org/
+     */
+    const val kotlin_android_extensions_runtime: String =
+            "org.jetbrains.kotlin:kotlin-android-extensions-runtime:" +
+            Versions.kotlin_android_extensions_runtime
+
+    /**
+     * https://developer.android.com/topic/libraries/architecture/index.html
+     */
+    const val lifecycle_viewmodel_savedstate: String =
+            "androidx.lifecycle:lifecycle-viewmodel-savedstate:" +
+            Versions.lifecycle_viewmodel_savedstate
+
+    /**
+     * https://kotlinlang.org/
+     */
+    const val kotlin_serialization_unshaded: String =
+            "org.jetbrains.kotlin:kotlin-serialization-unshaded:" +
+            Versions.kotlin_serialization_unshaded
+
+    /**
+     * https://kotlinlang.org/
+     */
+    const val kotlin_android_extensions: String =
+            "org.jetbrains.kotlin:kotlin-android-extensions:" + Versions.kotlin_android_extensions
+
+    /**
+     * https://kotlinlang.org/
+     */
+    const val kotlin_sam_with_receiver: String = "org.jetbrains.kotlin:kotlin-sam-with-receiver:" +
+            Versions.kotlin_sam_with_receiver
+
+    /**
+     * https://developer.android.com/jetpack/androidx
+     */
+    const val lifecycle_viewmodel_ktx: String = "androidx.lifecycle:lifecycle-viewmodel-ktx:" +
+            Versions.lifecycle_viewmodel_ktx
+
+    /**
+     * https://developer.android.com/jetpack/androidx
+     */
+    const val lifecycle_livedata_ktx: String = "androidx.lifecycle:lifecycle-livedata-ktx:" +
+            Versions.lifecycle_livedata_ktx
+
     const val play_services_location: String = "com.google.android.gms:play-services-location:" +
             Versions.play_services_location
+
+    /**
+     * https://kotlinlang.org/
+     */
+    const val kotlin_gradle_plugin: String = "org.jetbrains.kotlin:kotlin-gradle-plugin:" +
+            Versions.kotlin_gradle_plugin
+
+    /**
+     * https://kotlinlang.org/
+     */
+    const val kotlin_serialization: String = "org.jetbrains.kotlin:kotlin-serialization:" +
+            Versions.kotlin_serialization
+
+    /**
+     * https://developer.android.com/topic/libraries/architecture/index.html
+     */
+    const val lifecycle_extensions: String = "androidx.lifecycle:lifecycle-extensions:" +
+            Versions.lifecycle_extensions
+
+    /**
+     * https://kotlinlang.org/
+     */
+    const val kotlin_stdlib_jdk7: String = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:" +
+            Versions.kotlin_stdlib_jdk7
+
+    /**
+     * https://kotlinlang.org/
+     */
+    const val kotlin_stdlib_jdk8: String = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:" +
+            Versions.kotlin_stdlib_jdk8
 
     /**
      * http://developer.android.com/tools/extras/support-library.html
@@ -227,6 +255,12 @@ object Libs {
             Versions.swiperefreshlayout
 
     /**
+     * http://developer.android.com/tools/extras/support-library.html
+     */
+    const val legacy_support_v4: String = "androidx.legacy:legacy-support-v4:" +
+            Versions.legacy_support_v4
+
+    /**
      * http://tools.android.com
      */
     const val constraintlayout: String = "androidx.constraintlayout:constraintlayout:" +
@@ -239,9 +273,20 @@ object Libs {
             Versions.collection_ktx
 
     /**
+     * https://kotlinlang.org/
+     */
+    const val kotlin_reflect: String = "org.jetbrains.kotlin:kotlin-reflect:" +
+            Versions.kotlin_reflect
+
+    /**
      * https://developer.android.com/jetpack/androidx
      */
     const val fragment_ktx: String = "androidx.fragment:fragment-ktx:" + Versions.fragment_ktx
+
+    /**
+     * https://github.com/florent37/GlidePalette
+     */
+    const val glidepalette: String = "com.github.florent37:glidepalette:" + Versions.glidepalette
 
     /**
      * https://github.com/mockito/mockito
@@ -269,11 +314,6 @@ object Libs {
     const val appcompat: String = "androidx.appcompat:appcompat:" + Versions.appcompat
 
     /**
-     * https://github.com/hadilq/LiveEvent
-     */
-    const val liveevent: String = "com.github.hadilq.liveevent:liveevent:" + Versions.liveevent
-
-    /**
      * https://developer.android.com/jetpack/androidx
      */
     const val core_ktx: String = "androidx.core:core-ktx:" + Versions.core_ktx
@@ -284,7 +324,7 @@ object Libs {
     const val material: String = "com.google.android.material:material:" + Versions.material
 
     /**
-     * https://github.com/square/retrofit/
+     * https://github.com/square/retrofit
      */
     const val retrofit: String = "com.squareup.retrofit2:retrofit:" + Versions.retrofit
 
@@ -292,6 +332,8 @@ object Libs {
      * https://github.com/square/picasso/
      */
     const val picasso: String = "com.squareup.picasso:picasso:" + Versions.picasso
+
+    const val rainbow: String = "com.github.skydoves:rainbow:" + Versions.rainbow
 
     /**
      * https://github.com/JakeWharton/timber

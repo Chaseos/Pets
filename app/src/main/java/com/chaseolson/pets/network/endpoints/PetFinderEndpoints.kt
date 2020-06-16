@@ -1,8 +1,11 @@
 package com.chaseolson.pets.network.endpoints
 
 import com.chaseolson.pets.network.PetFinderResponse
+import com.chaseolson.pets.network.PetBreedsResponse
+import com.chaseolson.pets.network.PetTypesResponse
 import retrofit2.Response
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface PetFinderEndpoints {
@@ -32,7 +35,7 @@ interface PetFinderEndpoints {
      **/
 
     @GET("animals")
-    suspend fun getPetListingNew(
+    suspend fun getPetListing(
         @Query("type") type: String? = null, // Grabbed from getAnimalTypes call
         @Query("breed") breed: String? = null, // Grabbed from getAnimalBreeds call
         @Query("size") size: String? = null, // small, medium, large, xlarge (accepts multiple values)
@@ -52,4 +55,14 @@ interface PetFinderEndpoints {
         @Query("page") page: Int? = null,
         @Query("limit") limit: Int? = null // default 20 max 100
     ): Response<PetFinderResponse>
+
+    @GET("types")
+    suspend fun getPetTypes(): Response<PetTypesResponse>
+
+    @GET("types/{type}/breeds")
+    suspend fun getPetBreeds(
+        @Path("type") type: String
+    ): Response<PetBreedsResponse>
+
+
 }

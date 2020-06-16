@@ -32,8 +32,8 @@ fun List<Photo>.getLargeImage() = firstOrNull()?.large
 fun List<Photo>.getFullImage() = firstOrNull()?.full
 
 fun String.animalToSearchQuery() = when (this) {
-    "Dogs" -> "dog"
-    "Cats" -> "cat"
+    "Dogs" -> "Dog"
+    "Cats" -> "Cat"
     else -> null
 }
 

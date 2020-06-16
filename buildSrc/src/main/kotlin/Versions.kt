@@ -15,81 +15,110 @@ object Versions {
     const val org_jetbrains_kotlinx_kotlinx_serialization: String = "0.20.0"
              // available: "0.20.0-1.4-M1-release-99"
 
-    const val org_jetbrains_kotlinx_kotlinx_coroutines: String = "1.3.5"
-             // available: "1.3.5-1.4-M1-release-99"
+    const val org_jetbrains_kotlinx_kotlinx_coroutines: String = "1.3.7"
 
     const val com_github_bumptech_glide: String = "4.11.0"
 
-    const val androidx_databinding: String = "4.1.0-alpha08"
-
-    const val org_jetbrains_kotlin: String = "1.3.72"
+    const val androidx_databinding: String = "4.0.0"
 
     const val androidx_navigation: String = "2.2.2"
 
-    const val androidx_lifecycle: String = "2.2.0"
-
-    const val com_airbnb_android: String = "3.9.0"
+    const val com_airbnb_android: String = "3.11.0"
 
     const val org_koin: String = "2.1.5"
 
     const val android_arch_lifecycle_extensions: String = "1.1.1"
 
-    const val com_android_databinding_compiler: String = "+"
-
     const val com_android_tools_build_gradle: String = "4.0.0"
 
     const val androidx_test_core: String = "1.2.0"
+
+    const val org_gradle_kotlin_kotlin_dsl_gradle_plugin: String = "1.3.6"
 
     const val retrofit2_kotlinx_serialization_converter: String = "0.5.0"
 
     const val de_fayard_buildsrcversions_gradle_plugin: String = "0.7.0"
 
+    const val kotlin_scripting_compiler_embeddable: String = "1.3.72"
+
+    const val kotlin_annotation_processing_gradle: String = "1.3.72"
+
     const val retrofit2_kotlin_coroutines_adapter: String = "0.9.2"
 
+    const val kotlin_android_extensions_runtime: String = "1.3.72"
+
+    const val lifecycle_viewmodel_savedstate: String = "2.2.0"
+
+    const val kotlin_serialization_unshaded: String = "1.3.72"
+
+    const val kotlin_android_extensions: String = "1.3.72"
+
+    const val kotlin_sam_with_receiver: String = "1.3.72"
+
+    const val lifecycle_viewmodel_ktx: String = "2.2.0"
+
+    const val lifecycle_livedata_ktx: String = "2.2.0"
+
     const val play_services_location: String = "17.0.0"
+
+    const val kotlin_gradle_plugin: String = "1.3.72"
+
+    const val kotlin_serialization: String = "1.3.72"
+
+    const val lifecycle_extensions: String = "2.2.0"
+
+    const val kotlin_stdlib_jdk7: String = "1.3.72"
+
+    const val kotlin_stdlib_jdk8: String = "1.3.72"
 
     const val paging_runtime_ktx: String = "2.1.2"
 
     const val swiperefreshlayout: String = "1.0.0"
 
+    const val legacy_support_v4: String = "1.0.0"
+
     const val constraintlayout: String = "2.0.0-beta4"
 
     const val collection_ktx: String = "1.1.0"
 
+    const val kotlin_reflect: String = "1.3.72"
+
     const val fragment_ktx: String = "1.2.4"
+
+    const val glidepalette: String = "2.1.2"
 
     const val mockito_core: String = "3.3.3"
 
     const val recyclerview: String = "1.1.0"
 
-    const val lint_gradle: String = "27.1.0-alpha08"
+    const val lint_gradle: String = "27.0.0"
 
     const val palette_ktx: String = "1.0.0"
 
     const val appcompat: String = "1.1.0"
 
-    const val liveevent: String = "1.2.0"
-
-    const val core_ktx: String = "1.2.0"
+    const val core_ktx: String = "1.3.0"
 
     const val material: String = "1.2.0-alpha01"
 
-    const val retrofit: String = "2.8.1"
+    const val retrofit: String = "2.9.0"
 
     const val picasso: String = "2.71828"
 
+    const val rainbow: String = "1.0.1"
+
     const val timber: String = "4.7.1"
 
-    const val aapt2: String = "4.1.0-alpha08-6376216"
+    const val aapt2: String = "4.0.0-6051327"
 
     const val junit: String = "4.13"
 
     /**
-     * Current version: "6.3"
+     * Current version: "6.1.1"
      * See issue 19: How to update Gradle itself?
      * https://github.com/jmfayard/buildSrcVersions/issues/19
      */
-    const val gradleLatestVersion: String = "6.3"
+    const val gradleLatestVersion: String = "6.5"
 }
 
 /**

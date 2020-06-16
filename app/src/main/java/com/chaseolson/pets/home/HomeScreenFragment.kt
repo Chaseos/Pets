@@ -59,6 +59,10 @@ class HomeScreenFragment : Fragment() {
             }
         }
 
+        homeViewModel.searchClicked.observe(viewLifecycleOwner) {
+            findNavController().navigate(R.id.action_homeScreenFragment_to_searchFragment)
+        }
+
         homeViewModel.petClickedAction.observe(viewLifecycleOwner) {
             mainActivityViewModel.selectedPet = it.petDetailViewState
             val extras = FragmentNavigatorExtras(

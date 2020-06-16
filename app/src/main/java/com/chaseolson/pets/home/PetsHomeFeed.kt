@@ -18,7 +18,7 @@ class PetsHomeFeed(
         callback: LoadInitialCallback<Int, PetListViewState.Pet>
     ) {
         viewModel.viewModelScope.launch {
-            val petsResponse = api.getPetListingNew(
+            val petsResponse = api.getPetListing(
                 type = searchModel.animal,
                 breed = searchModel.breed,
                 size = searchModel.size,
@@ -47,7 +47,7 @@ class PetsHomeFeed(
     ) {
         viewModel.viewModelScope.launch {
             viewModel.isLoading.postValue(true)
-            val petsResponse = api.getPetListingNew(
+            val petsResponse = api.getPetListing(
                 type = searchModel.animal,
                 breed = searchModel.breed,
                 size = searchModel.size,

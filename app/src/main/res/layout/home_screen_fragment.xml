@@ -31,9 +31,9 @@
                 android:id="@+id/pet_recyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:clipToPadding="false"
                 android:layout_marginTop="46dp"
                 android:layout_marginBottom="46dp"
+                android:clipToPadding="false"
                 android:scrollbarSize="4dp"
                 android:scrollbars="vertical"
                 tools:listitem="@layout/pet_item_pet_card" />
@@ -134,6 +134,7 @@
                     android:layout_marginTop="4dp"
                     android:layout_marginEnd="16dp"
                     android:layout_marginBottom="4dp"
+                    android:onClick="@{() -> viewModel.searchClicked()}"
                     android:src="@drawable/ic_round_search_24px"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
