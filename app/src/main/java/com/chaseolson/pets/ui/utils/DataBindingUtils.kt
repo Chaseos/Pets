@@ -1,4 +1,4 @@
-package com.chaseolson.pets.utils
+package com.chaseolson.pets.ui.utils
 
 import android.view.View
 import android.view.WindowManager
@@ -7,8 +7,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.BindingAdapter
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.bumptech.glide.Glide
-import com.chaseolson.pets.details.PetDetailViewState
-import com.chaseolson.pets.home.PetListViewState
+import com.chaseolson.pets.ui.details.PetDetailViewState
+import com.chaseolson.pets.ui.home.PetListViewState
 import com.github.florent37.glidepalette.BitmapPalette
 import com.github.florent37.glidepalette.GlidePalette
 import com.google.android.material.bottomnavigation.BottomNavigationView

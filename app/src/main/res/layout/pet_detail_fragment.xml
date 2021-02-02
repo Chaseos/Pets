@@ -6,11 +6,11 @@
 
         <variable
             name="pet"
-            type="com.chaseolson.pets.details.PetDetailViewState" />
+            type="com.chaseolson.pets.ui.details.PetDetailViewState" />
 
         <variable
             name="viewModel"
-            type="com.chaseolson.pets.details.PetDetailViewModel" />
+            type="com.chaseolson.pets.ui.details.PetDetailViewModel" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout

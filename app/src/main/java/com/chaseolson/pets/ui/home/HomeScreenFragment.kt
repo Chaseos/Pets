@@ -1,4 +1,4 @@
-package com.chaseolson.pets.home
+package com.chaseolson.pets.ui.home
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -14,7 +14,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.chaseolson.pets.R
 import com.chaseolson.pets.databinding.HomeScreenFragmentBinding
-import com.chaseolson.pets.main.MainActivityViewModel
+import com.chaseolson.pets.ui.main.MainActivityViewModel
 import com.google.android.material.behavior.HideBottomViewOnScrollBehavior
 import org.koin.android.viewmodel.ext.android.viewModel
 

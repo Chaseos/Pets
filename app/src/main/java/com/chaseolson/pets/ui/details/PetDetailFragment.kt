@@ -1,4 +1,4 @@
-package com.chaseolson.pets.details
+package com.chaseolson.pets.ui.details
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,7 +12,7 @@ import androidx.fragment.app.viewModels
 import androidx.transition.TransitionInflater
 import com.chaseolson.pets.R
 import com.chaseolson.pets.databinding.PetDetailFragmentBinding
-import com.chaseolson.pets.main.MainActivityViewModel
+import com.chaseolson.pets.ui.main.MainActivityViewModel
 import com.google.android.material.appbar.AppBarLayout
 
 class PetDetailFragment : Fragment() {

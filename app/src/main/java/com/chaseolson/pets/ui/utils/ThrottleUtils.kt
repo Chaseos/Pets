@@ -1,4 +1,4 @@
-package com.chaseolson.pets.utils
+package com.chaseolson.pets.ui.utils
 
 import android.os.SystemClock
 import com.chaseolson.pets.BuildConfig

@@ -10,7 +10,7 @@
 
         <variable
             name="viewModel"
-            type="com.chaseolson.pets.home.HomeScreenViewModel" />
+            type="com.chaseolson.pets.ui.home.HomeScreenViewModel" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -25,7 +25,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="46dp"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
-            tools:context=".home.HomeScreen">
+            tools:context=".ui.home.HomeScreen">
 
             <com.airbnb.epoxy.EpoxyRecyclerView
                 android:id="@+id/pet_recyclerView"

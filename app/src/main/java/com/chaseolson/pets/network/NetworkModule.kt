@@ -3,7 +3,7 @@ package com.chaseolson.pets.network
 import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
-import com.chaseolson.pets.home.HomeScreenViewModel
+import com.chaseolson.pets.ui.home.HomeScreenViewModel
 import com.chaseolson.pets.network.endpoints.PetFinderEndpoints
 import com.chaseolson.pets.network.endpoints.RefreshEndpoint
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory

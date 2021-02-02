@@ -1,10 +1,10 @@
-package com.chaseolson.pets.home
+package com.chaseolson.pets.ui.home
 
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PageKeyedDataSource
 import com.chaseolson.pets.network.responseToViewState
 import com.chaseolson.pets.network.endpoints.PetFinderEndpoints
-import com.chaseolson.pets.search.SearchModel
+import com.chaseolson.pets.ui.search.SearchModel
 import kotlinx.coroutines.launch
 
 class PetsHomeFeed(

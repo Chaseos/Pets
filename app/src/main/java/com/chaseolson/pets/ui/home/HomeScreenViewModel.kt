@@ -1,4 +1,4 @@
-package com.chaseolson.pets.home
+package com.chaseolson.pets.ui.home
 
 import android.widget.ImageView
 import android.widget.TextView
@@ -10,11 +10,11 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.chaseolson.pets.R
 import com.chaseolson.pets.core.LiveEvent
 import com.chaseolson.pets.core.LiveEventData
-import com.chaseolson.pets.details.PetDetailViewState
+import com.chaseolson.pets.ui.details.PetDetailViewState
 import com.chaseolson.pets.network.PetFinderResponse
 import com.chaseolson.pets.network.endpoints.PetFinderEndpoints
 import com.chaseolson.pets.network.responseToDetailViewState
-import com.chaseolson.pets.search.SearchModel
+import com.chaseolson.pets.ui.search.SearchModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class HomeScreenViewModel(repo: PetFinderEndpoints) : ViewModel() {

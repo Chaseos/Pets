@@ -1,4 +1,4 @@
-package com.chaseolson.pets.details
+package com.chaseolson.pets.ui.details
 
 import com.chaseolson.pets.network.PetFinderResponse.Animal
 

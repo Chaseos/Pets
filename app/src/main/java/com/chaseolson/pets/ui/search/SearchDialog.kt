@@ -1,4 +1,4 @@
-package com.chaseolson.pets.search
+package com.chaseolson.pets.ui.search
 
 import android.os.Bundle
 import android.view.LayoutInflater

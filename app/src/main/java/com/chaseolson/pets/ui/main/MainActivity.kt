@@ -1,4 +1,4 @@
-package com.chaseolson.pets.main
+package com.chaseolson.pets.ui.main
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

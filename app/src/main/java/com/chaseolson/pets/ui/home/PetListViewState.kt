@@ -1,4 +1,4 @@
-package com.chaseolson.pets.home
+package com.chaseolson.pets.ui.home
 
 data class PetListViewState(val pets: List<Pet>? = null) {
 

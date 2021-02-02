@@ -1,4 +1,4 @@
-package com.chaseolson.pets.home
+package com.chaseolson.pets.ui.home
 
 import com.airbnb.epoxy.EpoxyModel
 import com.airbnb.epoxy.paging.PagedListEpoxyController

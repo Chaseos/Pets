@@ -1,7 +1,7 @@
 package com.chaseolson.pets
 
-import com.chaseolson.pets.utils.animalToBackupImage
-import com.chaseolson.pets.utils.filterName
+import com.chaseolson.pets.ui.utils.animalToBackupImage
+import com.chaseolson.pets.ui.utils.filterName
 import org.junit.Assert.assertEquals
 import org.junit.Test
 

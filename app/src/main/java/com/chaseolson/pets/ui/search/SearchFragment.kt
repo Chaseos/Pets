@@ -1,4 +1,4 @@
-package com.chaseolson.pets.search
+package com.chaseolson.pets.ui.search
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,7 +11,6 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.viewModelScope
 import com.chaseolson.pets.R
 import com.chaseolson.pets.network.endpoints.PetFinderEndpoints
-import com.chaseolson.pets.utils.animalToSearchQuery
 import kotlinx.android.synthetic.main.search_fragment.*
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject

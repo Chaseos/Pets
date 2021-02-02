@@ -1,9 +1,9 @@
 package com.chaseolson.pets.network
 
-import com.chaseolson.pets.details.PetDetailViewState
-import com.chaseolson.pets.home.PetListViewState
-import com.chaseolson.pets.home.PetListViewState.Pet.Images
-import com.chaseolson.pets.utils.*
+import com.chaseolson.pets.ui.details.PetDetailViewState
+import com.chaseolson.pets.ui.home.PetListViewState
+import com.chaseolson.pets.ui.home.PetListViewState.Pet.Images
+import com.chaseolson.pets.ui.utils.*
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 

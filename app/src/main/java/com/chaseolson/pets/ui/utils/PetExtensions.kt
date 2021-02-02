@@ -1,4 +1,4 @@
-package com.chaseolson.pets.utils
+package com.chaseolson.pets.ui.utils
 
 import com.chaseolson.pets.R
 import com.chaseolson.pets.network.PetFinderResponse.Animal.Photo

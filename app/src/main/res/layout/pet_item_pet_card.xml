@@ -8,11 +8,11 @@
 
         <variable
             name="pet"
-            type="com.chaseolson.pets.home.PetListViewState.Pet" />
+            type="com.chaseolson.pets.ui.home.PetListViewState.Pet" />
 
         <variable
             name="viewModel"
-            type="com.chaseolson.pets.home.HomeScreenViewModel" />
+            type="com.chaseolson.pets.ui.home.HomeScreenViewModel" />
     </data>
 
     <com.google.android.material.card.MaterialCardView
